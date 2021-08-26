@@ -1,0 +1,129 @@
+/* pages/maintain/endoscope.wxss */
+@import '../../styles/task.wxss';
+@import '../../styles/icon.wxss';
+
+.uploader-content.flex-box {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 0 80rpx;
+}
+
+.uploader-content.flex-box.mirror-upload {
+  margin-top:20rpx;
+  padding: 0
+}
+
+.uploader-item {
+  margin-bottom: 40rpx;
+}
+
+.uploader-item .upload-title {
+  text-align: center;
+  font-size: 28rpx;
+  color: #323232;
+}
+
+.card-body.small-padding.mirror-card {
+  padding: 20rpx
+}
+
+.fault-content {
+  border: 1px dotted #bbb;
+  padding: 20rpx;
+  font-size: 24rpx;
+  margin-bottom: 20rpx;
+  position:relative;
+}
+
+.fault-content-delete {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 40rpx;
+  height: 40rpx;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 0 0 0 40rpx;
+}
+
+.fault-content-delete-icon {
+  position: absolute;
+  top: -22rpx;
+  right: -8rpx;
+  color: #fff;
+  font-size: 50rpx;
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
+}
+
+
+.photo {
+  padding: 8rpx;
+  display: flex;
+  justify-content: space-between;
+  padding: 20rpx 40rpx;
+}
+
+.uploader-wrap {
+  width: 156rpx;
+  height: 156rpx;
+  border: 2px solid #f2f1f2;
+  text-align: center;
+  background-color: #f2f2f3;
+}
+
+.uploader-wrap .iconfont {
+  font-size: 52rpx;
+  margin-top: 30rpx;
+  color: #8c959a;
+}
+
+.uploader-wrap .uploder-desc {
+  margin-bottom: 10rpx;
+}
+
+.fault-content .form-item{
+  padding:10rpx
+}
+.fault-content .form-item:first-child{
+  padding-left:0
+}
+.label-text {
+  font-size: 28rpx;
+  width: 280rpx;
+}
+.label-text.label-title{
+  width:180rpx;
+  padding-left:-10rpx;
+  font-size:28rpx;
+  font-weight: 700;
+}
+.weui-input.sn-input{
+  height:66rpx;
+  padding-left:10rpx;
+  border:2rpx solid #ddd;
+}
+.textarea {
+  width: 100%;
+  height: 120rpx;
+  border: 1px solid #ccc;
+  padding: 10rpx 32rpx;
+  box-sizing: border-box;
+  margin-top: 20rpx;
+}
+
+.add-btn {
+  width: 480rpx;
+  padding: 10rpx 0;
+  border: 1px dashed #009fab;
+  border-radius: 10rpx;
+  text-align: center;
+  margin: 40rpx auto 0 auto;
+  color: #009fab;
+  background-color: #fff;
+}
+
+.add-btn .icon-icon-test {
+  font-size: 48rpx;
+}

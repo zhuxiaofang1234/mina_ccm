@@ -1,0 +1,14 @@
+
+    <view class="comment-btn">
+        <button 
+            wx:for="{{list}}" 
+            wx:for-item="item" 
+            wx:key="item.index"  
+            bindtap="checkboxChange" 
+            data-value="{{item.value}}" 
+            data-index="{{index}}"  
+            checked="{{item.selected}}"
+            class="btn {{item.selected ? 'btn-selected' : ''}}" >
+            {{item.title}}
+        </button>
+    </view>

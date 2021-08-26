@@ -1,0 +1,61 @@
+var timeTranslate = {
+  //时间戳转换
+  timestampToTime: function (timestamp) {
+    if (timestamp == 0 || timestamp == '') {
+      return '-';
+    }
+    var date = getDate(timestamp * 1000);//时间戳为10位需*1000
+    var Y = date.getFullYear() + '-';
+    var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1) + '-';
+    //var D = date.getDate() + ' ';
+    var D = date.getDate() + 1 < 10 ? '0' + date.getDate() : date.getDate();
+    // var h = date.getHours() + ':';
+    // var m = date.getMinutes() + ':';
+    // var s = date.getSeconds();
+    return Y + M + D;
+  }
+};
+
+//报告状态
+var sonoTagStatus = function (status) {
+   var sonoTagList = ['市场窗口','超声主委','内镜主委','研发合作','立影行动'];
+   var selectedSonoTag =[];
+  if(status){
+    var statuslist = status.split(';');
+    statuslist.forEach(function(item){
+      var index = parseInt(item)-1;
+      if(sonoTagList[index]){
+        selectedSonoTag.push(sonoTagList[index])
+      }
+    })
+  }
+  return selectedSonoTag
+};
+
+//医院等级
+var hospitalLevel = function(status){
+  var hospitalLevel1=['一级','二级','三级','未定级'],
+  hospitalLevel2=['','甲等','乙等','丙等'];
+  var level='';
+  if(status){
+    var statuslist = status.split('/');
+    var index1 = (statuslist[0]-1);
+    if(statuslist[1]){
+      var index2 = (statuslist[1]%10);
+      level=hospitalLevel1[index1]+'/'+ hospitalLevel2[index2]
+    }else{
+      level=hospitalLevel1[index1]
+    } 
+  }
+  return level
+
+
+};
+
+
+module.exports = {
+  timestampToTime: timeTranslate.timestampToTime,
+  sonoTagStatus:sonoTagStatus,
+  hospitalLevel:hospitalLevel
+
+}

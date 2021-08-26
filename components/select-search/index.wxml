@@ -1,0 +1,19 @@
+<view class="flex-area">
+  <view class="flex-select-area" bindtap="selectData">
+    <view class="selected-text">
+      <text>{{selectedData}}</text>
+      <text class="iconfont icon-shixiangxiajiantou- arrow"></text>
+    </view>
+  </view>
+  <view class="flex-search-area">
+    <mp-searchbar placeholder="{{placeholder}}" bindblur="inputSearchTyping" search="{{search}}"></mp-searchbar>
+  </view>
+  <view class="select-option-area" hidden="{{!isSelect}}">
+    <mp-cells ext-class="select-item-row">
+      <mp-checkbox-group prop="radio" multi="{{false}}" bindchange="radioChange">
+        <mp-checkbox wx:for="{{radioItems}}" wx:key="value" label="{{item.name}}"  value="{{item.value}}"
+          checked="{{item.checked}}"></mp-checkbox>
+      </mp-checkbox-group>
+    </mp-cells>
+  </view>
+</view>

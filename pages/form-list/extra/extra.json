@@ -1,0 +1,14 @@
+{
+  "usingComponents": {
+    "mp-form": "../../../weui/form/form",
+    "mp-toptips": "../../../weui/toptips/toptips",
+    "mp-cells": "../../../weui/cells/cells",
+    "mp-cell": "../../../weui/cell/cell",
+    "mp-icon": "../../../weui/icon/icon",
+    "mp-checkbox": "../../../weui/checkbox/checkbox",
+    "mp-searchbar": "../../../weui/searchbar/searchbar",
+    "mp-slideview": "../../../weui/slideview/slideview",
+    "select-filter": "/components/select-filter/index"
+  },
+  "navigationBarTitleText": "后续处理"
+}

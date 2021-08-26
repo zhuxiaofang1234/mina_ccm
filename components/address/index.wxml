@@ -1,0 +1,16 @@
+<!--components/address/index.wxml-->
+<view>
+  <picker-view indicator-style="height: 50px; color:red" style="width: 100%; height: 300px;" value="{{region}}"
+    bindchange="bindChange">
+    <picker-view-column>
+      <view wx:for="{{countryData}}" wx:key="{{countryData}}" style="line-height: 50px; text-align: center;" bindCountrychange="Countrychange">{{item.yatCnname}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{provinceData}}" wx:key="{{provinceData.yatId}}" style="line-height: 50px; text-align: center;">{{item.yatCnname}}</view>
+    </picker-view-column>
+    <picker-view-column>
+      <view wx:for="{{cityData}}" wx:key="{{cityData.yatId}}" style="line-height: 50px; text-align: center;">{{item.yatCnname}}
+      </view>
+    </picker-view-column>  
+  </picker-view>
+</view>

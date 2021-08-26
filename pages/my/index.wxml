@@ -1,0 +1,61 @@
+<view class="personal-container">
+
+  <view class="bg-container">
+    <view class='bg-image'>
+      <image mode="aspectFill" src='../../images/user_center_bg.jpg'></image>
+    </view>
+
+    <view>
+      <image wx:if="{{hasUserInfo}}" class='user-image' src='{{userInfo.avatarUrl}}' mode="cover"></image>
+    </view>
+    <view class='user-info'>
+      <view wx:if="{{hasUserInfo}}" class='user-name'>{{userInfo.nickname ? userInfo.nickname : userInfo.nickName}}</view>
+      <view class="article">
+        <view class="word">努力奋斗的人儿最可爱</view>
+      </view>
+    </view>
+
+  </view>
+
+  <view class='message' bindtap='openMyList'>
+    <view>
+      <image src='/images/my-message.png' class='item-image'></image>
+    </view>
+    <view class='word'>我的表单</view>
+  </view>
+
+  <view class='content-container'>
+    <view class='content-item say-love' bindtap="openMyAddress">
+      <view>
+        <image src='/images/color-love.png' class='item-image'></image>
+      </view>
+      <view class='word'>收货地址</view>
+    </view>
+    <view wx:if="{{!hasUserInfo}}" class='content-item sale' bindtap="goRegister">
+      <view>
+        <image src='/images/select-sale.png' class='item-image'></image>
+      </view>
+      <view class='word'>绑定账号</view>
+    </view>
+    <!-- //http://www.sonoscape.com.cn/html/cn/news/ -->
+    <view class='content-item sale' bindtap="openSite">
+      <view>
+        <image src='/images/suggestion.png' class='item-image'></image>
+      </view>
+      <view class='word'>开立官网</view>
+    </view>
+  </view>
+
+  <view class='suggestion' bindtap='aboutUs'>
+    <view>
+      <image src='/images/topic_comment.png' class='item-image'></image>
+    </view>
+    <view class='word'>关于我们</view>
+  </view>
+
+  <view class='author'>
+    <view>power by sonoscape web team</view>
+  </view>
+
+
+</view>

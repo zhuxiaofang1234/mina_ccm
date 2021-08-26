@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "collapse": "/components/collapse/index",
+    "mp-uploader": "/weui/uploader/uploader",
+    "mp-cells": "/weui/cells/cells",
+    "mp-cell": "/weui/cell/cell"
+  },
+  "navigationBarTitleText": "表单详情"
+}

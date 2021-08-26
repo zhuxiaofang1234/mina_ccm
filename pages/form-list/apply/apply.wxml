@@ -1,0 +1,71 @@
+<!--pages/form-list/apply/apply.wxml-->
+<view>
+<mp-form id="apply-form" rules="{{rules}}" models="{{formData}}">
+    <select-filter 
+      searchUrl="{{searchUrl}}" 
+      placeholder="搜索配件" 
+      pickerName="配件" 
+      range_key="name"
+      paramKey="pn"
+      bind:selectFilterChangeEvent='onPnChangeEvent'
+    />
+    <!-- 申请配件开始 -->
+        <mp-cells title="申请配件">
+      <mp-cell prop="apply_pn" title="物料PN"  ext-class="">
+        <input bindinput="formInputChange" disabled="{{true}}" value="{{applyList.apply_pn}}" data-field="apply_pn" class="weui-input" placeholder="配件PN"/>
+      </mp-cell>
+      <mp-cell prop="apply_num" title="申请数量"  ext-class="">
+        <input bindinput="formInputChange" value="{{applyList.apply_num}}" data-field="apply_num" class="weui-input" placeholder="申请数量"/>
+      </mp-cell>
+      <mp-cell prop="type_desc" title="回收属性" ext-class="">
+        <input bindinput="formInputChange" disabled="{{true}}" value="{{applyList.type_desc}}" data-field="type_desc" class="weui-input" placeholder="回收属性"/>
+      </mp-cell>
+      <mp-cell prop="apply_remark" title="备注" ext-class="">
+        <input bindinput="formInputChange" value="{{applyList.apply_remark}}" data-field="apply_remark" class="weui-input" placeholder="备注信息"/>
+      </mp-cell>
+    </mp-cells>
+    <mp-cell title="" ext-class="">
+        <mp-icon icon="add" bindtap="addPn" color="black" size="24"></mp-icon>
+     </mp-cell>
+   <!-- 预览开始 -->
+   <!-- 左滑删除 -->
+    <view class="weui-form-preview__bd" wx:if="{{replace_list.length > 0}}" wx:for="{{replace_list}}" wx:for-index="idx" wx:key="idx">
+    <mp-slideview show="{{false}}" buttons="{{slideButtons}}" wx:key="unque" data-id="{{item.idx}}" bindbuttontap="slideButtonTap">
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">序号</view>
+          <view class="weui-form-preview__value">{{idx + 1}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">申请PN</view>
+          <view class="weui-form-preview__value">{{item.pn}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">物料名称</view>
+          <view class="weui-form-preview__value">{{item.name}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">数量</view>
+          <view class="weui-form-preview__value">{{item.apply_num}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">单位</view>
+          <view class="weui-form-preview__value">{{item.apply_unit}}</view>
+      </view>
+     <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">回收属性</view>
+          <view class="weui-form-preview__value">{{item.type_desc}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">备注</view>
+          <view class="weui-form-preview__value">{{item.apply_remark}}</view>
+      </view>
+      </mp-slideview>
+    </view>
+    <!-- 配件预览结束 -->
+
+
+  <view class="weui-btn-area">
+        <button class="weui-btn" type="primary" bindtap="submitForm">提交</button>
+  </view>
+</mp-form>
+</view>

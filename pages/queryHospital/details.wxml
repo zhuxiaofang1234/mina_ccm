@@ -1,0 +1,50 @@
+<view class="page">
+  <wxs src="../../utils/tools.wxs" module="tools" />
+  <view class="page__bd" wx:if="{{hospitalInfo}}">
+    <view class="detailsTitle weui-cells__title ">
+      <view >医院基本信息</view>
+      <view class="iconfont icon-Input" data-id="{{hospitalInfo.id}}" bindtap="toUpdateHospital"></view>
+    </view>
+    <mp-cells ext-class="my-cells">
+      <mp-cell value="医院名称" footer="{{hospitalInfo.hospitalName}}"></mp-cell>
+      <mp-cell value="医院编号" footer="{{hospitalInfo.encoded}}"></mp-cell>
+      <mp-cell value="医院地址" ext-class="addressCell" footer="{{hospitalInfo.address}}"></mp-cell>
+      <mp-cell value="医院联系人" footer="{{hospitalInfo.contact}}"></mp-cell>
+      <mp-cell value="联系人电话" footer="{{hospitalInfo.contactTel}}"></mp-cell>
+    </mp-cells>
+    <mp-cells wx:if="{{contactJson.length!==0}}"
+      wx:for="{{contactJson}}" ext-class="my-cells" title="联系人">
+      <mp-cell value="医院科室" footer="{{item.installedDepartment}}"></mp-cell>
+      <mp-cell value="科室联系人" footer="{{item.hospitalContactPerson}}"></mp-cell>
+      <mp-cell value="联系人电话" footer="{{item.contactNumber}}"></mp-cell>
+      <mp-cell value="联系人邮箱" footer="{{item.contactEmail}}"></mp-cell>
+    </mp-cells>
+    <mp-cells ext-class="my-cells" title="医院详情信息">
+      <mp-cell value="公私立属性">
+        <view slot="footer">
+          <view wx:if="{{hospitalInfo.nature==1}}">公立</view>
+          <view wx:elif="{{hospitalInfo.nature==2}}">私立</view>
+        </view>
+      </mp-cell>
+      <mp-cell value="医院等级" footer="{{tools.hospitalLevel(hospitalInfo.hospitalLevel)}}">
+      </mp-cell>
+      <mp-cell value="开立标签">
+        <view slot="footer">
+          <view class="sn-item" wx:for="{{tools.sonoTagStatus(hospitalInfo.sonoTag)}}">
+            <text>{{item}}</text>
+          </view>
+        </view>
+      </mp-cell>
+      <mp-cell value="医院床位" footer="{{hospitalInfo.hospitalBedNum || '-'}}"></mp-cell>
+      <mp-cell value="医生数量" footer="{{hospitalInfo.doctorsNum || '-'}}"></mp-cell>
+      <mp-cell value="日均检查量" footer="{{hospitalInfo.dailyInspectNum || '-'}}"></mp-cell>
+      <mp-cell value="设备定位" footer="{{hospitalInfo.inHospitalPosition || '-'}}"></mp-cell>
+      <mp-cell value="使用方式" footer="{{hospitalInfo.inHospitalUseWay || '-'}}"></mp-cell>
+      <mp-cell value="竞争对手信息" footer="{{hospitalInfo.competitors || '-'}}"></mp-cell>
+    </mp-cells>
+  </view>
+  <view wx:else>
+    <vant-empty image="default" description="暂无医院信息">
+    </vant-empty>
+  </view>
+</view>

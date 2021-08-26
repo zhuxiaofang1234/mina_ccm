@@ -1,0 +1,10 @@
+{
+  "component": true,
+  "usingComponents": {
+    "mp-toptips": "../../weui/toptips/toptips",
+    "uploader": "/components/uploader/index",
+    "i-steps": "/components/steps/index",
+    "i-step": "/components/step/index"
+  },
+  "navigationBarTitleText": "产品安装"
+}

@@ -1,0 +1,33 @@
+<wxs src="../../utils/tools.wxs" module="tools" />
+<view class="page__bd" wx:if="{{records.length!==0}}">
+  <mp-cells wx:for="{{newData}}" ext-class="my-cells" title="装箱清单">
+    <mp-cell value="主机SN号" footer="{{item.deviceSn || '-'}}"></mp-cell>
+    <mp-cell value="主机PN号" footer="{{item.devicePn || '-'}}"></mp-cell>
+    <mp-cell value="主机型号" footer="{{item.deviceModel ||'-'}}"></mp-cell>
+    <mp-cell value="订单编号" footer="{{item.orderSn || '-'}}"></mp-cell>
+    <!-- <mp-cell value="探头数量" footer="{{item.probeNum || '-'}}"></mp-cell>
+    <mp-cell value="探头SN号" footer="{{item.probeSn || '-'}}"></mp-cell>
+    <mp-cell value="探头PN号" footer="{{item.probePn || '-'}}"></mp-cell>
+    <mp-cell value="探头型号" footer="{{item.probeModel || '-'}}"></mp-cell> -->
+    <mp-cell value="探头数量" footer="{{item.probes.length}}"></mp-cell>
+    <view class="weui-form-preview">
+      <view class="weui-form-preview__bd" wx:if="{{item.probes.length!==0}}" wx:for="{{item.probes}}" wx:for-item="item1">
+        <view class="weui-form-preview__item">
+          <label class="weui-form-preview__label">探头SN号</label>
+          <span class="weui-form-preview__value">{{item1.probeSn || '-'}}</span>
+        </view>
+        <view class="weui-form-preview__item">
+          <label class="weui-form-preview__label">探头PN号</label>
+          <span class="weui-form-preview__value">{{item1.probePn || '-'}}</span>
+        </view>
+        <view class="weui-form-preview__item">
+          <label class="weui-form-preview__label">探头型号</label>
+          <span class="weui-form-preview__value">{{item1.probeModel || '-'}}</span>
+        </view>
+      </view>
+    </view>
+  </mp-cells>
+</view>
+<view wx:else>
+  <vant-empty image="{{imageType}}" description="{{description}}"></vant-empty>
+</view>

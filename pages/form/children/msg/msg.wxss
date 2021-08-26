@@ -1,0 +1,5 @@
+/* pages/form/children/msg/msg.wxss */
+page{
+    background-color: #FFFFFF;
+}
+page,.page{height:100%;}

@@ -1,0 +1,111 @@
+/* components/uploader/index.wxss */
+@import '../../styles/icon.wxss';
+.uploader_wrapper{
+  display: flex;
+  flex-wrap: wrap;
+}
+.uploader_preview{
+  position: relative;
+  margin: 0 16rpx 16rpx 0;
+  cursor: pointer;
+}
+.uploader_preview-image{
+  position: relative;
+  display: block;
+  width: 180rpx;
+  height: 160rpx;
+  overflow: hidden;
+}
+
+.image__img{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.uploader_preview-delete {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 28rpx;
+  height: 28rpx;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 0 0 0 24rpx;
+}
+
+.iconfont {
+  position: relative;
+  display: inline-block;
+  font: normal normal normal 14px/1 'vant-icon';
+  font-size: inherit;
+  text-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+}
+.uploader__preview-cover {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+}
+.uploader__preview-cover.no-cover{
+  display: none;
+}
+.preview-cover {
+  position: absolute;
+  bottom: 0;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 8rpx;
+  color: #fff;
+  font-size: 24rpx;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.3);
+}
+.van-uploader__preview-delete-icon {
+  position: absolute;
+  top: -4rpx;
+  right: -4rpx;
+  color: #fff;
+  font-size: 32rpx;
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
+}
+
+.iconfont::before {
+  display: inline-block;
+}
+.van-ellipsis {
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.van-uploader__upload{
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -webkit-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  -webkit-box-pack: center;
+  -webkit-justify-content: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 180rpx;
+  height: 160rpx;
+  margin: 0 16rpx 16rpx 0;
+  padding:10rpx;
+  background-color: #f2f3f5;
+}
+
+.van-uploader__upload-icon{
+  color: #dcdee0;
+  font-size: 48rpx;
+}
+.van-icon-photograph::before {
+  content: '\F09E';
+}

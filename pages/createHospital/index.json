@@ -1,0 +1,16 @@
+{
+  "usingComponents": {
+     "tab-bar": "/components/tab-bar/index",
+      "mp-toptips": "../../weui/toptips/toptips",
+      "mp-cells": "../../weui/cells/cells",
+      "mp-cell": "../../weui/cell/cell",
+      "mp-checkbox": "../../weui/checkbox/checkbox",
+      "mp-checkbox-group": "../../weui/checkbox-group/checkbox-group",
+      "mp-form-page": "../../weui/form-page/form-page",
+      "half-dialog":"/components/half-dialog",
+      "mp-form": "../../weui/form/form",
+      "multi-choice":"/components/multiChoice",
+      "address":"/components/address"
+  },
+  "navigationBarTitleText": "医院录入"
+}

@@ -1,0 +1,55 @@
+/* components/select-search/index.wxss */
+@import '../../styles/icon.wxss';
+.flex-area{
+  display: flex;
+  flex-direction: row;
+  position: relative;
+}
+.flex-select-area{
+	display: flex;
+	align-items: center;
+	background-color: #ededed;
+}
+.selected-text{
+	padding-left: 16rpx
+}
+.flex-search-area{
+  flex:1
+}
+.iconfont.icon-shixiangxiajiantou-{
+	transform: rotate(-135deg);
+}
+.weui-cell.weui-cell_radio {
+	padding: 20rpx;
+}
+
+.select-option-area{
+  position: absolute;
+  width:100%;
+  top:100rpx;
+  background-color: #fff;
+}
+.option-item{
+  padding:18rpx 30rpx;
+}
+.hairline--top{
+  position: relative;
+}
+.hairline--top:after{
+  position: absolute;
+	box-sizing: border-box;
+	-webkit-transform-origin: center;
+	transform-origin: center;
+	content: " ";
+	pointer-events: none;
+	top: -50%;
+	right: -50%;
+	bottom: -50%;
+	left: -50%;
+	border: 0 solid #eee;
+	-webkit-transform: scale(.5);
+	transform: scale(.5)
+}
+.hairline--top:after {
+	border-top-width: 1px
+}

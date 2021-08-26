@@ -1,0 +1,134 @@
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<view class="contain padding-40">
+  <view class="background-curve"></view>
+  <view class="card">
+    <view class="card-body small-padding">
+      <i-steps direction="vertical">
+        <i-step status="finish">
+          <view slot="title" class="title-wrap">
+            <view class="title-desc">仪器调试确认</view>
+          </view>
+          <view slot="content" class="content-wrap">
+            <view class="form-item">
+              <view class="label-text">功能配置是否正确:</view>
+              <view class="from-wrap">
+                <view class="section section_gap">
+                  <radio-group class="radio-group" prop="sbType" bindchange="functionConfigChange">
+                    <radio class="radio" style="transform:scale(0.7)" wx:for-items="{{functionConfigItems}}"
+                      wx:key="name" value="{{item.value}}" checked="{{item.checked}}">
+                      <text>{{item.name}}</text>
+                    </radio>
+                  </radio-group>
+                </view>
+              </view>
+            </view>
+            <view class="uploader-content">
+              <uploader max="4" data-type="FunctionConfig"  imgList="{{beforeFunctionConfigPic}}" bindUpload="uploadImg"
+                binddisableBtn="disableBtn" bindDelete="deleteImg">
+                <view class="iconfont icon-xiangji"></view>
+              </uploader>
+            </view>
+          </view>
+        </i-step>
+        <i-step status="finish">
+          <view slot="title" class="title-wrap">
+            <view class="title-desc">客户培训</view>
+          </view>
+          <view slot="content" class="content-wrap">
+            <view class="form-item">
+              <view class="label-text">是否有客户培训:</view>
+              <view class="from-wrap">
+                <view class="section section_gap">
+                  <radio-group class="radio-group" prop="sbType" bindchange="customerTrainingChange">
+                    <radio class="radio" style="transform:scale(0.7)" wx:for-items="{{customerTrainingItems}}"
+                      wx:key="name" value="{{item.value}}" checked="{{item.checked}}">
+                      <text>{{item.name}}</text>
+                    </radio>
+                  </radio-group>
+                </view>
+              </view>
+            </view>
+            <view class="uploader-content">
+              <uploader max="4" data-type="CustomerTraining" imgList="{{beforeCustomerTrainingPic}}" bindUpload="uploadImg"
+                binddisableBtn="disableBtn" bindDelete="deleteImg">
+                <view class="iconfont icon-xiangji"></view>
+              </uploader>
+            </view>
+          </view>
+        </i-step>
+        <i-step status="finish">
+          <view slot="title" class="title-wrap">
+            <view class="title-desc">产品验收</view>
+          </view>
+          <view slot="content" class="content-wrap">
+            <view class="form-item">
+              <view class="label-text">是否需要计量:</view>
+              <view class="from-wrap">
+                <view class="section section_gap">
+                  <radio-group class="radio-group" prop="sbType" bindchange="productMeasureChange" type="ffff">
+                    <radio class="radio" style="transform:scale(0.7)" wx:for-items="{{productMeasureItems}}"
+                      wx:key="name" value="{{item.value}}" checked="{{item.checked}}">
+                      <text>{{item.name}}</text>
+                    </radio>
+                  </radio-group>
+                </view>
+              </view>
+            </view>
+            <view class="uploader-content">
+              <view class="form-item">
+                <view class="label-text">安装培训报告:</view>
+                <view class="form-wrap">
+                  <uploader max="4" data-type="installTrainReport" imgList="{{installTrainReportPic}}" bindUpload="uploadImg"
+                    binddisableBtn="disableBtn" bindDelete="deleteImg">
+                    <view class="iconfont icon-xiangji"></view>
+                  </uploader>
+                </view>
+              </view>
+              <view class="form-item">
+                <view class="label-text">保修卡:</view>
+                <view class="form-wrap">
+                  <uploader max="1" imgList="{{guaranteeCardPic}}" data-type="guaranteeCard" bindUpload="uploadImg"
+                    binddisableBtn="disableBtn" bindDelete="deleteImg">
+                    <view class="iconfont icon-xiangji"></view>
+                  </uploader>
+                </view>
+              </view>
+              <view class="form-item">
+                <view class="label-text">校准报告:</view>
+                <view class="form-wrap">
+                  <uploader max="1" imgList="{{calibrationReportPic}}" data-type="calibrationReport" bindUpload="uploadImg"
+                    binddisableBtn="disableBtn" bindDelete="deleteImg">
+                    <view class="iconfont icon-xiangji"></view>
+                  </uploader>
+                </view>
+              </view>
+            </view>
+          </view>
+        </i-step>
+      </i-steps>
+    </view>
+    <view class="card-footer">
+      <text class="red text">备注：以上附件必须填写清晰、完整、医院盖章、无错漏。</text>
+    </view>
+  </view>
+  <view class="form-footer">
+    <button type="primary" class="custom-btn small" hover-class="btn-active" bindtap="goback">上一步</button>
+    <button type="primary" class="custom-btn small" hover-class="btn-active" bindtap="nextStep"
+      disabled="{{btnDisabled}}">完结</button>
+  </view>
+</view>
+
+<!--签名弹框-->
+<mp-dialog title="请输入服务信息" extClass="finishDialog" show="{{showOneButtonDialog}}" bindbuttontap="tapDialogButton"
+  buttons="{{buttons}}">
+  <mp-cells>
+    <mp-cell prop="qq" title="服务人员" ext-class="serviceInfo">
+      <input bindinput="getCreateUser" class="weui-input" placeholder="服务人员" />
+    </mp-cell>
+    <mp-cell prop="date" title="服务日期" ext-class="serviceInfo">
+      <picker data-field="date" mode="date" value="{{date}}" bindchange="bindDateChange">
+        <view class="weui-input">{{date}}</view>
+      </picker>
+    </mp-cell>
+  </mp-cells>
+</mp-dialog>

@@ -1,0 +1,63 @@
+/* pages/equipmentMaintain/index.wxss */
+@import '../../styles/task.wxss';
+@import '../../styles/icon.wxss';
+.task-form{
+  margin-bottom:26rpx
+}
+.label-title{
+  font-size:28rpx;
+  width:160rpx;
+  color:#353535
+}
+.weui-cell.weui-cell-inform{
+  font-size: 28rpx;
+  color:#353535
+}
+.placeholder-text{
+  font-size:28rpx
+}
+.weui-input{
+  height:50rpx;
+  margin-left:50rpx;
+}
+.section.section_gap .radio-group{
+  margin-left:30rpx;
+  box-sizing: border-box;
+}
+.radio-group .radio{
+ font-size: 32rpx;
+ width:33%
+}
+
+.snCells.weui-cell{
+  padding:10rpx 32rpx;
+}
+.weui-cell:before{
+  right: 15px !important;
+}
+
+.maCells .weui-cells__title {
+  color:#353535;
+  margin:20rpx;
+  padding-left:30rpx
+}
+
+.weui-textarea {
+  display: block;
+  width: 100%;
+  padding: 20rpx;
+}
+
+.none-borderTop .weui-cells:before { 
+  height: 0;
+  border-top:none
+}
+
+.linkClass .weui-cell__hd.weui-cell__hd{
+  width:180rpx;
+}
+
+.clientInfo {
+  width: 520rpx;
+  margin-left:120rpx 
+}

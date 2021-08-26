@@ -1,0 +1,13 @@
+{
+  "component": true,
+  "usingComponents": {
+    "mp-dialog": "../../weui/dialog/dialog",
+    "mp-toptips": "../../weui/toptips/toptips",
+    "uploader": "/components/uploader/index",
+    "i-steps": "/components/steps/index",
+    "i-step": "/components/step/index",
+    "mp-cells": "../../weui/cells/cells",
+    "mp-cell": "../../weui/cell/cell"
+  },
+  "navigationBarTitleText": "确认&培训"
+}

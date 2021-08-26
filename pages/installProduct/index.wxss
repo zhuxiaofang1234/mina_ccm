@@ -1,0 +1,6 @@
+/* pages/inspection/index.wxss */
+@import '../../styles/task.wxss';
+@import '../../styles/icon.wxss';
+.card-body.small-padding{
+  padding-top:40rpx;
+}

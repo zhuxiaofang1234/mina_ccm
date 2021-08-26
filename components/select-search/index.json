@@ -1,0 +1,10 @@
+{
+  "component": true,
+  "usingComponents": {
+    "mp-cell": "../../weui/cell/cell",
+    "mp-cells": "../../weui/cells/cells",
+    "mp-checkbox": "../../weui/checkbox/checkbox",
+    "mp-checkbox-group": "../../weui/checkbox-group/checkbox-group",
+    "mp-searchbar": "../../weui/searchbar/searchbar"
+  }
+}

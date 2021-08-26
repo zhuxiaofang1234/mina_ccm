@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "mp-form": "../../../weui/form/form",
+    "mp-toptips": "../../../weui/toptips/toptips",
+    "mp-cells": "../../../weui/cells/cells",
+    "mp-cell": "../../../weui/cell/cell"
+  },
+  "navigationBarTitleText": "回访"
+}

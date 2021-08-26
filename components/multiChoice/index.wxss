@@ -1,0 +1,25 @@
+/* components/multiChoice/index.wxss */
+.comment-btn{
+  padding:30rpx 0;
+  text-align: center;
+}
+.btn{
+  width: 180rpx;
+  height: 80rpx;
+  line-height:80rpx;
+  font-size: 24rpx;
+  padding: 0;
+  border: 1px solid #dcdcdc;
+  background: #fff;
+  border-radius: 4px;
+  text-align: center;
+  display: inline-block;
+}
+.btn-selected{
+  border: 1px solid #009fab;
+  color:#009fab;
+}
+button:not([size='mini']).btn {
+  width: 180rpx;
+  margin: 15rpx 10rpx;
+}

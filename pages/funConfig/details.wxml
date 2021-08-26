@@ -1,0 +1,51 @@
+<!--pages/funConfig/details.wxml-->
+<view class="page__bd" wx:if="{{config}}">
+  <mp-cells ext-class="my-cells" title="配置文件详情信息">
+    <mp-cell value="SN号" footer="{{config.sn || '-'}}"></mp-cell>
+    <mp-cell value="CN号" footer="{{config.abf || '-'}}"></mp-cell>
+    <mp-cell value="平台" footer="{{config.platform || '-'}}"></mp-cell>
+    <mp-cell value="软件版本" footer="{{config.version || '-'}}"></mp-cell>
+    <mp-cell value="有效期" footer="{{config.validate || '-'}}"></mp-cell>
+    <mp-cell value="配置机型" footer="{{config.model || '-'}}"></mp-cell>
+    <mp-cell value="申请理由" footer="{{config.why || '-'}}"></mp-cell>
+    <mp-cell value="申请人" footer="{{config.user || '-'}}"></mp-cell>
+    <mp-cell value="申请时间" footer="{{config.date || '-'}}"></mp-cell>
+  </mp-cells>
+  <view class="weui-panel">
+    <view class="weui-panel__bd">
+      <view class="weui-media-box weui-media-box_text">
+        <view class="weui-media-box__title weui-media-box__title_in-text">应用模板</view>
+        <view class="sn-item">
+          <text>{{config.template}}</text>
+        </view>
+      </view>
+      <view class="weui-media-box weui-media-box_text">
+        <view class="weui-media-box__title weui-media-box__title_in-text">选配模板</view>
+        <view>
+          <view class="sn-item" wx:for="{{function_choose}}">
+            <text>{{item.name}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="weui-media-box weui-media-box_text">
+        <view class="weui-media-box__title weui-media-box__title_in-text">试用模板</view>
+        <view>
+          <view wx:if="{{function_try.length!==0}}" class="sn-item" wx:for="{{function_try}}">
+            <text>{{item.name || '-'}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="weui-media-box weui-media-box_text">
+        <view class="weui-media-box__title weui-media-box__title_in-text">标配模板</view>
+        <view>
+          <view class="sn-item" wx:for="{{function_standard}}">
+            <text>{{item.name}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<view wx:else>
+  <vant-empty image="{{imageType}}" description="{{description}}"></vant-empty>
+</view>

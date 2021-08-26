@@ -1,0 +1,14 @@
+<!--components/customer/customer.wxml-->
+<!--搜索获取客户array再赋值到picker 客户默认值是SN搜索触发的object -->
+<view class="page__bd">
+    <mp-searchbar bindselectresult="selectResult" bindblur="inputSearchTyping" placeholder="搜索客户" search="{{search}}"></mp-searchbar>
+</view>
+<view class="customer-picker" wx:if="{{showPicker}}">
+<mp-cell ext-class="weui-cell_select weui-cell_select-after">
+    <view slot="title" class="weui-label">客户</view>
+    <picker mode="selector" range-key="title" bindchange="bindCustomerChange" value="{{customerIndex}}" range="{{customers}}">
+      <view class="weui-select">{{customers[customerIndex].title}}</view>
+    </picker>
+</mp-cell>
+</view>
+

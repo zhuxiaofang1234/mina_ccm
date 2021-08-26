@@ -1,0 +1,13 @@
+{
+  "navigationBarTitleText": "保养信息",
+    "component": true,
+    "usingComponents": {
+      "mp-toptips": "../../weui/toptips/toptips",
+      "mp-cells": "../../weui/cells/cells",
+      "mp-cell": "../../weui/cell/cell",
+      "mp-checkbox": "../../weui/checkbox/checkbox",
+      "mp-checkbox-group": "../../weui/checkbox-group/checkbox-group",
+      "mp-form-page": "../../weui/form-page/form-page",
+      "mp-form": "../../weui/form/form"
+    }
+}

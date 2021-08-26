@@ -1,0 +1,40 @@
+<view class="page">
+  <view class="weui-search-bar">
+    <view class="weui-search-bar__form">
+      <view class="weui-search-bar__box">
+        <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+        <input type="text" class="weui-search-bar__input" placeholder="请输入医院名称" confirm-type="搜索" bindconfirm="search" value="{{inputVal}}" 
+          bindinput="inputTyping" />
+        <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+          <icon type="clear" size="18"></icon>
+        </view>
+      </view>
+    </view>
+    <view class="weui-search-bar__cancel-btn" bindtap="getSerachResult">搜索</view>
+  </view>
+  <view class="search-content">
+    <mp-cells class="searchbar-result" wx:if="{{hospitalList.length > 0}}">
+      <mp-cell bindtap="selectResult" data-index="{{index}}" data-id="{{item.id}}" wx:for="{{hospitalList}}" hover>
+        <view class="location">{{item.hospitalName}}</view>
+        <view class="location-details">{{item.address}}</view>
+      </mp-cell>
+    </mp-cells>
+    <view wx:else>
+      <vant-empty image="search" description="没有找到查询的医院">
+    </vant-empty>
+    </view>
+  </view>
+  <view class="loading-container" hidden="{{!loadingShow}}">
+    <view class="weui-loadmore" wx:if="{{loadingStatus}}">
+      <view class="weui-loading"></view>
+      <view class="weui-loadmore__tips">正在加载</view>
+    </view>
+    <view class="weui-loadmore weui-loadmore_line" wx:else>
+      <view class="weui-loadmore__tips weui-loadmore__tips_in-line">没有更多数据了</view>
+    </view>
+  </view>
+</view>
+	<!--添加医院悬浮按钮-->
+	<view class="add-wrap" wx:if="{{type=='details'}}">
+		<image class="add-image" src="/images/index_releasebtn@2x.png" bindtap="toCreateHospital"></image>
+	</view>

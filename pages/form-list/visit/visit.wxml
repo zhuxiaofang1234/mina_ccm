@@ -1,0 +1,49 @@
+<!--pages/form-list/visit/visit.wxml-->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}">
+</mp-toptips>
+<view class="container">
+<mp-form id="visit-form" rules="{{rules}}" models="{{formData}}">
+    <mp-cells>
+       <mp-cell ext-class="weui-cell_select weui-cell_select-after">
+            <view slot="title" class="weui-label">回访状态</view>
+            <picker bindchange="bindVisitChange" range-key="desc" value="{{visitIndex}}" range="{{visit_status}}">
+                  <view class="weui-select">{{visit_status[visitIndex].desc}}</view>
+            </picker>
+        </mp-cell>
+    </mp-cells>
+    <mp-cells title="回访打分">
+      <mp-cell prop="visit_machine_mark" title="设备状态" footer="10%"  ext-class="">
+        <input bindinput="formInputChange" data-field="visit_machine_mark" class="weui-input" placeholder="输入分数"/>
+      </mp-cell>
+      <mp-cell prop="visit_response_mark" title="响应及时性" footer="10%" ext-class="">
+        <input bindinput="formInputChange" data-field="visit_response_mark" class="weui-input" placeholder="输入分数"/>
+      </mp-cell>
+      <mp-cell prop="visit_repair_mark" title="修复及时性" footer="10%" ext-class="">
+        <input bindinput="formInputChange" data-field="visit_repair_mark" class="weui-input" placeholder="输入分数"/>
+      </mp-cell>
+      <mp-cell prop="visit_service_mark" title="服务态度" footer="20%" ext-class="">
+        <input bindinput="formInputChange" data-field="visit_service_mark" class="weui-input" placeholder="输入分数"/>
+      </mp-cell>
+      <mp-cell prop="visit_tech_mark" title="技术水平" footer="20%" ext-class="">
+        <input bindinput="formInputChange" data-field="visit_tech_mark" class="weui-input" placeholder="输入分数"/>
+      </mp-cell>
+      <mp-cell prop="visit_overall_mark" title="整体评价" footer="30%" ext-class="">
+        <input bindinput="formInputChange" data-field="visit_overall_mark" class="weui-input" placeholder="输入分数"/>
+      </mp-cell>
+      <mp-cell prop="visit_mark" title="回访总分" ext-class="">
+        <input disabled="{{true}}" data-field="visit_mark" value="{{visit_mark}}" class="weui-input"/>
+      </mp-cell>
+      <mp-cell title="" footer="客户意见" ext-class="">
+                <textarea class="weui-textarea" placeholder="请输入客户意见" bindinput="formInputChange" data-field="visit_opinion" style="height: 3.3em" />
+                <view class="weui-textarea-counter">0/200</view>
+      </mp-cell>
+    </mp-cells>
+
+
+</mp-form>
+
+<view class="weui-btn-area">
+            <button class="weui-btn" type="primary" bindtap="submitForm">提交</button>
+</view>
+
+</view>

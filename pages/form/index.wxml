@@ -1,0 +1,110 @@
+<mp-toptips msg="{{error}}" type="error" show="{{error}}">
+</mp-toptips>
+<mp-form id="form" rules="{{rules}}" models="{{formData}}">
+  <mp-cell ext-class="weui-cell_select weui-cell_select-after">
+    <view slot="title" class="weui-label">服务类型</view>
+    <picker mode="selector" range-key="desc" bindchange="bindServiceTypeChange" value="{{serviceTypeIndex}}" range="{{serviceType}}">
+      <view class="weui-select">{{serviceType[serviceTypeIndex].desc}}</view>
+    </picker>
+  </mp-cell>
+  <mp-cell prop="sn" title="SN" ext-class="">
+    <input bindblur="snBlur" data-field="sn" class="weui-input" placeholder="请输入设备SN" />
+  </mp-cell>
+  <mp-cell ext-class="weui-cell_select weui-cell_select-after">
+    <view slot="title" class="weui-label">保修类型</view>
+    <picker data-field="warranty_status" range-key="desc" value="{{warrantyIndex}}" bindchange="warrantyChange" range="{{warranty}}">
+      <view class="weui-select">{{warranty[warrantyIndex].desc}}</view>
+    </picker>
+  </mp-cell>
+  <mp-cell prop="installed_at" title="安装日期" ext-class="">
+    <picker data-field="installed_at" mode="date" value="{{installed_at}}" start="2000-01-01" end="9999-12-31" bindchange="bindDateChange">
+      <view class="weui-input">{{installed_at}}</view>
+    </picker>
+  </mp-cell>
+  <mp-cell ext-class="weui-cell_select weui-cell_select-after">
+    <view slot="title" class="weui-label">机器类型</view>
+    <picker mode="selector" range-key="name" bindchange="bindMachineTypeChange" value="{{machineIndex}}" range="{{machineType}}">
+      <view class="weui-select">{{machineType[machineIndex].name}}</view>
+    </picker>
+  </mp-cell>
+  <mp-cell ext-class="weui-cell_select weui-cell_select-after">
+    <view slot="title" class="weui-label">型号</view>
+    <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}" bind:myEvent="getData">
+      <view class="weui-select">{{multiArray[0][multiIndex[0]]}}/{{multiArray[1][multiIndex[1]]}}</view>
+    </picker>
+  </mp-cell>
+  <mp-cell wx:if="{{formData.machine_type == 2}}" ext-class="weui-cell_select weui-cell_select-after">
+    <view slot="title" class="weui-label">探头型号</view>
+    <picker bindchange="bindProbeChange" range-key="name" value="{{probeIndex}}" range="{{probes}}">
+      <view class="weui-select">{{probes[probeIndex].name}}</view>
+    </picker>
+  </mp-cell>
+  <mp-cell wx:if="{{formData.machine_type == 4}}" ext-class="weui-cell_select weui-cell_select-after">
+    <view slot="title" class="weui-label">镜体型号</view>
+    <picker bindchange="bindEndscopeChange" range-key="name" value="{{endoscopeIndex}}" range="{{endoscope}}">
+      <view class="weui-select">{{countries[countryIndex].name}}</view>
+    </picker>
+  </mp-cell>
+
+  <select-filter 
+    searchUrl="{{searchUrl}}" 
+    placeholder="搜索客户" 
+    pickerName="客户" 
+    range_key="title"
+    paramKey="q"
+    items="{{snRelateCustomer}}"
+    bind:selectFilterChangeEvent='onCustomerChangeEvent'
+  />
+  <!-- <customer searchUrl="{{searchUrl}}" bind:customerChangeEvent='onCustomerChangeEvent'></customer> -->
+
+  <!-- <mp-cell prop="contactor" title="科室联系人" ext-class="">
+    <input bindinput="formInputChange" data-field="contactor" class="weui-input" placeholder="科室联系人" />
+  </mp-cell>
+  <mp-cell prop="telephone" title="科室电话" ext-class="">
+    <input bindinput="formInputChange" data-field="telephone" class="weui-input" placeholder="科室联系电话" />
+  </mp-cell> -->
+  <view slot="button">
+    <button class="weui-btn" type="default" bindtap="openMyAddress">收货地址</button>
+  </view>
+  <mp-cell prop="delivery_recipient" title="收货人" ext-class="">
+    <input bindinput="formInputChange" value="{{formData.delivery_recipient}}" disabled="{{true}}" data-field="delivery_recipient" class="weui-input" placeholder="收货人姓名" />
+  </mp-cell>
+  <mp-cell prop="delivery_telephone" title="收货人电话" ext-class="">
+    <input bindinput="formInputChange" value="{{formData.delivery_telephone}}" disabled="{{true}}" type="number" data-field="delivery_telephone" class="weui-input" placeholder="收货人电话" />
+  </mp-cell>
+  <mp-cell prop="delivery_address" title="收货地址" ext-class="">
+    <input bindinput="formInputChange" value="{{formData.delivery_address}}" disabled="{{true}}" data-field="delivery_address" class="weui-input" placeholder="收货人地址" />
+  </mp-cell>
+  <view class="weui-cells__title">客户申告</view>
+  <view class="weui-cells weui-cells_after-title">
+    <view class="weui-cell">
+      <view class="weui-cell__bd">
+        <textarea bindinput="formInputChange" prop="feedback" class="weui-textarea" data-field="feedback" placeholder="请输入客户申告" style="height: 3.3em" />
+        <view class="weui-textarea-counter">0/200</view>
+      </view>
+    </view>
+  </view>
+   <mp-cells title="表单流转">
+            <!-- <mp-checkbox-group prop="radio" multi="{{false}}" bindchange="radioChange">
+                <mp-checkbox wx:for="{{radioItems}}" wx:key="value" label="{{item.name}}" value="{{item.value}}" checked="{{item.checked}}"></mp-checkbox>
+            </mp-checkbox-group> -->
+    <mp-cell ext-class="weui-cell_select weui-cell_select-after">
+    <view slot="title" class="weui-label">下一步</view>
+    <picker data-field="next" range-key="name" value="{{radioIndex}}" bindchange="radioChange" range="{{radioItems}}">
+      <view class="weui-select">{{radioItems[radioIndex].name}}</view>
+    </picker>
+  </mp-cell>
+    <mp-cell wx:if="{{formData.next == 'TS'}}" ext-class="weui-cell_select weui-cell_select-after">
+    <view slot="title" class="weui-label">选择TS</view>
+    <picker data-field="ts_by" range-key="nickname" value="{{tsIndex}}" bindchange="tsByChange" range="{{all_user}}">
+      <view class="weui-select">{{all_user[tsIndex].nickname}}</view>
+    </picker>
+  </mp-cell>
+  </mp-cells>
+</mp-form>
+
+
+
+<view slot="button">
+  <button class="weui-btn" type="primary" bindtap="submitForm">确定</button>
+</view>

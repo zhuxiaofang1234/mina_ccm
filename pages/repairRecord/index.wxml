@@ -1,0 +1,17 @@
+<!--pages/funConfig/details.wxml-->
+<wxs src="../../utils/tools.wxs" module="tools" />
+<view class="page__bd" wx:if="{{records.length!==0}}">
+  <mp-cells wx:for="{{records}}" ext-class="my-cells" title="{{item.form_number || '-'}}">
+    <mp-cell value="SN号" footer="{{item.sn || '-'}}"></mp-cell>
+    <mp-cell value="医院名称" footer="{{item.customer_title || '-'}}"></mp-cell>
+    <mp-cell value="机器安装日期" footer="{{tools.timestampToTime(item.installed_at, 'YYYY-mm-dd')}}"></mp-cell>
+    <mp-cell value="现场处理描述" footer="{{item.treatment_desc || '-'}}"></mp-cell>
+    <mp-cell value="一级故障/二级故障" footer="{{item.faulty_first_level_desc+ item.faulty_secondary_desc}}"></mp-cell>
+    <mp-cell link hover value="配件申请" footer="点击查看" data-index="{{index}}"  bindtap="toAccessories"></mp-cell>
+    <mp-cell value="配件使用情况" footer="{{item.accessory_usage || '-'}}"></mp-cell>
+    <mp-cell value="工单状态" footer="{{item.status_desc || '-'}}"></mp-cell>
+  </mp-cells>
+</view>
+<view wx:else>
+  <vant-empty image="{{imageType}}" description="{{description}}"></vant-empty>
+</view>

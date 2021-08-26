@@ -1,0 +1,12 @@
+<view class="page__bd" wx:if="{{accessories.length!==0}}">
+  <mp-cells wx:for="{{accessories}}" ext-class="my-cells" title="配件申请{{index+1}}">
+    <mp-cell value="PN" footer="{{item.apply_pn || '-'}}"></mp-cell>
+    <mp-cell value="物料描述" footer="{{item.apply_name || '-'}}"></mp-cell>
+    <mp-cell value="数量" footer="{{item.apply_num || '-'}}"></mp-cell>
+    <mp-cell value="单位" footer="{{item.apply_unit_desc || '-'}}"></mp-cell>
+    <mp-cell value="回收属性" footer="{{item.recycle_type_desc || '-'}}"></mp-cell> 
+  </mp-cells>
+</view>
+<view wx:else>
+  <vant-empty image="{{imageType}}" description="{{description}}"></vant-empty>
+</view>

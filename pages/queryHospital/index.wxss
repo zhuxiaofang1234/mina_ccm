@@ -1,0 +1,45 @@
+/* pages/queryHospital/index.wxss */
+@import '../../styles/icon.wxss';
+.title-wrap{
+  width:160rpx;
+}
+.my-cells.weui-cells__group .weui-cell{
+  padding:12px;
+  font-size:28rpx;
+}
+
+.my-cells .weui-cell.my-cell-item .weui-cell__bd{
+  width:200rpx;
+  flex:none
+}
+.my-cells .weui-cell.my-cell-item .weui-cell__ft{
+ flex:1;
+ text-align: center;
+}
+button[type='primary'].custom-btn {
+  position: relative;
+  background-color: #009fab;
+  font-size: 28rpx;
+  margin:0;
+  border-radius: 100rpx;
+}
+.sn-item{
+  position: relative;
+  display:inline-block;
+  padding:4rpx 12rpx 4rpx 12rpx;
+  border:1px solid #009fab;
+  color:#009fab;
+  font-size: 24rpx;
+  margin-right:20rpx;
+  border-radius: 8rpx;
+}
+.detailsTitle{
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+}
+
+.detailsTitle .iconfont{
+  font-size:40rpx;
+  color:#009fab;
+}

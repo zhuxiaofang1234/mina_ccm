@@ -1,0 +1,60 @@
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<view class="contain padding-40">
+  <view class="background-curve"></view>
+  <view class="card">
+    <view class="card-body">
+      <view class="fault-content" wx:for="{{malfunctionBeanVoList}}">
+        <view class="content-title">故障{{index+1}}</view>
+        <view class="photo">
+          <uploader max="1" imgList="{{item.beforeProcessPic  ? item.beforeProcessPic:[]}}" data-index="{{index}}"
+            bindUpload="uploadBeforeImg" bindDelete="deleteBeforeImg" binddisableBtn="disableBtn">
+            <view class="uploader-wrap">
+              <view class="iconfont icon-tubiaozhizuo-"></view>
+              <view class="uploder-desc">处理前</view>
+            </view>
+          </uploader>
+          <uploader max="1" imgList="{{item.afterProcessPic ? item.afterProcessPic : []}}" data-index="{{index}}"
+            bindUpload="uploadAfterImg" bindDelete="deleteAfterImg" binddisableBtn="disableBtn">
+            <view class="uploader-wrap">
+              <view class="iconfont icon-tubiaozhizuo-"></view>
+              <view class="uploder-desc">处理后</view>
+            </view>
+          </uploader>
+        </view>
+        <view class="textarea-wrap">
+          <view class="label-text">处理说明：</view>
+          <textarea placeholder="请输入内容" placeholder-class="placeholder-text" data-index="{{index}}" class="textarea"
+            bindinput="getProcessDesc" value="{{item.processDesc}}" />
+          </view>
+      </view>
+      <view class="fault-content">
+        <view class="content-title">添加故障</view>
+        <view class="photo">
+          <uploader max="1" imgList="{{tempObj.beforeProcessPic ? tempObj.beforeProcessPic : [] }}" data-type="beforeProcessPic" bindUpload="addImg" bindDelete="deleteBeforeImg" 
+            binddisableBtn="disableBtn">
+            <view class="uploader-wrap">
+              <view class="iconfont icon-tubiaozhizuo-"></view>
+              <view class="uploder-desc">处理前</view>
+            </view>
+          </uploader>
+          <uploader max="1" imgList="{{tempObj.afterProcessPic ? tempObj.afterProcessPic : []}}" data-type="afterProcessPic" bindUpload="addImg" bindDelete="deleteAfterImg" 
+            binddisableBtn="disableBtn">
+            <view class="uploader-wrap">
+              <view class="iconfont icon-tubiaozhizuo-"></view>
+              <view class="uploder-desc">处理后</view>
+            </view>
+          </uploader>
+        </view>
+        <view class="textarea-wrap">
+          <view class="label-text">处理说明：</view>
+          <textarea placeholder="请输入内容" placeholder-class="placeholder-text" data-index="{{index}}" class="textarea" value="{{tempObj.processDesc}}" bindinput="addProcessDesc" />
+          </view>
+      </view>
+      <button class="add-btn" bindtap="addFault" disabled="{{btnDisabled}}"><i class="iconfont icon-icon-test"></i></button>
+    </view>
+  </view>
+  <view class="form-footer">
+    <button type="primary" class="custom-btn small" hover-class="btn-active" bindtap="goback">上一步</button>
+    <button type="primary" class="custom-btn small" hover-class="btn-active" bindtap="nextStep" disabled="{{btnDisabled}}">下一步</button>
+  </view>
+</view>

@@ -1,0 +1,7 @@
+<!--components/models.wxml-->
+<mp-cell ext-class="weui-cell_select weui-cell_select-after">
+  <view slot="title" class="weui-label">型号</view>
+  <picker mode="multiSelector" bindchange="bindMultiPickerChange" bindcolumnchange="bindMultiPickerColumnChange" value="{{multiIndex}}" range="{{multiArray}}">
+    <view class="weui-select">{{multiArray[0][multiIndex[0]]}}，{{multiArray[1][multiIndex[1]]}}</view>
+  </picker>
+</mp-cell>

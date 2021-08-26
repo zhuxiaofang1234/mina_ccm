@@ -1,0 +1,37 @@
+/* pages/faq/index.wxss */
+@import '../../styles/icon.wxss';
+.page-wrap {
+  display: flex;
+  flex-direction: column;
+  margin: 40rpx 0;
+}
+
+button.operationBtn {
+  height: 140rpx;
+  width: 580rpx !important;
+  line-height: 20px;
+  border-radius: 70rpx 70rpx;
+  color: rgba(16, 16, 16, 100);
+  font-size: 28rpx;
+  text-align: center;
+  font-family: Arial;
+  border: 1px solid rgba(187, 187, 187, 100);
+}
+
+.page-wrap .operationBtn:first-child{
+  margin-top: 0
+}
+.page-wrap .operationBtn {
+  margin-top: 36rpx;
+  display: flex;
+  align-items: center;
+}
+.operationBtn .iconfont{
+  color:#009fab;
+  font-size:80rpx;
+  margin-right:70rpx
+}
+.operationBtn .btn-text {
+  color: rgba(16, 16, 16, 100);
+  font-size: 38rpx;
+}

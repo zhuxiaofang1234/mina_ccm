@@ -1,0 +1,128 @@
+/* pages/createHospital/index.wxss */
+@import '../../styles/icon.wxss';
+.task-form{
+  margin-bottom:26rpx
+}
+.form-wrap-content{
+  margin-top:30rpx;
+}
+
+.label-title{
+  font-size:28rpx;
+  width:160rpx;
+  color:#353535
+}
+.weui-cell.weui-cell-inform{
+  font-size: 28rpx;
+  color:#353535
+}
+.placeholder-text{
+  font-size:28rpx
+}
+
+.weui-input{
+  height:50rpx;
+  margin-left:50rpx;
+}
+
+.section.section_gap .radio-group{
+  margin-left:30rpx;
+  box-sizing: border-box;
+}
+.radio-group .radio{
+ font-size: 32rpx;
+ width:33%
+}
+
+.addressDetails .weui-cell .weui-cell__hd{
+  width:160rpx;
+  flex:none
+}
+.addressDetails .weui-cell .weui-cell__bd{
+ flex:1;
+ text-align: left;
+}
+textarea.addressArea{
+  width:100%
+}
+
+.snCells.weui-cell{
+  padding:10rpx 32rpx;
+}
+.weui-cell:before{
+  right: 15px !important;
+}
+
+.maCells .weui-cells__title {
+  color:#353535;
+  margin:20rpx;
+  padding-left:30rpx
+}
+
+.weui-textarea {
+  padding: 0 20rpx;
+}
+
+.footer {
+  height: 180rpx;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-wrap .custom-btn.normal{
+  width:100%;
+}
+
+.depart-item{
+  margin-top:16rpx;
+  padding: 20rpx 0;
+  border:1px dashed #ddd;
+  background-color: #fff;
+}
+button[plain].addbtn{
+  margin-top:20rpx;
+  color:#009fab;
+  border:1px dashed
+}
+button:not([size='mini']).normal{
+  width:650rpx;
+  background-color: #009fab;
+}
+.contact.weui-cells__group  .weui-cells__title{
+  font-size:40rpx;
+  color:#323232;
+  margin-bottom:20rpx;
+  margin-top:8rpx
+}
+.weui-cell.weui-cell_select{
+  padding:0 16px;
+}
+
+.weui-cell__bd, .weui-cell__ft{
+  font-size:28rpx
+}
+
+.contact-title{
+  display: flex;
+  justify-content: space-between;
+  padding:38rpx 12rpx 10rpx 12rpx; 
+}
+.contact-title .icon-icon_huabanfuben{
+  color:red;
+  font-size:18px;
+}
+.sn-item{
+  position: relative;
+  display:inline-block;
+  padding:4rpx 12rpx 4rpx 12rpx;
+  border:1px solid #009fab;
+  color:#009fab;
+  font-size: 24rpx;
+  margin-right:20rpx;
+  border-radius: 8rpx;
+}
+.sn-item:last-child{
+  margin-top:10rpx;
+}

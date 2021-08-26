@@ -1,0 +1,10 @@
+{
+  "component": true,
+  "usingComponents": {
+    "mp-searchbar":"../../weui/searchbar/searchbar",
+    "mp-cells": "../../weui/cells/cells",
+    "mp-cell": "../../weui/cell/cell",
+    "vant-empty": "/components/empty"
+  },
+  "navigationBarTitleText": "信息查询"
+}

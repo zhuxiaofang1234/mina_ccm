@@ -1,0 +1,14 @@
+@import '/styles/weui.wxss'
+
+.weui-navbar {
+ position: relative;
+}
+.weui-tab__panel {
+  padding-top: 0;
+}
+.weui-navbar__item.weui-bar__item_on {
+  color: #009fab;
+}
+.weui-navbar__slider {
+  background-color: #009fab;
+}

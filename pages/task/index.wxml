@@ -1,0 +1,32 @@
+<page>
+  <view class="page-wrap">
+    <button class="operationBtn" open-type="{{openType}}" data-url="/pages/repair/index"  bindtap="checkLoginStatus">
+      <view class="iconfont icon-tianjia"></view>
+      <view class="btn-text">现场维修</view>
+    </button>
+    <button class="operationBtn" open-type="{{openType}}" data-url="/pages/install/index" bindtap="checkLoginStatus">
+      <view class="iconfont icon-tianjianaozhong"></view>
+      <view class="btn-text">现场装机</view>
+    </button>
+    <button class="operationBtn" open-type="{{openType}}" data-url="/pages/maintain/index"
+      bindtap="checkLoginStatus">
+      <view class="iconfont icon-iconxd"></view>
+      <view class="btn-text">设备保养</view>
+    </button>
+    <button class="operationBtn" open-type="{{openType}}" data-url="/pages/hositoryList/index"
+      bindtap="checkLoginStatus">
+      <view class="iconfont icon-ziyuan154"></view>
+      <view class="btn-text">历史记录</view>
+    </button>
+    <button class="operationBtn" open-type="{{openType}}" data-url="/pages/queryInfo/index"
+      bindtap="checkLoginStatus">
+      <view class="iconfont icon-xinxichaxun"></view>
+      <view class="btn-text">信息查询</view>
+    </button>
+    <button class="operationBtn" open-type="{{openType}}" data-url="/pages/selectHospital/index?type=details"
+      bindtap="checkLoginStatus">
+      <view class="iconfont icon-Input"></view>
+      <view class="btn-text">医院信息</view>
+    </button>
+  </view>
+</page>

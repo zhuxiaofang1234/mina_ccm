@@ -1,0 +1,99 @@
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<view class="contain padding-40">
+  <view class="background-curve"></view>
+  <view class="card">
+    <view class="card-body small-padding">
+      <mp-form id="form" rules="{{rules}}" models="{{formData}}">
+        <mp-cell prop="Sn" ext-class="snCells">
+          <view slot="title">
+            <text class="red">*</text>
+            <text class="label-title">设备SN</text>
+          </view>
+          <input class="weui-input" value="{{snItem}}" placeholder="请输入需要装机的SN" bindinput="formSNChange" />
+          <view slot="footer">
+            <view class="addBtn iconfont icon-tianjia" bindtap="addSn"></view>
+          </view>
+        </mp-cell>
+        <view class="snGroup-wrap">
+          <view class="sn-item" wx:for="{{sn}}">
+            <text>{{item}}</text>
+            <view class="uploader_preview-delete" bindtap="deleteSN" data-index="{{index}}" data-key="{{key}}">
+              <i class="iconfont icon-chuyidong1 van-uploader__preview-delete-icon"></i>
+            </view>
+          </view>
+        </view>
+        <mp-cells>
+          <mp-cell>
+            <view slot="title">
+              <text class="red">*</text>
+              <text class="label-title">设备类型</text>
+            </view>
+            <view class="section section_gap">
+              <radio-group class="radio-group" prop="productLine" bindchange="radioChange">
+                <radio class="radio" style="transform:scale(0.8)" wx:for-items="{{productLineItems}}" wx:key="name"
+                  value="{{item.value}}" checked="{{item.checked}}">
+                  <text>{{item.name}}</text>
+                </radio>
+              </radio-group>
+            </view>
+          </mp-cell>
+          <mp-cell>
+            <view slot="title">
+              <text class="red">*</text>
+              <text class="label-title">装机类型</text>
+            </view>
+            <view class="section section_gap">
+              <radio-group class="radio-group installType" prop="deviceStatus" bindchange="deviceStatusChange">
+                <radio class="radio" style="transform:scale(0.8)" wx:for-items="{{deviceStatusItems}}" wx:key="name"
+                  value="{{item.value}}" checked="{{item.checked}}">
+                  <text>{{item.name}}</text>
+                </radio>
+              </radio-group>
+            </view>
+          </mp-cell>
+          <mp-cell ext-class="linkClass" show-error prop="hospital" link bindtap="toHospital" footer="{{hospitalName}}">
+            <view slot="title">
+              <text class="red">*</text>
+              <text class="label-title">装机医院</text>
+            </view>
+          </mp-cell>
+          <mp-cell ext-class="linkClass" show-error prop="hospitalDept" link bindtap="toHospitalDept"
+            footer="{{hospitalDept}}">
+            <view slot="title">
+              <text class="red">*</text>
+              <text class="label-title">医院科室</text>
+            </view>
+          </mp-cell>
+          <mp-cell show-error prop="hospitalDeptContactName">
+            <view slot="title">
+              <text class="red">*</text>
+              <text class="label-title">科室联系人</text>
+            </view>
+            <input bindinput="formInputChange" data-field="hospitalDeptContactName" class="weui-input"
+              placeholder="请输入科室联系人" placeholder-class="placeholder-text" value="{{hospitalInfo.contact}}" />
+          </mp-cell>
+          <mp-cell show-error prop="hospitalDeptContactPhone">
+            <view slot="title">
+              <text class="red">*</text>
+              <text class="label-title">联系电话</text>
+            </view>
+            <input bindinput="formInputChange" data-field="hospitalDeptContactPhone" class="weui-input"
+              placeholder="请输入科室联系电话" placeholder-class="placeholder-text" value="{{hospitalInfo.contactTel}}" />
+          </mp-cell>
+        </mp-cells>
+        <mp-cells title="装机备注" ext-class="maCells">
+          <mp-cell>
+            <textarea class="weui-textarea" bindinput="formInputChange" data-field="installRemark"
+              placeholder="请输入装机备注(选填)" placeholder-class="placeholder-text" auto-height
+              value="{{formData.installRemark}}" />
+          </mp-cell>
+        </mp-cells>
+      </mp-form>
+    </view>
+  </view>
+  <view class="footer">
+    <view class="footer-wrap">
+      <button type="primary" class="custom-btn normal" hover-class="btn-active" bindtap="submitForm">安装确认</button>
+    </view>
+  </view>
+</view>

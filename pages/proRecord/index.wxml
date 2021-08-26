@@ -1,0 +1,32 @@
+<!--pages/proRecord/index.wxml-->
+<view class="page">
+  <view class="card-page">
+    <view class="card--list-title">出厂部件</view>
+    <view class="card-list" wx:if="{{built_info.length!==0}}">
+      <view class="card-item" wx:for="{{built_info}}" wx:for-index="index1" wx:for-item="item1">
+        <view class="card-item-num">{{index1+1}}</view>
+        <view class="card-item-content">
+          <view class="parts-item">
+              <view class="part-label">部件名</view>
+              <view class="part-value">{{item1[0]}}</view>
+          </view>
+          <view class="parts-item">
+              <view class="part-label">部件SN</view>
+              <view class="part-value">{{item1[1]}}</view>
+          </view>
+          <view class="parts-item">
+              <view class="part-label">部件PN</view>
+              <view class="part-value">{{item1[2]}}</view>
+          </view>
+          <view class="parts-item">
+              <view class="part-label">部件批次号</view>
+              <view class="part-value">{{item1[3]}}</view>
+          </view>
+        </view>
+      </view> 
+    </view>
+    <view wx:else>
+      <vant-empty image="default" description="暂无出厂部件信息"></vant-empty>
+    </view>
+  </view>
+</view>

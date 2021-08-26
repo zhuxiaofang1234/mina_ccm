@@ -1,0 +1,271 @@
+
+page {
+  background-color: #fff;
+  height: 100%;
+}
+/**错误提示**/
+.weui-toptips{
+  top:0
+}
+
+.contain {
+  min-height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box;
+}
+
+.contain.padding-40 {
+  padding: 0 40rpx
+}
+
+.content {
+  flex: 1;
+  width: 100%;
+}
+
+.content.mt-20 {
+  margin-top: 20rpx;
+}
+
+.footer {
+  height: 180rpx;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer .footer-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+/***背景曲线****/
+.background-curve {
+  width: 746rpx;
+  border: 1px solid #009fab;
+  height: 350rpx;
+  background-color: #00c0d473;
+  border-radius: 0 0 300rpx 300rpx;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: -999;
+}
+
+.align-middle {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/***卡片样式***/
+.card {
+  width: 100%;
+  background-color: #fff;
+  margin-top: 40rpx;
+  box-shadow: 0px 2px 6px 0px rgba(0, 0, 0, 0.4);
+  border-radius: 6rpx;
+}
+
+.card-header{
+  border-bottom:1px solid #f4f4f4;
+  box-sizing: border-box;
+  padding:20rpx;
+}
+.card-header .header-desc{
+  font-size:36rpx
+}
+
+.card-head{
+  border-bottom:1px solid #f4f4f4;
+  box-sizing: border-box;
+  margin:0 30rpx;
+  padding-top:20rpx
+}
+
+.card-body {
+  padding: 40rpx;
+}
+
+.card-body.small-padding {
+  padding: 20rpx 0;
+}
+.card-footer{
+  border-top:1px solid #f4f4f4;
+  box-sizing: border-box;
+  margin:0 30rpx;
+  padding:12rpx 0;
+}
+.card-footer .text {
+  color: rgba(234, 15, 15, 100);
+  font-size: 24rpx;
+}
+
+.form-footer {
+  display: flex;
+  justify-content: space-between;
+  width: 100%; 
+  margin:80rpx 0;
+  box-sizing: border-box;
+  padding:0 40rpx;
+}
+
+/***表单样式**/
+.form-item {
+  display: flex;
+  -webkit-display: flex;
+  background-color: #fff;
+  color: #353535;
+  align-items: center;
+  padding: 20rpx 0rpx;
+}
+
+.from-wrap {
+  flex: 1;
+  font-size: 28rpx;
+}
+
+.label-text {
+  color: #353535;
+  font-size: 28rpx;
+}
+
+/*****/
+.row-item {
+  display: flex;
+  font-size: 28rpx;
+  margin-bottom:20rpx;
+}
+
+.row-item .row-name {
+  color: #353535;
+  text-align:right;
+  width:160rpx;
+}
+.row-item .row-content {
+  flex: 1;
+  padding-left:28rpx;
+}
+
+/***button按钮**/
+button[type='primary'].custom-btn {
+  position: relative;
+  background-color: #009fab;
+  font-size: 28rpx;
+  margin:0
+}
+button[disabled][type='primary'].custom-btn {
+  background-color: #009fab;
+  color:#fff;
+  opacity: 0.5;
+}
+
+button.custom-btn.normal {
+  width: 562rpx;
+  text-align: center;
+  padding: 24rpx;
+  font-family: Microsoft Yahei;
+}
+
+button.custom-btn.small {
+  width: 190rpx;
+  padding:18rpx;
+}
+
+button.custom-btn.btn-active:before {
+  background-color: #000;
+  opacity: .15;
+}
+
+.custom-btn:before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 100%;
+  border: inherit;
+  border-radius: inherit;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  content: " ";
+  background-color: #000;
+  border-color: #000;
+}
+
+/**上传样式***/
+.iconfont.icon-camera-copy{
+  color: #dcdee0;
+  font-size: 48rpx;
+}
+
+/****流程页面**/
+.title-wrap {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title-wrap .title-desc {
+  font-size: 32rpx;
+  color: #353535
+}
+
+.title-wrap .title-rate {
+  margin-top: -16rpx;
+  margin-right: 30rpx;
+}
+
+.content-wrap {
+  margin-top: 20rpx;
+}
+
+.content-wrap .content-desc {
+  text-align: center;
+  color: #353535;
+  font-size: 28rpx;
+}
+
+.uploader-content.space-around {
+  display: flex;
+  justify-content: space-between;
+}
+
+.uploader-content.space-around .uploader-item:last-child {
+  margin-right: 108rpx;
+}
+
+/***医院客户信息***/
+.clientInfo {
+  width: 520rpx;
+  min-height: 152rpx;
+  border: 1px dotted #ddd;
+  margin-left: 180rpx;
+  margin-top: 12rpx;
+  padding: 20rpx;
+  box-sizing: border-box;
+  font-size: 24rpx;
+}
+
+.clientInfo .clientInfoItem:first-child {
+  margin-left: 20rpx;
+}
+
+.clientInfo .clientInfoItem:first-child text {
+    margin-right:10rpx
+}
+
+.clientInfoItem {
+  margin-top: 10rpx;
+}
+
+.clientInfoItem text {
+  color: #7f7f7f
+}
+.iconfont.icon-xiangji{
+  color:#ccc;
+  font-size:40rpx;
+}

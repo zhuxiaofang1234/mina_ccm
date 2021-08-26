@@ -1,0 +1,8 @@
+{
+  "component": true,
+  "usingComponents": {
+    "mp-toptips": "../../weui/toptips/toptips",
+    "uploader":"/components/uploader/index"
+  },
+  "navigationBarTitleText": "故障处理"
+}

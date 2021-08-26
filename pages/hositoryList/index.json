@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "tab-bar":"/components/tab-bar/index",
+    "select-search":"/components/select-search/index",
+    "mp-searchbar":"../../weui/searchbar/searchbar",
+    "mp-cell": "../../weui/cell/cell",
+    "mp-cells": "../../weui/cells/cells",
+    "no-data":"/components/no-data/index"
+  },
+  "navigationBarTitleText": "历史记录"
+}

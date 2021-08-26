@@ -1,0 +1,12 @@
+{
+  "navigationBarTitleText": "注册/登录",
+  "usingComponents":
+  {
+    "mp-toptips": "/weui/toptips/toptips",
+    "mp-cells": "/weui/cells/cells",
+    "mp-cell": "/weui/cell/cell",
+    "mp-checkbox": "/weui/checkbox/checkbox",
+    "mp-checkbox-group": "/weui/checkbox-group/checkbox-group",
+    "mp-form": "/weui/form/form"
+  }
+}

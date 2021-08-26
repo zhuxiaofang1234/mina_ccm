@@ -1,0 +1,26 @@
+/* pages/funConfig/details.wxss */
+
+.my-cells.weui-cells__group .weui-cell{
+  padding:12px;
+  font-size:28rpx;
+}
+.weui-media-box__title{
+  font-size:28rpx;
+}
+.desc{
+   color: rgba(0,0,0,.5);
+    font-size: 14px;
+    padding-top: 4px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+.sn-item{
+  position: relative;
+  display:inline-block;
+  padding:4rpx 12rpx 4rpx 12rpx;
+  border:1px solid #009fab;
+  color:#009fab;
+  font-size: 24rpx;
+  margin-right:20rpx;
+  border-radius: 8rpx;
+}

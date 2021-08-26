@@ -1,0 +1,19 @@
+<view class="uploader_wrapper">
+	<view class="uploader_preview" wx:for="{{imgList}}" wx:key="index">
+		<view class="uploader_preview-image" data-index="{{index}}" bindtap="previewImage">
+			<image src="{{item.url}}" class="image__img" mode="cover">
+			</image>
+			<view class="uploader__preview-cover">
+				<view class="preview-cover van-ellipsis" wx:if="{{item.status=='wait'}}">等待上传</view>
+				<view class="preview-cover van-ellipsis" wx:if="{{item.status=='success'}}">上传成功</view>
+				<view class="preview-cover van-ellipsis" wx:elif="{{item.status=='error'}}">上传失败</view>
+			</view>
+		</view>
+		<view class="uploader_preview-delete" bindtap="delete" data-index="{{index}}" data-key="{{key}}">
+			<i class="iconfont icon-chuyidong1 van-uploader__preview-delete-icon"></i>
+		</view>
+	</view>
+	<view class="van-uploader__upload" bindtap="upload" hidden="{{!showUploadBtn}}">
+		<slot><i class="iconfont icon-camera-copy">333333</i></slot>
+	</view>
+</view>

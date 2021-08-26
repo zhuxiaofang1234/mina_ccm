@@ -1,0 +1,100 @@
+/* pages/install/index.wxss */
+@import '../../styles/task.wxss';
+@import '../../styles/icon.wxss';
+.task-form{
+  margin-bottom:26rpx
+}
+
+.label-title{
+  font-size:28rpx;
+  width:160rpx;
+  color:#353535
+}
+.weui-cell.weui-cell-inform{
+  font-size: 28rpx;
+  color:#353535
+}
+.placeholder-text{
+  font-size:28rpx
+}
+
+.weui-input{
+  height:50rpx;
+  margin-left:50rpx;
+}
+.section.section_gap .radio-group{
+  margin-left:30rpx;
+  box-sizing: border-box;
+}
+.radio-group .radio{
+ font-size: 32rpx;
+ width:33%
+}
+/* .installType.radio-group .radio:first-child{
+  width:42%;
+} */
+.snCells.weui-cell{
+  padding:10rpx 32rpx;
+}
+.weui-cell:before{
+  right: 15px !important;
+}
+
+.maCells .weui-cells__title {
+  color:#353535;
+  margin:20rpx;
+  padding-left:30rpx
+}
+
+.addBtn.iconfont{
+  font-size: 50rpx;
+  color:#009fab;
+  margin-right: 40rpx;
+}
+
+.snGroup-wrap{
+  width:480rpx;
+  min-height:80rpx;
+  margin-left:100rpx;
+  margin-bottom:10rpx;
+  padding:10rpx;
+  border:1px dotted #ddd;
+}
+.snGroup-wrap .sn-item{
+  position: relative;
+  display:inline-block;
+  padding:4rpx 36rpx 4rpx 12rpx;
+  background-color: #009fab;
+  color:#fff;
+  font-size: 24rpx;
+  margin-right:20rpx;
+  border-radius: 8rpx;
+}
+
+.weui-textarea {
+  padding: 0 20rpx;
+}
+.linkClass .weui-cell__hd.weui-cell__hd{
+  width:180rpx;
+}
+
+/**删除按钮**/
+.uploader_preview-delete {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 28rpx;
+  height: 28rpx;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 0 0 0 24rpx;
+}
+
+.van-uploader__preview-delete-icon {
+  position: absolute;
+  top: -12rpx;
+  right: -6rpx;
+  color: #fff;
+  font-size: 32rpx;
+  -webkit-transform: scale(0.5);
+  transform: scale(0.5);
+}

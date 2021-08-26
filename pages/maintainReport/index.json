@@ -1,0 +1,11 @@
+{
+  "component": true,
+  "usingComponents": {
+    "mp-toptips": "../../weui/toptips/toptips",
+    "mp-dialog": "../../weui/dialog/dialog",
+    "uploader":"/components/uploader/index",
+    "mp-cells": "../../weui/cells/cells",
+    "mp-cell": "../../weui/cell/cell"
+  },
+  "navigationBarTitleText": "设备保养"
+}

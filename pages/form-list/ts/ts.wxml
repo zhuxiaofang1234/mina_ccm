@@ -1,0 +1,124 @@
+<!--pages/form-list/ts/ts.wxml-->
+<view>
+<mp-toptips msg="{{error}}" type="error" show="{{error}}">
+</mp-toptips>
+  <mp-form id="ts-form" rules="{{rules}}" models="{{formData}}">
+    <mp-cells title="">
+      <mp-cell ext-class="weui-cell_select weui-cell_select-after">
+        <view slot="title" class="weui-label">处理结果</view>
+        <picker bindchange="bindResultChange" range-key="name" value="{{resultIndex}}" range="{{results}}">
+          <view class="weui-select">{{results[resultIndex].name}}</view>
+        </picker>
+      </mp-cell>
+       <mp-cell title="处理方案" ext-class="">
+          <textarea class="weui-textarea" data-field="process_schema" bindinput="textareaChange" placeholder="输入处理方案" style="height: 3.3em" />
+       </mp-cell>
+    </mp-cells>
+
+    
+    <mp-cells title="故障配件">
+      <!-- <mp-cell ext-class="weui-cell_select weui-cell_select-after">
+        <view slot="title" class="weui-label">故障配件PN</view>
+        <picker bindchange="bindResultChange" value="{{resultIndex}}" range="{{results}}">
+          <view class="weui-select">{{results[resultIndex]}}</view>
+        </picker>
+      </mp-cell> -->
+      <mp-cell prop="title" title="故障配件名称"  ext-class="">
+        <input bindinput="faultyFormInputChange" data-field="title" class="weui-input" placeholder="故障配件SN"/>
+      </mp-cell>
+      <mp-cell prop="sn" title="故障配件SN"  ext-class="">
+        <input bindinput="faultyFormInputChange" data-field="sn" class="weui-input" placeholder="故障配件SN"/>
+      </mp-cell>
+      <mp-cell prop="pn" title="故障配件PN" ext-class="">
+        <input bindinput="faultyFormInputChange" data-field="pn" class="weui-input" placeholder="故障配件PN"/>
+      </mp-cell>
+    </mp-cells>
+    <mp-cell title="" ext-class="">
+        <button class="weui-btn" type="warn" size="mini" bindtap="addFaultyPn">添加</button>
+    </mp-cell>
+    <!-- 故障配件预览开始 -->
+    <view class="weui-form-preview__bd" wx:if="{{faulty_list.length > 0}}" wx:for="{{faulty_list}}" wx:for-index="idx" wx:key="idx">
+    <mp-slideview show="{{false}}" buttons="{{slideButtons}}" wx:key="unque" data-idx="{{idx}}" bindbuttontap="slideButtonTap">
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">序号</view>
+          <view class="weui-form-preview__value">{{idx + 1}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">故障配件名称</view>
+          <view class="weui-form-preview__value">{{item.title}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">故障PN</view>
+          <view class="weui-form-preview__value">{{item.pn}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">故障配件SN</view>
+          <view class="weui-form-preview__value">{{item.sn}}</view>
+      </view>
+    </mp-slideview>
+    </view>
+    <!-- 故障配件预览结束 -->
+    <!-- <view class="div-line">
+      <view class="divLine"></view>
+    </view> -->
+    <select-filter 
+      searchUrl="{{searchUrl}}" 
+      placeholder="搜索配件" 
+      pickerName="配件" 
+      range_key="name"
+      paramKey="pn"
+      bind:selectFilterChangeEvent='onPnChangeEvent'
+    />
+    <mp-cells title="建议领用">
+      <mp-cell prop="sn" title="物料PN"  ext-class="">
+        <input bindinput="formInputChange" disabled="{{true}}" value="{{tsList.pn}}" data-field="sn" class="weui-input" placeholder="请输入配件SN"/>
+      </mp-cell>
+      <mp-cell prop="apply_num" title="数量"  ext-class="">
+        <input bindinput="formInputChange" value="{{tsList.apply_num}}" data-field="apply_num" class="weui-input" placeholder="数量"/>
+      </mp-cell>
+      <mp-cell prop="type_desc" title="回收属性" ext-class="">
+        <input bindinput="formInputChange" disabled="{{true}}" value="{{tsList.type_desc}}" data-field="type_desc" class="weui-input" placeholder="回收属性"/>
+      </mp-cell>
+      <mp-cell prop="ts_remark" title="备注" ext-class="">
+        <input bindinput="formInputChange" value="{{tsList.remark}}" data-field="remark" class="weui-input" placeholder="备注信息"/>
+      </mp-cell>
+    </mp-cells>
+    <mp-cell prop="pnname" title="" ext-class="">
+        <button class="weui-btn" type="warn" size="mini" bindtap="addAdvicePn">添加</button>
+    </mp-cell>
+   <!-- 建议件预览开始 -->
+   <!-- 左滑删除 -->
+    <view class="weui-form-preview__bd" wx:if="{{advice_replace_list.length > 0}}" wx:for="{{advice_replace_list}}" wx:for-index="idx" wx:key="idx">
+    <mp-slideview show="{{false}}" buttons="{{slideButtons}}" wx:key="unque" data-id="{{item.idx}}" bindbuttontap="slideAdButtonTap">
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">序号</view>
+          <view class="weui-form-preview__value">{{idx + 1}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">建议领用PN</view>
+          <view class="weui-form-preview__value">{{item.pn}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">建议领用数量</view>
+          <view class="weui-form-preview__value">{{item.apply_num}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">物料名称</view>
+          <view class="weui-form-preview__value">{{item.name}}</view>
+      </view>
+     <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">回收属性</view>
+          <view class="weui-form-preview__value">{{item.type_desc}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">备注</view>
+          <view class="weui-form-preview__value">{{item.remark}}</view>
+      </view>
+      </mp-slideview>
+    </view>
+    <!-- 建议配件预览结束 -->
+    <view slot="button">
+        <button class="weui-btn" type="primary" bindtap="submitForm">提交</button>
+    </view>
+  </mp-form>
+</view>

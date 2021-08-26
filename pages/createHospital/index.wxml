@@ -1,0 +1,231 @@
+<!--pages/createHospital/index.wxml-->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<tab-bar id="tabBar" tabs="{{tabs}}" bindclick="choseTab" activeIndex="{{activeIndex}}">
+  <view slot="基本信息">
+    <view class="form-wrap-content mt-20">
+      <mp-form id="form1" rules="{{rules1}}" models="{{formData}}">
+        <mp-cells>
+          <mp-cell show-error>
+            <view slot="title">
+              <text class="label-title">医院编号</text>
+            </view>
+            <input bindinput="formInputChange" data-field="encoded" class="weui-input" placeholder="请输入医院编号"
+              placeholder-class="placeholder-text" value="{{formData.encoded}}" />
+          </mp-cell>
+          <mp-cell prop="hospitalName">
+            <view slot="title">
+              <text class="red">*</text>
+              <text class="label-title">医院名称</text>
+            </view>
+            <input bindinput="formInputChange" data-field="hospitalName" class="weui-input" placeholder="请输入医院名称"
+              placeholder-class="placeholder-text" value="{{formData.hospitalName}}" />
+          </mp-cell>
+          <mp-cell ext-class="linkClass" show-error prop="hospitalAddress" link bindtap="toSelectAddress"
+            footer="{{formData.hospitalAddress}}">
+            <view slot="title">
+              <text class="red">*</text>
+              <text class="label-title">医院地址</text>
+            </view>
+          </mp-cell>
+          <mp-cell show-error class="addressDetails">
+            <view slot="title">
+              <text class="label-title">详细地址</text>
+            </view>
+            <textarea bindinput="formInputChange" data-field="address" class="addressArea"  placeholder="请输入详细地址"
+              placeholder-class="placeholder-text" auto-height value="{{formData.address}}" />
+          </mp-cell>
+        </mp-cells>
+      </mp-form>
+      <view class="contact-list">
+        <view class="contact-item" wx:for="{{contactJson}}">
+          <view class="contact-title">
+            <view>联系人{{index+1}}</view>
+            <view class="iconfont icon-icon_huabanfuben" data-index="{{index}}" bindtap="delContact"></view>
+          </view>
+          <mp-cells ext-class="my-cells">
+            <mp-cell value="医院科室" footer="{{item.installedDepartment}}"></mp-cell>
+            <mp-cell value="科室联系人" footer="{{item.hospitalContactPerson}}"></mp-cell>
+            <mp-cell value="联系人职位" footer="{{item.contactPosition || '-'}}"></mp-cell>
+            <mp-cell value="联系电话" footer="{{item.contactNumber}}"></mp-cell>
+            <mp-cell value="联系人邮箱" footer="{{item.contactEmail}}"></mp-cell>
+          </mp-cells>
+        </view>
+      </view>
+      <!--联系人表单-->
+      <mp-form id="form2" rules="{{rules2}}" models="{{contactData}}">
+        <view class="depart-item">
+          <mp-cells ext-class="contact" title="添加联系人">
+            <mp-cell ext-class="linkClass" show-error prop="installedDepartment" link bindtap="toHospitalDept"
+              footer="{{contactData.installedDepartment}}">
+              <view slot="title">
+                <text class="red">*</text>
+                <text class="label-title">医院科室</text>
+              </view>
+            </mp-cell>
+            <mp-cell show-error prop="hospitalContactPerson">
+              <view slot="title">
+                <text class="red">*</text>
+                <text class="label-title">科室联系人</text>
+              </view>
+              <input bindinput="formInputChange2" data-field="hospitalContactPerson" class="weui-input" placeholder="请输入科室联系人"
+                placeholder-class="placeholder-text" value="{{contactData.hospitalContactPerson}}" />
+            </mp-cell>
+            <mp-cell ext-class="weui-cell_select weui-cell_select-after">
+              <view slot="title" class="weui-label">联系人职位</view>
+              <picker bindchange="bindPositionChange" value="{{contactIndex}}" range="{{positionArr}}">
+                <view class="weui-select">{{contactData.contactPosition}}
+                </view>
+              </picker>
+            </mp-cell>
+            <mp-cell show-error prop="contactNumber">
+              <view slot="title">
+                <text class="red">*</text>
+                <text class="label-title">联系电话</text>
+              </view>
+              <input bindinput="formInputChange2" data-field="contactNumber" class="weui-input" placeholder="请输入科室联系电话"
+                placeholder-class="placeholder-text" value="{{contactData.contactNumber}}" />
+            </mp-cell>
+            <mp-cell show-error>
+              <view slot="title">
+                <text class="label-title">联系人邮箱</text>
+              </view>
+              <input bindinput="formInputChange2" data-field="contactEmail" class="weui-input" placeholder="请输入联系人邮箱"
+                placeholder-class="placeholder-text" value="{{contactData.contactEmail}}" />
+            </mp-cell>
+          </mp-cells>
+          <view>
+            <button class="addbtn" plain="true" hover-class="btn-active" bindtap="submitContact"><i
+                class="iconfont icon-icon-test"></i>
+            </button>
+          </view>
+        </view>
+      </mp-form>
+    </view>
+    <view class="footer">
+      <view class="footer-wrap">
+        <button type="primary" class="normal" hover-class="btn-active" bindtap="goDetails">详情信息</button>
+      </view>
+    </view>
+  </view>
+  <view slot="详情信息">
+    <view class="form-wrap-content mt-20">
+      <mp-form id="form3" rules="{{rules3}}" models="{{formData}}">
+        <mp-cells>
+          <mp-cell>
+            <view slot="title">
+              <text class="label-title">公私立属性</text>
+            </view>
+            <view class="section section_gap">
+              <radio-group class="radio-group" prop="nature" bindchange="radioChange">
+                <radio class="radio" style="transform:scale(0.8)" wx:for-items="{{natureItems}}" wx:key="name"
+                  value="{{item.value}}" checked="{{item.checked}}">
+                  <text>{{item.name}}</text>
+                </radio>
+              </radio-group>
+            </view>
+          </mp-cell>
+          <mp-cell ext-class="linkClass" show-error  link bindtap="toSelectLevel"
+            footer="{{hospitalLevelText}}">
+            <view slot="title">
+              <text class="label-title">医院等级</text>
+            </view>
+          </mp-cell>
+          <mp-cell ext-class="linkClass" show-error link bindtap="toSelectTag">
+            <view slot="title">
+              <text class="label-title">开立标签</text>
+            </view>
+            <view slot="footer">
+              <view class="sn-item" wx:for="{{chooseSonoTag}}">
+                <text>{{item.title}}</text>
+              </view>
+            </view>
+          </mp-cell>
+          <mp-cell show-error prop="hospitalBedNum">
+            <view slot="title">
+              <text class="label-title">医院床位</text>
+            </view>
+            <input bindinput="formInputChange" data-field="hospitalBedNum" class="weui-input" placeholder="请输入医院床位"
+              placeholder-class="placeholder-text" value="{{formData.hospitalBedNum}}" />
+          </mp-cell>
+          <mp-cell show-error prop="doctorsNum">
+            <view slot="title">
+              <text class="label-title">医生数量</text>
+            </view>
+            <input bindinput="formInputChange" data-field="doctorsNum" class="weui-input"
+              placeholder="请输入医生数量" placeholder-class="placeholder-text" value="{{formData.doctorsNum}}" />
+          </mp-cell>
+          <mp-cell show-error prop="dailyInspectNum">
+            <view slot="title">
+              <text class="label-title">日均检查量</text>
+            </view>
+            <input bindinput="formInputChange" data-field="dailyInspectNum" class="weui-input"
+              placeholder="请输入日均检查量" placeholder-class="placeholder-text" value="{{formData.dailyInspectNum}}" />
+          </mp-cell>
+          <mp-cell ext-class="weui-cell_select weui-cell_select-after">
+            <view slot="title" class="weui-label">设备定位</view>
+            <picker bindchange="bindCountryChange" value="{{countryIndex}}" range="{{countries}}">
+              <view class="weui-select">{{countries[countryIndex]}}</view>
+            </picker>
+          </mp-cell>
+          <mp-cell ext-class="weui-cell_select weui-cell_select-after">
+            <view slot="title" class="weui-label">使用方式</view>
+            <picker bindchange="bindCountryChange" value="{{countryIndex}}" range="{{countries}}">
+              <view class="weui-select">{{countries[countryIndex]}}
+              </view>
+            </picker>
+          </mp-cell>
+        </mp-cells>
+        <mp-cells title="竞争对手信息" ext-class="maCells">
+          <mp-cell>
+            <textarea class="weui-textarea" bindinput="formInputChange" data-field="competitors"
+              placeholder="请输入竞争对手信息(选填)" auto-height placeholder-class="placeholder-text" 
+              value="{{formData.competitors}}" 
+              maxlength="-1"
+              />
+          </mp-cell>
+        </mp-cells>
+      </mp-form>
+    </view>
+    <view class="footer">
+      <view class="footer-wrap">
+        <button type="primary" class="normal" hover-class="btn-active" bindtap="submitVerify">提交审核</button>
+      </view>
+    </view>
+  </view>
+</tab-bar>
+
+<!--医院地址-->
+<half-dialog isShow="{{isShowAddress}}" loading="{{addressLoading}}" title="选择医院地址" data-type="address" bind:cancle="cancel" bind:sure="sure">
+  <view slot="content">
+    <address id="address" bind:showLoading="showAddressLoading"></address>
+  </view>
+</half-dialog>
+
+<!--医院等级-->
+<half-dialog isShow="{{isShowLevel}}" data-type="level" title="选择医院等级" bind:cancle="cancel" bind:sure="sure">
+  <view slot="content">
+    <view class="content-wrap">
+      <picker-view indicator-style="height: 50px; color:red" style="width: 100%; height: 200px;" value="{{level}}"
+        bindchange="bindhospitalLevel">
+        <picker-view-column>
+          <view wx:for="{{hospitalLevel1}}" wx:key="{{hospitalLevel1}}" style="line-height: 50px; text-align: center;">
+            {{item}}</view>
+        </picker-view-column>
+        <picker-view-column>
+          <view wx:for="{{hospitalLevel2}}" wx:key="{{hospitalLevel2}}" style="line-height: 50px; text-align: center;">
+            {{item}}
+          </view>
+        </picker-view-column>
+      </picker-view>
+    </view>
+  </view>
+</half-dialog>
+
+<!--开立标签-->
+<half-dialog isShow="{{isShowTag}}" data-type="tag" title="选择开立标签" bind:cancle="cancel" bind:sure="sure">
+  <view slot="content">
+    <view class="content-wrap">
+      <multi-choice list="{{sonoTagList}}" bindclick="choseItems"></multi-choice>
+    </view>
+  </view>
+</half-dialog>

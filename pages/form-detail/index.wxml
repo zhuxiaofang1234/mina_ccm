@@ -1,0 +1,329 @@
+<wxs src="../../utils/tools.wxs" module="tools" />
+<collapse title="基本信息" show="{{false}}">
+  <view class="ui-panel">
+    <view class="weui-form-preview__bd">
+      <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">表单号</view>
+            <view class="weui-form-preview__value">{{formDetail.form_number}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">服务类型</view>
+          <view class="weui-form-preview__value">{{formDetail.service_type_desc}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">报修日期</view>
+          <view class="weui-form-preview__value">{{formDetail.created_at}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">现场服务人员</view>
+          <view class="weui-form-preview__value">{{formDetail.site_treated_user}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">报修人</view>
+          <view class="weui-form-preview__value">{{formDetail.applicant_by}}</view>
+      </view>
+    </view>
+  </view>
+</collapse>
+<collapse title="客户申告" show="{{false}}">
+  <view class="ui-panel">
+    <view class="weui-form-preview__bd">
+      <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">申告内容</view>
+            <view class="weui-form-preview__value">{{formDetail.feedback}}</view>
+      </view>
+    </view>
+  </view>
+</collapse>
+
+<collapse title="发货信息" show="{{false}}">
+  <view class="ui-panel">
+    <view class="weui-form-preview__bd">
+      <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">收货人</view>
+            <view class="weui-form-preview__value">{{formDetail.delivery_recipient}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">收货人电话</view>
+          <view class="weui-form-preview__value">{{formDetail.delivery_telephone}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">收货人地址</view>
+          <view class="weui-form-preview__value">{{formDetail.delivery_address}}</view>
+      </view>
+    </view>
+  </view>
+</collapse>
+
+<collapse title="客户信息" show="{{false}}">
+  <view class="ui-panel">
+  <view class="weui-form-preview__bd">
+      <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">客户编号</view>
+            <view class="weui-form-preview__value">{{formDetail.customer_number}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">客户名称</view>
+          <view class="weui-form-preview__value">{{formDetail.customer_title}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">详细地址</view>
+          <view class="weui-form-preview__value">{{formDetail.customer_address}}</view>
+      </view>
+    </view>
+  </view>
+</collapse>
+
+<collapse title="设备信息" show="{{false}}">
+  <view class="ui-panel">
+  <view class="weui-form-preview__bd">
+      <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">设备SN</view>
+            <view class="weui-form-preview__value">{{formDetail.sn}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">设备类型</view>
+          <view class="weui-form-preview__value">{{formDetail.machine_type_desc}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">型号</view>
+          <view class="weui-form-preview__value">{{formDetail.model_id_marketing_desc}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">探头型号</view>
+          <view class="weui-form-preview__value">{{formDetail.probe_id_desc}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">镜体型号</view>
+          <view class="weui-form-preview__value">{{formDetail.endoscope_id_desc}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">保修类型</view>
+          <view class="weui-form-preview__value">{{formDetail.warranty_status_desc}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">出库日期</view>
+          <view class="weui-form-preview__value">{{tools.timestampToTime(formDetail.delivered_at)}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">安装日期</view>
+          <view class="weui-form-preview__value">{{tools.timestampToTime(formDetail.installed_at, 'YYYY-mm-dd')}}</view>
+      </view>
+    </view>
+  </view>
+</collapse>
+
+<collapse title="故障配件" show="{{false}}">
+  <view class="ui-panel" wx:if="{{faulty_list.length > 0}}" wx:for="{{faulty_list}}" wx:for-item="item" wx:key="id">
+  <view class="weui-form-preview__bd">
+      <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">PN</view>
+            <view class="weui-form-preview__value">{{item.pn}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">物料描述</view>
+          <view class="weui-form-preview__value">{{item.title}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">SN</view>
+          <view class="weui-form-preview__value">{{item.sn}}</view>
+      </view>
+
+    </view>
+  </view>
+</collapse>
+
+<collapse title="处理方案" show="{{false}}">
+  <view class="ui-panel">
+  <view class="weui-form-preview__bd">
+      <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">技术支持人员</view>
+            <view class="weui-form-preview__value">{{formDetail.ts_user}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">TS处理时间</view>
+          <view class="weui-form-preview__value">{{formDetail.ts_at}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">具体方案</view>
+          <view class="weui-form-preview__value">{{formDetail.process_schema}}</view>
+      </view>
+    </view>
+     <view class="page__hd">
+        <view class="page__title">建议领用配件</view>
+        <view class="weui-form-preview__bd" wx:if="{{advice_replace_list.length > 0}}" wx:for="{{advice_replace_list}}" wx:for-item="item" wx:key="id">
+      <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">PN</view>
+            <view class="weui-form-preview__value">{{item.pn}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">物料描述</view>
+          <view class="weui-form-preview__value">{{item.name}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">回收属性</view>
+          <view class="weui-form-preview__value">{{item.type_desc}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">备注</view>
+          <view class="weui-form-preview__value">{{item.remark}}</view>
+      </view>
+    </view>
+    </view>
+  </view>
+</collapse>
+
+
+<collapse title="配件申请" show="{{false}}">
+  <view class="ui-panel">
+  <view class="weui-form-preview__bd" wx:if="{{formDetail.accessories.length > 0}}" wx:for="{{formDetail.accessories}}" wx:for-item="item" wx:key="id">
+      <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">PN</view>
+            <view class="weui-form-preview__value">{{item.apply_pn}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">物料描述</view>
+          <view class="weui-form-preview__value">{{item.apply_name}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">数量</view>
+          <view class="weui-form-preview__value">{{item.apply_num}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">回收属性</view>
+          <view class="weui-form-preview__value">{{item.type_desc}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">备注</view>
+          <view class="weui-form-preview__value">{{item.apply_remark}}</view>
+      </view>
+    </view>
+  </view>
+</collapse>
+
+<collapse title="现场信息" show="{{false}}">
+  <view class="ui-panel">
+  <view class="weui-form-preview__bd">
+      <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">维修结果</view>
+            <view class="weui-form-preview__value">{{formDetail.site_result_desc}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">ECN编号</view>
+          <view class="weui-form-preview__value">{{formDetail.site_ecn}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">预约上门日期</view>
+          <view class="weui-form-preview__value">{{formDetail.site_ordered_at_date}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">预约上门时间</view>
+          <view class="weui-form-preview__value">{{formDetail.site_ordered_at_time}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">路途时间</view>
+          <view class="weui-form-preview__value">{{formDetail.site_traffic_duration}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">一级故障分类</view>
+          <view class="weui-form-preview__value">{{formDetail.faulty_first_level_desc}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">二级级故障分类</view>
+          <view class="weui-form-preview__value">{{formDetail.faulty_secondary_desc}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">现场处理描述</view>
+          <view class="weui-form-preview__value">{{formDetail.treatment_desc}}</view>
+      </view>
+    </view>
+  <!-- <view class="page__title">工作时长</view> -->
+  <!-- start -->
+  <view class="weui-form-preview__bd" wx:if="{{site_service_duration.length > 0}}" wx:for="{{site_service_duration}}" wx:for-item="item" wx:key="index">
+      <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">服务日期 {{index + 1}}:</view>
+            <view class="weui-form-preview__value">{{item.date}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">开始时间  {{index + 1}}:</view>
+          <view class="weui-form-preview__value">{{item.duration[0]}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">结束时间  {{index + 1}}:</view>
+          <view class="weui-form-preview__value">{{item.duration[1]}}</view>
+      </view>
+    </view>
+  <!-- end -->
+  
+  </view>
+</collapse>
+
+<collapse title="TS打分" show="{{false}}">
+  <view class="ui-panel">
+  <view class="weui-form-preview__bd">
+      <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">打分日期</view>
+            <view class="weui-form-preview__value">{{tools.timestampToTime(formDetail.ts_marked_at)}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">打分人</view>
+          <view class="weui-form-preview__value">{{formDetail.ts_marked_user}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">分数</view>
+          <view class="weui-form-preview__value">{{formDetail.ts_mark}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">评分备注</view>
+          <view class="weui-form-preview__value">{{formDetail.ts_mark_remark}}</view>
+      </view>
+    </view>
+  </view>
+</collapse>
+
+<collapse title="回访信息" show="{{false}}">
+  <view class="ui-panel">
+  <view class="weui-form-preview__bd">
+      <view class="weui-form-preview__item">
+            <view class="weui-form-preview__label">回访日期</view>
+            <view class="weui-form-preview__value">{{ftools.timestampToTime(ormDetail.visited_at)}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">回访人</view>
+          <view class="weui-form-preview__value">{{formDetail.visited_user}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">回访状态</view>
+          <view class="weui-form-preview__value">{{formDetail.visit_status_desc}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">回访分数</view>
+          <view class="weui-form-preview__value">{{tools.timestampToTime(formDetail.visit_mark)}}</view>
+      </view>
+    </view>
+  </view>
+</collapse>
+
+<collapse title="附件信息" 
+ bindshow="onShowCollapse" bindhide="onHideCollapse" bindtapaction="onTapAction" show="{{false}}"
+ show="{{false}}" >
+<view class="page__bd">
+  <mp-cells>
+      <mp-cell>
+          <mp-uploader 
+            bindfail="uploadError" 
+            bindsuccess="uploadSuccess" 
+            select="{{selectFile}}" 
+            upload="{{uplaodFile}}" 
+            files="{{files}}" 
+            max-count="5" 
+            title="图片上传" 
+            tips="图片上传提示">
+          </mp-uploader>
+      </mp-cell>
+  </mp-cells>
+</view>
+</collapse>
+
+
+

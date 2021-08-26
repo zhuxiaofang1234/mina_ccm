@@ -1,0 +1,49 @@
+<view class="page">
+  <view class="weui-search-bar">
+    <view class="weui-search-bar__form">
+      <view class="weui-search-bar__box">
+        <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+        <input type="text" class="weui-search-bar__input" placeholder="请输入设备SN" confirm-type="搜索" bindconfirm="search"
+          value="{{inputValue}}" bindinput="inputTyping" />
+        <view class="weui-icon-clear" wx:if="{{inputValue.length > 0}}" bindtap="clearInput">
+          <icon type="clear" size="18"></icon>
+        </view>
+      </view>
+    </view>
+    <view class="weui-search-bar__cancel-btn" bindtap="getSerachResult">搜索</view>
+  </view>
+  <view wx:if="{{snNum.length == 0}}">
+    <vant-empty image="default" description="请输入设备SN查询信息"></vant-empty>
+  </view>
+  <view class="page__bd" wx:elif="{{snNum.length > 0 && records.length!==0}}">
+    <mp-cells ext-class="my-cells" title="查询结果">
+      <mp-cell value="机器序列号" footer="{{records[0].snNum || records[1].sn}}"></mp-cell>
+      <mp-cell value="机器型号" footer="{{records[0].deviceModel || '-'}}"></mp-cell>
+      <mp-cell value="产品类型" >
+        <view slot="footer">
+            <text wx:if="{{records[1].productLine==1}}">超声</text>
+            <text wx:elif="{{records[1].productLine==2}}">内镜</text>
+            <text wx:elif="{{records[1].productLine==3}}">检验</text>
+        </view>
+      </mp-cell>
+      <mp-cell value="出厂日期" footer="{{records[0].finishDate}}"></mp-cell>
+      <mp-cell value="销售单号" footer="{{records[0].saleNum}}"></mp-cell>
+      <mp-cell value="经销商" footer="{{erpInfo.dealer || '-'}}"></mp-cell>
+      <mp-cell value="安装日期" footer="{{records[1].installDate || '-'}}"></mp-cell>
+      <mp-cell link hover footer="{{records[1].hospitalName || '-'}}" data-hospitalId="{{records[1].hospitalId}}" bindtap="tohospital">
+        <view slot="title" class="title-wrap">
+          <text class="label-title">装机医院</text>
+        </view>
+      </mp-cell>
+      <mp-cell value="安装人员" footer="{{records[1].createUser || '-'}}"></mp-cell>
+      <mp-cell value="保修期" footer="{{erpInfo.warrantytime || '-'}}"></mp-cell>
+      <mp-cell link hover value="功能配置表" footer="点击查看" url="/pages/funConfig/index?sn={{records[0].snNum || records[1].sn}}"></mp-cell>
+      <mp-cell link hover value="生产记录" footer="点击查看" url="/pages/proRecord/index?builtInfo={{builtInfo}}"></mp-cell>
+      <mp-cell link hover value="维修记录" footer="点击查看" url="/pages/repairRecord/index?sn={{records[0].snNum || records[1].sn}}"></mp-cell>
+      <mp-cell link hover value="装箱清单" footer="点击查看" url="/pages/packageChecklist/index?sn={{records[0].snNum || records[1].sn}}"></mp-cell>
+    </mp-cells>
+  </view>
+  <view wx:elif="{{snNum.length > 0  && records.length==0}}">
+    <vant-empty image="{{imageType}}" description="{{description}}"></vant-empty>
+  </view>
+</view>

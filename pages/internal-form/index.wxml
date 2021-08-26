@@ -1,0 +1,45 @@
+<!--pages/form-list/index.wxml-->
+<view class="container">
+  <view class="status-box">
+    <view bindtap="statusTap" wx:for="{{statusType}}" class="status-label {{item.status == currentType ? 'active' : ''}}" wx:key="status" data-index="{{item.status}}">
+      {{item.statusLabel}}
+      <view class="{{tabClass[item.status]}}"></view>
+    </view>
+  </view>
+
+  <view class="no-order" hidden="{{formList.length >= 1 ? true : false}}">
+    <image src="/images/no-order.png" class="no-order-img"></image>
+    <view class="text">暂无数据</view>
+  </view>
+
+  <view class="order-list" hidden="{{formList ? false : true}}">
+    <view class="a-order" wx:for="{{formList}}" wx:key="index">
+      <navigator url="/pages/form-detail/index?id={{item.id}}" class="weui-cell weui-cell_access" hover-class="weui-cell_active">
+        <view class="weui-cell__bd">{{item.form_number}}</view>
+        <view class="weui-cell__ft weui-cell__ft_in-access">{{item.status_desc}}</view>
+      </navigator>
+      <scroll-view class="goods-img-container" scroll-x="true">
+        <view class="img-box">
+          <image src="../../images/component.png" class="goods-img"></image>
+        </view>
+      </scroll-view>
+      <view class="goods-price">
+        所属大区: {{item.area}} 创建人：
+        <text class="p" wx:if="{{item.status <= 0}}"> {{item.created_by_user}}</text>
+        <text class="p" wx:if="{{item.status > 0}}">{{item.created_by_user}}</text>
+      </view>
+      <view class="goods-info">
+        <view class="goods-des">
+          <view class="remark" wx:if="{{item.remark && item.remark != ''}}">{{item.service_type_desc}}</view>
+          <view>{{item.dateAdd}} </view>
+        </view>
+      </view>
+      <view class="price-box">
+        <view class="btn" hidden="{{item.status==0? false : true}}" bindtap="cancelOrderTap" data-id="{{item.id}}">取消订单</view>
+        <view class="btn active" hidden="{{item.status==0? false : true}}" bindtap="toPayTap" data-id="{{item.id}}" data-money="{{item.amountReal}}" data-score="{{item.score}}">马上付款</view>
+        <view class="btn active" hidden="{{(item.status==0 || item.status==-1) ? true : false}}" bindtap="refundApply" data-id="{{item.id}}" data-amount='{{item.amountReal}}'>TS处理</view>
+      </view>
+    </view>
+  </view>
+  <view class="safeAreaOldMarginBttom safeAreaNewMarginBttom"></view>
+</view>

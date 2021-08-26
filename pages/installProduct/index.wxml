@@ -1,0 +1,64 @@
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<view class="contain padding-40">
+  <view class="background-curve"></view>
+  <view class="card">
+    <view class="card-body small-padding">
+      <i-steps  direction="vertical">
+        <i-step status="finish">
+          <view slot="title" class="title-wrap">
+            <view class="title-desc">外观</view>
+          </view>
+          <view slot="content" class="content-wrap">
+            <view class="uploader-content">
+              <uploader max="4" data-type="exterior" imgList="{{beforeExteriorPic}}"  bindUpload="uploadImg" bindDelete="deleteImg"
+                binddisableBtn="disableBtn">
+                <view class="iconfont icon-xiangji"></view>
+              </uploader>
+            </view>
+            <view class="content-desc">外包装防倾倒标识</view>
+          </view>
+        </i-step>
+        <i-step status="finish">
+          <view slot="title" class="title-wrap">
+            <view class="title-desc">装箱清单</view>
+          </view>
+          <view slot="content" class="content-wrap">
+            <view class="uploader-content">
+              <uploader max="4" data-type="packingList" imgList="{{beforePackingListPic}}"   bindUpload="uploadImg" bindDelete="deleteImg"
+                binddisableBtn="disableBtn">
+                <view class="iconfont icon-xiangji"></view>
+              </uploader>
+            </view>
+          </view>
+        </i-step>
+        <i-step status="finish">
+          <view slot="title" class="title-wrap">
+            <view class="title-desc">安装环境</view>
+          </view>
+          <view slot="content" class="content-wrap">
+            <view class="uploader-content space-around">
+              <view class="uploader-item">
+                <uploader max="1" data-type="beforeInstallEnv" imgList="{{beforeInstallEnvPic}}"  bindUpload="uploadImg" bindDelete="deleteImg"
+                  binddisableBtn="disableBtn">
+                  <view class="iconfont icon-xiangji"></view>
+                  <view>市电电压</view>
+                </uploader>
+              </view>
+              <view class="uploader-item">
+                <uploader max="1" data-type="afterInstallEnv" imgList="{{afterInstallEnvPic}}"  bindUpload="uploadImg" bindDelete="deleteImg"
+                  binddisableBtn="disableBtn">
+                  <view class="iconfont icon-xiangji"></view>
+                  <view>零地电压</view>
+                </uploader>
+              </view>
+            </view>
+          </view>
+        </i-step>
+      </i-steps>
+    </view>
+  </view>
+  <view class="form-footer">
+    <button type="primary" class="custom-btn small" hover-class="btn-active" bindtap="goback">上一步</button>
+    <button type="primary" class="custom-btn small" hover-class="btn-active" bindtap="nextStep" disabled="{{btnDisabled}}">确认&培训</button>
+  </view>
+</view>

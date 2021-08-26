@@ -1,0 +1,63 @@
+/* pages/selectHospital/index.wxss */
+page {
+  background: #fff;
+}
+/***搜索内容**/
+.location {
+  font-size: 30rpx;
+  font-family: PingFangSC-Medium, PingFang SC;
+  font-weight: 500;
+  color: rgba(48, 49, 49, 1);
+  margin-bottom:12rpx;
+}
+
+.location-details {
+  font-size: 22rpx;
+  font-family: PingFangSC-Regular, PingFang SC;
+  font-weight: 400;
+  color: rgba(146, 147, 153, 1);
+}
+
+/****暂无数据页面****/
+.noDataPage {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+.noDataPage_Info {
+  margin-top: 200rpx;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+}
+
+.noDataPage_Info .image {
+  width:216rpx;
+  height:300rpx;
+  display: inline-block;
+  margin:0 auto;
+}
+
+.add-wrap {
+  position: fixed;
+  width: 104rpx;
+  height: 104rpx;
+  display: flex;
+  justify-content: center;
+  right: 30rpx;
+  bottom: 80rpx;
+}
+
+.add-image {
+  width: 98rpx;
+  height: 98rpx;
+  border-radius: 50%;
+  display: inline-block;
+  overflow: hidden;
+}
+
+

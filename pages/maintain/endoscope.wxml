@@ -1,0 +1,328 @@
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<!--运行环境检查-->
+<view class="contain padding-40" hidden="{{!environment}}">
+  <view class="background-curve"></view>
+  <view class="card">
+    <view class="card-header">
+      <view class="header-desc">1,主机和环境检查</view>
+    </view>
+    <view class="card-body small-padding">
+      <view class="content-wrap">
+        <view class="uploader-content flex-box">
+          <view class="uploader-item">
+            <uploader max="1" data-type="emea" imgList="{{emea}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">整机外观</view>
+          </view>
+          <view class="uploader-item">
+            <uploader max="1" data-type="emth" imgList="{{emth}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">温/湿度</view>
+          </view>
+          <view class="uploader-item">
+            <uploader max="1" data-type="emcp" imgList="{{emcp}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">市电</view>
+          </view>
+          <view class="uploader-item">
+            <uploader max="1" data-type="emzg" imgList="{{emzg}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">零地</view>
+          </view>
+          <view class="uploader-item">
+            <uploader max="1" data-type="emfvow" imgList="{{emfvow}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">洗消间全览</view>
+          </view>
+          <view class="uploader-item">
+            <uploader max="1" data-type="emlse" imgList="{{emlse}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">镜体储存环境</view>
+          </view>
+          <view class="uploader-item">
+            <uploader max="1" data-type="emhsir" imgList="{{emhsir}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">主机点检报告</view>
+          </view>
+          <view class="uploader-item">
+            <uploader max="1" data-type="emsv" imgList="{{emsv}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">软件版本</view>
+          </view>
+          <view class="uploader-item">
+            <uploader max="1" data-type="emli" imgList="{{emli}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">导光接口</view>
+          </view>
+          <view class="uploader-item">
+            <uploader max="1" data-type="emd" imgList="{{emd}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">消毒液</view>
+          </view>
+          <view class="uploader-item">
+            <uploader max="4" data-type="emoe" imgList="{{emoe}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">其它</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="form-footer">
+    <button type="primary" class="custom-btn small" hover-class="btn-active" bindtap="goback">上一步</button>
+    <button type="primary" class="custom-btn small" hover-class="btn-active" disabled="{{btnDisabled}}"
+      bindtap="toMirrorBody">下一步</button>
+  </view>
+</view>
+<!--镜体-->
+<view class="contain padding-40" hidden="{{!mirrorBody}}">
+  <view class="background-curve"></view>
+  <view class="card">
+    <view class="card-header">
+      <view class="header-desc">2,镜体</view>
+    </view>
+    <view class="card-body small-padding mirror-card">
+      <!---循环已添加的镜体-->
+      <view class="fault-content" wx:for="{{endoscopeJson}}" wx:for-index="index" wx:for-item="mirrorItem">
+      	<view class="fault-content-delete" bindtap="deleteMirror" data-index="{{index}}" data-key="{{key}}">
+			<i class="iconfont icon-chuyidong1 fault-content-delete-icon"></i>
+		</view>
+    <view class="label-text label-title">镜体{{index+1}}:</view>
+        <view class="form-item">
+          <view class="from-wrap" style="flex:1">
+            <select id="select" wx:if="{{options.length!==0}}" defaultOption="{{mirrorItem.seriesId}}"
+              data-index="{{index+1}}" options="{{options}}" key="id" text="name" bind:change="change">
+            </select>
+          </view>
+          <view class="from-wrap" style="flex:2">
+            <input bindinput="formInputChange" data-field="sn" data-index="{{index+1}}" class="weui-input sn-input"
+              placeholder="请输入设备SN" placeholder-class="placeholder-text" value="{{mirrorItem.sn}}" />
+          </view>
+        </view>
+        <view class="form-item">
+          <view class="label-text">1.测漏:</view>
+          <view class="from-wrap">
+            <view class="section section_gap">
+              <radio-group class="radio-group" data-index="{{index+1}}" data-type="leakChecking"
+                bindchange="radioChange">
+                <radio class="radio" style="transform:scale(0.8)" wx:for-items="{{leakCheckingItems}}" wx:key="name"
+                  value="{{item.value}}" checked="{{item.value==mirrorItem.leakChecking}}">
+                  <text>{{item.name}}</text>
+                </radio>
+              </radio-group>
+            </view>
+          </view>
+        </view>
+        <view class="form-item">
+          <view class="label-text">2.图像:</view>
+          <view class="from-wrap">
+            <view class="section section_gap">
+              <radio-group class="radio-group" data-index="{{index+1}}" data-type="image" bindchange="radioChange">
+                <radio class="radio" style="transform:scale(0.8)" wx:for-items="{{imageItems}}" wx:key="name"
+                  value="{{item.value}}" checked="{{item.value==mirrorItem.image}}">
+                  <text>{{item.name}}</text>
+                </radio>
+              </radio-group>
+            </view>
+          </view>
+        </view>
+        <view class="form-item">
+          <view class="label-text">3.送气送水:</view>
+          <view class="from-wrap">
+            <view class="section section_gap">
+              <radio-group class="radio-group" data-index="{{index+1}}" data-type="airSupplyWater"
+                bindchange="radioChange">
+                <radio class="radio" style="transform:scale(0.8)" wx:for-items="{{airSupplyWaterItems}}" wx:key="name"
+                  value="{{item.value}}" checked="{{item.value==mirrorItem.airSupplyWater}}">
+                  <text>{{item.name}}</text>
+                </radio>
+              </radio-group>
+            </view>
+          </view>
+        </view>
+        <view class="form-item">
+          <view class="label-text">4.吸引功能:</view>
+          <view class="from-wrap">
+            <view class="section section_gap">
+              <radio-group class="radio-group" data-index="{{index+1}}" data-type="attractiveFunction"
+                bindchange="radioChange">
+                <radio class="radio" style="transform:scale(0.8)" wx:for-items="{{attractiveFunctionItems}}"
+                  wx:key="name" value="{{item.value}}" checked="{{item.value==mirrorItem.attractiveFunction}}">
+                  <text>{{item.name}}</text>
+                </radio>
+              </radio-group>
+            </view>
+          </view>
+        </view>
+        <view class="uploader-content flex-box mirror-upload">
+          <view class="uploader-item">
+            <uploader max="1" data-type="angularSurveying" data-index="{{index+1}}"
+              imgList="{{mirrorItem.angularSurveying}}" bindUpload="uploadMirrorImg" bindDelete="deleteMirrorImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">角度测量</view>
+          </view>
+          <view class="uploader-item">
+            <uploader max="1" data-index="{{index+1}}" data-type="headEndShield" imgList="{{mirrorItem.headEndShield}}"
+              bindUpload="uploadMirrorImg" bindDelete="deleteMirrorImg" binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">头端罩</view>
+          </view>
+          <view class="uploader-item">
+            <uploader max="1" data-index="{{index+1}}" data-type="siromb" imgList="{{mirrorItem.siromb}}"
+              bindUpload="uploadMirrorImg" bindDelete="deleteMirrorImg" binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">镜体点检报告</view>
+          </view>
+        </view>
+        <view class="textarea-wrap">
+          <view class="label-text">保养建议：</view>
+          <textarea placeholder="请输入内容" placeholder-class="placeholder-text" data-index="{{index+1}}" class="textarea"
+            bindinput="formInputChange" data-field="maintenanceAdvice" value="{{mirrorItem.maintenanceAdvice}}" />
+        </view>
+      </view>
+      <!--添加镜体-->
+      <view class="fault-content">
+        <view class="label-text label-title">添加镜体</view>
+        <view class="form-item">
+          <view class="from-wrap" style="width:188rpx">
+            <select id="select" wx:if="{{options.length!==0}}" data-index="0"  data-type="seriesId" options="{{options}}" defaultOption="{{defaultOption}}"
+              key="id" text="name" bind:change="change">
+            </select>
+          </view>
+          <view class="from-wrap">
+            <input bindinput="formInputChange" data-index="0" data-field="sn" class="weui-input sn-input" placeholder="请输入镜体SN"
+              placeholder-class="placeholder-text" value="{{mirrorBodyObj.sn}}" />
+          </view>
+        </view>
+        <view class="form-item">
+          <view class="label-text">1.测漏:</view>
+          <view class="from-wrap">
+            <view class="section section_gap">
+              <radio-group class="radio-group" data-index="0" data-type="leakChecking" bindchange="radioChange">
+                <radio class="radio" style="transform:scale(0.8)" wx:for-items="{{leakCheckingItems}}" wx:key="name"
+                  value="{{item.value}}" checked="{{item.value==mirrorBodyObj.leakChecking}}">
+                  <text>{{item.name}}</text>
+                </radio>
+              </radio-group>
+            </view>
+          </view>
+        </view>
+        <view class="form-item">
+          <view class="label-text">2.图像:</view>
+          <view class="from-wrap">
+            <view class="section section_gap">
+              <radio-group class="radio-group" data-index="0" data-type="image" bindchange="radioChange">
+                <radio class="radio" style="transform:scale(0.8)" wx:for-items="{{imageItems}}" wx:key="name"
+                  value="{{item.value}}" checked="{{item.value==mirrorBodyObj.image}}">
+                  <text>{{item.name}}</text>
+                </radio>
+              </radio-group>
+            </view>
+          </view>
+        </view>
+        <view class="form-item">
+          <view class="label-text">3.送气送水:</view>
+          <view class="from-wrap">
+            <view class="section section_gap">
+              <radio-group class="radio-group" data-index="0" data-type="airSupplyWater" bindchange="radioChange">
+                <radio class="radio" style="transform:scale(0.8)" wx:for-items="{{airSupplyWaterItems}}" wx:key="name"
+                  value="{{item.value}}" checked="{{item.value==mirrorBodyObj.airSupplyWater}}">
+                  <text>{{item.name}}</text>
+                </radio>
+              </radio-group>
+            </view>
+          </view>
+        </view>
+        <view class="form-item">
+          <view class="label-text">4.吸引功能:</view>
+          <view class="from-wrap">
+            <view class="section section_gap">
+              <radio-group class="radio-group" data-index="0" data-type="attractiveFunction" bindchange="radioChange">
+                <radio class="radio" style="transform:scale(0.8)" wx:for-items="{{attractiveFunctionItems}}"
+                  wx:key="name" value="{{item.value}}" checked="{{item.value==mirrorBodyObj.attractiveFunction}}">
+                  <text>{{item.name}}</text>
+                </radio>
+              </radio-group>
+            </view>
+          </view>
+        </view>
+        <view class="uploader-content flex-box mirror-upload">
+          <view class="uploader-item">
+            <uploader max="1" data-index="0" data-type="angularSurveying" imgList="{{mirrorBodyObj.angularSurveying}}"
+              bindUpload="uploadMirrorImg" bindDelete="deleteMirrorImg" binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">角度测量</view>
+          </view>
+          <view class="uploader-item">
+            <uploader max="1" data-index="0" data-type="headEndShield" imgList="{{mirrorBodyObj.headEndShield}}"
+              bindUpload="uploadMirrorImg" bindDelete="deleteMirrorImg" binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">头端罩</view>
+          </view>
+          <view class="uploader-item">
+            <uploader max="1" data-index="0" data-type="siromb" imgList="{{mirrorBodyObj.siromb}}"
+              bindUpload="uploadMirrorImg" bindDelete="deleteMirrorImg" binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">镜体点检报告</view>
+          </view>
+        </view>
+        <view class="textarea-wrap">
+          <view class="label-text">保养建议：</view>
+          <textarea placeholder="请输入内容" placeholder-class="placeholder-text" class="textarea"
+            bindinput="formInputChange" data-index="0" data-field="maintenanceAdvice" value="{{mirrorBodyObj.maintenanceAdvice}}" />
+        </view>
+        <button class="add-btn" bindtap="addMirrorBody" disabled="{{btnDisabled}}"><i
+            class="iconfont icon-icon-test"></i></button>
+      </view>
+    </view>
+  </view>
+  <view class="form-footer">
+    <button type="primary" class="custom-btn small" hover-class="btn-active" bindtap="toEnvironment">上一步</button>
+    <button type="primary" class="custom-btn small" hover-class="btn-active" disabled="{{btnDisabled}}"
+      bindtap="nextStep">完结</button>
+  </view>
+</view>
+
+<!--签名弹框-->
+<mp-dialog title="请输入服务信息" extClass="finishDialog" show="{{showOneButtonDialog}}" bindbuttontap="tapDialogButton"
+  buttons="{{buttons}}">
+  <mp-cells>
+    <mp-cell prop="qq" title="服务人员" ext-class="serviceInfo">
+      <input bindinput="getCreateUser" class="weui-input" placeholder="服务人员" />
+    </mp-cell>
+    <mp-cell prop="date" title="服务日期" ext-class="serviceInfo">
+      <picker data-field="date" mode="date" value="{{date}}" bindchange="bindDateChange">
+        <view class="weui-input">{{date}}</view>
+      </picker>
+    </mp-cell>
+  </mp-cells>
+</mp-dialog>

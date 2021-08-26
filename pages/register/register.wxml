@@ -1,0 +1,30 @@
+<mp-toptips msg="{{error}}" show="{{error}}"></mp-toptips>
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+
+    <view class="page__bd">
+        <mp-form id="reg-form" rules="{{rules}}" models="{{formData}}">
+
+            <mp-cells title="绑定系统账号" footer="请勿重复绑定!">
+                <mp-cell prop="username" title="账号" ext-class="">
+                    <input bindinput="formInputChange" data-field="username" class="weui-input" placeholder="请输入用户名"/>
+                </mp-cell>
+                <mp-cell prop="password" title="密码" ext-class="">
+                    <input bindinput="formInputChange" type="password" data-field="password" class="weui-input" placeholder="请输入密码"/>
+                </mp-cell>
+            </mp-cells>
+        </mp-form>
+
+        <view class="weui-cells__title">TS</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell weui-cell_switch">
+                <view class="weui-cell__bd">是否TS</view>
+                <view class="weui-cell__ft">
+                    <switch checked />
+                </view>
+            </view>
+        </view>
+        <view class="weui-btn-area">
+            <button class="weui-btn" type="primary" open-type="getUserInfo" bindgetuserinfo="getUserInfo">确定</button>
+        </view>
+    </view>
+</view>

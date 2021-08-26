@@ -1,0 +1,49 @@
+/* pages/productTrain/index.wxss */
+@import '../../styles/task.wxss';
+@import '../../styles/icon.wxss';
+
+.card-body.small-padding{
+  padding-top:40rpx;
+}
+
+.title-wrap .title-desc {
+  font-size: 36rpx;
+  font-family: SourceHanSansSC-regular;
+  color: #353535
+}
+
+.section.section_gap .radio-group {
+  margin-left: 50rpx;
+  box-sizing: border-box;
+}
+
+.section.section_gap .radio-group .radio {
+  margin-right: 30rpx;
+  font-size: 40rpx;
+}
+
+.uploader-content .form-item {
+  padding: 0;
+}
+
+.uploader-content .form-item .label-text {
+  width: 200rpx;
+}
+
+.uploader-content .form-item .form-wrap {
+  margin-left: 40rpx
+}
+.sono_input{
+  border:1px solid #ddd;
+  height:48rpx;
+  padding:12rpx;
+  border-radius: 8rpx;
+  color:#353535
+}
+
+.finishDialog  .weui-dialog__btn_primary{
+  color:#009fab
+}
+.tipStyles{
+  font-size: 28rpx;
+}

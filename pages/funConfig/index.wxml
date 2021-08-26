@@ -1,0 +1,32 @@
+<!--pages/funConfig/index.wxml-->
+<view class="page">
+  <view class="card-page">
+      <view class="card--list-title">配置文件申请记录</view>
+      <view class="card-list" wx:if="{{configFile.length!==0}}">
+        <view class="card-item" bindtap="goDetails" wx:for="{{configFile}}" wx:for-index="index" wx:for-item="item">
+          <view class="card-item-num">{{index+1}}</view>
+          <view class="card-item-content">
+            <view class="parts-item">
+              <view class="part-label">设备SN</view>
+              <view class="part-value">{{item.sn}}</view>
+            </view>
+            <view class="parts-item">
+              <view class="part-label">软件版本</view>
+              <view class="part-value">{{item.version}}</view>
+            </view>
+            <view class="parts-item">
+              <view class="part-label">申请人</view>
+              <view class="part-value">{{item.appUser}}</view>
+            </view>
+            <view class="parts-item">
+              <view class="part-label">申请时间</view>
+              <view class="part-value">{{item.appDate}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+      <view wx:else>
+        <vant-empty image="{{imageType}}" description="{{description}}"></vant-empty>
+      </view>
+  </view>
+</view>

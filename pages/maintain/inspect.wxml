@@ -1,0 +1,313 @@
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<!--运行环境检查-->
+<view class="contain padding-40" hidden="{{!environment}}">
+  <view class="background-curve"></view>
+  <view class="card">
+    <view class="card-header">
+      <view class="header-desc">1,运行环境检查</view>
+    </view>
+    <view class="card-body small-padding">
+      <view class="content-wrap">
+        <view class="uploader-content flex-box">
+          <view class="uploader-item">
+            <uploader max="1" data-type="cmdo" imgList="{{cmdo}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">科室全览</view>
+          </view>
+          <view class="uploader-item">
+            <uploader max="1" data-type="cmth" imgList="{{cmth}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">温/湿度</view>
+          </view>
+          <view class="uploader-item">
+            <uploader max="1" data-type="cmcp" imgList="{{cmcp}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">市电</view>
+          </view>
+          <view class="uploader-item">
+            <uploader max="1" data-type="cmzg" imgList="{{cmzg}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">零地</view>
+          </view>
+          <view class="uploader-item">
+            <uploader max="1" data-type="cmhteotv" imgList="{{cmhteotv}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">HGB本底电压</view>
+          </view>
+          <view class="uploader-item">
+            <uploader max="1" data-type="cmoteotv" imgList="{{cmoteotv}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">光学本底电压</view>
+          </view>
+          <view class="uploader-item">
+            <uploader max="1" data-type="cml5" imgList="{{cml5}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">现场5s</view>
+          </view>
+          <view class="uploader-item">
+            <uploader max="4" data-type="cmoe" imgList="{{cmoe}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">其它</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="form-footer">
+    <button type="primary" class="custom-btn small" hover-class="btn-active" bindtap="goback">上一步</button>
+    <button type="primary" class="custom-btn small" hover-class="btn-active" disabled="{{btnDisabled}}"
+      bindtap="toPerformance">下一步</button>
+  </view>
+</view>
+<!--设备性能检查-->
+<view class="contain padding-40" hidden="{{!performance}}">
+  <view class="background-curve"></view>
+  <view class="card">
+    <view class="card-header">
+      <view class="header-desc">2,设备性能检查</view>
+    </view>
+    <view class="card-body small-padding">
+      <view class="content-wrap">
+        <view class="uploader-content flex-box">
+          <view class="uploader-item">
+            <uploader max="1" data-type="cmp" imgList="{{cmp}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">本底</view>
+          </view>
+          <view class="uploader-item">
+            <uploader max="1" data-type="cmr" imgList="{{cmr}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">重复性</view>
+          </view>
+          <view class="uploader-item">
+            <uploader max="1" data-type="cmc" imgList="{{cmc}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">可比性</view>
+          </view>
+          <view class="uploader-item">
+            <uploader max="1" data-type="cmqcc" imgList="{{cmqcc}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">质控&校准</view>
+          </view>
+          <view class="uploader-item">
+            <uploader max="1" data-type="cmsd" imgList="{{cmsd}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">散点图</view>
+          </view>
+          <view class="uploader-item">
+            <uploader max="1" data-type="cmel" imgList="{{cmel}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">导出日志</view>
+          </view>
+          <view class="uploader-item">
+            <uploader max="4" data-type="cmop" imgList="{{cmop}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">其它</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="form-footer">
+    <button type="primary" class="custom-btn small" hover-class="btn-active" bindtap="toEnvironment">上一步</button>
+    <button type="primary" class="custom-btn small" hover-class="btn-active" disabled="{{btnDisabled}}"
+      bindtap="toMaintainRecord">下一步</button>
+  </view>
+</view>
+<!--设备保养记录-->
+<view class="contain padding-40" hidden="{{!maintainRecord}}">
+  <view class="background-curve"></view>
+  <view class="card">
+    <view class="card-header">
+      <view class="header-desc">3,设备保养记录</view>
+    </view>
+    <view class="card-body small-padding">
+      <view class="content-wrap">
+        <view class="uploader-content flex-box">
+          <view class="uploader-item">
+            <uploader max="1" data-type="cmtwmdr" imgList="{{cmtwmdr}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">整机除尘</view>
+          </view>
+          <view class="uploader-item">
+            <uploader max="1" data-type="cmcpcp" imgList="{{cmcpcp}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">计数池&CRP池</view>
+          </view>
+          <view class="uploader-item">
+            <uploader max="1" data-type="cmsns" imgList="{{cmsns}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">采样针&拭子</view>
+          </view>
+          <view class="uploader-item">
+            <uploader max="1" data-type="cmbop" imgList="{{cmbop}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">泵体</view>
+          </view>
+          <view class="uploader-item">
+            <uploader max="1" data-type="cmoo" imgList="{{cmoo}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">光学1</view>
+          </view>
+          <view class="uploader-item">
+            <uploader max="1" data-type="cmltbb" imgList="{{cmltbb}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">液管&缓冲瓶</view>
+          </view>
+          <view class="uploader-item">
+            <uploader max="1" data-type="cmot" imgList="{{cmot}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">光学2</view>
+          </view>
+          <view class="uploader-item">
+            <uploader max="4" data-type="cmor" imgList="{{cmor}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">其它</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="form-footer">
+    <button type="primary" class="custom-btn small" hover-class="btn-active" bindtap="toPerformance">上一步</button>
+    <button type="primary" class="custom-btn small" hover-class="btn-active" disabled="{{btnDisabled}}"
+      bindtap="toMaintainEffect">下一步</button>
+  </view>
+</view>
+<!--保养效果确认-->
+<view class="contain padding-40" hidden="{{!maintainEffect}}">
+  <view class="background-curve"></view>
+  <view class="card">
+    <view class="card-header">
+      <view class="header-desc">4,保养效果确认</view>
+    </view>
+    <view class="card-body small-padding">
+      <view class="content-wrap">
+        <view class="uploader-content flex-box">
+          <view class="uploader-item">
+            <uploader max="1" data-type="cmeaa" imgList="{{cmeaa}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">设备外观</view>
+          </view>
+          <view class="uploader-item">
+            <uploader max="1" data-type="cmcpcpa" imgList="{{cmcpcpa}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">计数池&CRP池</view>
+          </view>
+          <view class="uploader-item">
+            <uploader max="1" data-type="cmsnsa" imgList="{{cmsnsa}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">采样针&拭子</view>
+          </view>
+          <view class="uploader-item">
+            <uploader max="1" data-type="cmbopa" imgList="{{cmbopa}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">泵体</view>
+          </view>
+          <view class="uploader-item">
+            <uploader max="1" data-type="cmpoifpa" imgList="{{cmpoifpa}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">内部液路照片</view>
+          </view>
+          <view class="uploader-item">
+            <uploader max="1" data-type="cmntra" imgList="{{cmntra}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">正常计数效果</view>
+          </view>
+          <view class="uploader-item">
+            <uploader max="1" data-type="cmvia" imgList="{{cmvia}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">版本信息</view>
+          </view>
+          <view class="uploader-item">
+            <uploader max="4" data-type="cmoa" imgList="{{cmoa}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">其它</view>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+  <view class="form-footer">
+    <button type="primary" class="custom-btn small" hover-class="btn-active" bindtap="toMaintainRecord">上一步</button>
+    <button type="primary" class="custom-btn small" hover-class="btn-active" disabled="{{btnDisabled}}"
+      bindtap="nextStep">完结</button>
+  </view>
+</view>
+
+<!--签名弹框-->
+<mp-dialog title="请输入服务信息" extClass="finishDialog" show="{{showOneButtonDialog}}" bindbuttontap="tapDialogButton"
+  buttons="{{buttons}}">
+  <mp-cells>
+    <mp-cell prop="qq" title="服务人员" ext-class="serviceInfo">
+      <input bindinput="getCreateUser" class="weui-input" placeholder="服务人员" />
+    </mp-cell>
+    <mp-cell prop="date" title="服务日期" ext-class="serviceInfo">
+      <picker data-field="date" mode="date" value="{{date}}" bindchange="bindDateChange">
+        <view class="weui-input">{{date}}</view>
+      </picker>
+    </mp-cell>
+  </mp-cells>
+</mp-dialog>

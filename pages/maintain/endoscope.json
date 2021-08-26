@@ -1,0 +1,11 @@
+{
+  "usingComponents": {
+    "mp-toptips": "../../weui/toptips/toptips",
+    "uploader": "/components/uploader/index",
+    "mp-dialog": "../../weui/dialog/dialog",
+    "mp-cells": "../../weui/cells/cells",
+    "mp-cell": "../../weui/cell/cell",
+    "select":"/components/select/select"
+  },
+  "navigationBarTitleText": "内镜保养"
+}

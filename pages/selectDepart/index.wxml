@@ -1,0 +1,20 @@
+<scroll-view scroll-y scroll-into-view="{{scroll}}">
+  <view class="list-title">选择科室</view>
+  <view class="con">
+    <view class="con_list" id="{{con.title}}" wx:for="{{departList}}" wx:key="" wx:for-item="con">
+      <view class="title">{{con.title}}</view>
+      <view class="list" wx:for="{{con.list}}" wx:for-item="list" data-name="{{list.name}}"  bindtap="toSelectDepart">
+        <view class="name">{{list.name}}</view>
+      </view>
+    </view>
+  </view>
+</scroll-view>
+<!-- 字母导航 -->
+<view class="nav {{touchmove == 1?'touchmove':''}}" bindtouchstart="touchstart" bindtouchmove="touchmove"
+  bindtouchend="touchend">
+  <view id="nav_item" wx:for="{{zimu_list}}" data-index="{{index}}" data-id="{{item}}">
+    {{zimu_list[index]}}
+  </view>
+</view>
+<!-- 当前选择字母提示框 -->
+<view class="hint_bok" hidden="{{!hidden}}">{{nav_text}}</view>

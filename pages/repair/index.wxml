@@ -1,0 +1,86 @@
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<view class="contain">
+  <view class="background-curve"></view>
+  <view class="content mt-20">
+    <mp-form id="form" rules="{{rules}}" models="{{formData}}">
+      <mp-cells ext-class="task-form">
+        <mp-cell show-error ext-class="form-label" prop="taskNo">
+          <view slot="title" class="label-title">
+            <text class="red">*</text>
+            <text>任务单号</text>
+          </view>
+          <input bindinput="formInputChange" data-field="taskNo" class="weui-input" placeholder="请输入任务单号"
+            placeholder-class="placeholder-text" value="{{taskNo}}"/>
+        </mp-cell>
+      </mp-cells>
+      <mp-cells ext-class="task-form">
+        <mp-cell>
+          <view slot="title">
+            <text class="red">*</text>
+            <text class="label-title">设备类型</text>
+          </view>
+          <view class="section section_gap">
+            <radio-group class="radio-group" prop="deviceType" bindchange="radioChange">
+              <radio class="radio" wx:for-items="{{deviceTypeItems}}" wx:key="name" value="{{item.value}}"
+                checked="{{item.checked}}">
+                <text>{{item.name}}</text>
+              </radio>
+            </radio-group>
+          </view>
+        </mp-cell>
+      </mp-cells>
+      <mp-cells>
+        <mp-cell>
+          <view slot="title">
+            <text class="red">*</text>
+            <text class="label-title">保修状态</text>
+          </view>
+          <view class="section section_gap">
+            <radio-group class="radio-group" prop="warrantyStatus" bindchange="radioChange2">
+              <radio class="radio" wx:for-items="{{warrantyStatusItems}}" wx:key="name" value="{{item.value}}"
+                checked="{{item.checked}}">
+                <text>{{item.name}}</text>
+              </radio>
+            </radio-group>
+          </view>
+        </mp-cell>
+        <mp-cell show-error prop="sn">
+          <view slot="title">
+            <text class="red">*</text>
+            <text class="label-title">设备SN</text>
+          </view>
+          <input bindinput="formInputChange" data-field="sn" class="weui-input" placeholder="请输入设备SN"
+            placeholder-class="placeholder-text"  value="{{sn}}"/>
+        </mp-cell>
+        <mp-cell ext-class="linkClass" show-error prop="hospitalId" link footer="{{hospitalName}}" bindtap="toHospital">
+          <view slot="title">
+            <text class="red">*</text>
+            <text class="label-title">医院</text>
+          </view>
+        </mp-cell>
+      </mp-cells>
+      <view class="info-wrap">
+        <view class="clientInfo">
+          <view class="clientInfoItem">
+            <text>{{hospitalInfo.hospitalType}}</text>
+            <text>{{hospitalInfo.contact}}</text>
+            <text>{{hospitalInfo.contactTel}}</text>
+          </view>
+          <view class="clientInfoItem">
+            <text>{{hospitalInfo.address}}</text>
+          </view>
+        </view>
+        <view class="textarea-wrap">
+          <view class="label-text">备注</view>
+          <textarea placeholder="请输入内容" placeholder-class="placeholder-text" data-field="remark" class="textarea"
+            bindinput="formInputChange" value="{{formData.remark}}" />
+          </view>
+        </view>   
+    </mp-form>
+  </view>
+  <view class="footer">
+    <view class="footer-wrap">
+      <button type="primary" class="custom-btn normal" hover-class="btn-active" bindtap="submitForm">下一步</button>
+    </view>
+  </view>
+</view>

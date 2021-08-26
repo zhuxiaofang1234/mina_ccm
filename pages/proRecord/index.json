@@ -1,0 +1,7 @@
+{
+  "component": true,
+  "usingComponents": {
+    "vant-empty": "/components/empty"
+  },
+  "navigationBarTitleText": "生产记录"
+}

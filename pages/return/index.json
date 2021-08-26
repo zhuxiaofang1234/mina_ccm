@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+    "mp-searchbar": "../../weui/searchbar/searchbar"
+  },
+  "navigationBarTitleText": "配件返回"
+}

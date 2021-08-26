@@ -1,0 +1,29 @@
+/* pages/repairRecord/index.wxss */
+@import '../../styles/list.wxss';
+page{
+  background-color: #f4f4f4;
+}
+.my-cells.weui-cells__group .weui-cell{
+  padding:12px;
+  font-size:28rpx;
+}
+.my-cells .weui-cell .weui-cell__bd{
+  width:180rpx;
+  flex:none
+}
+.my-cells .weui-cell .weui-cell__ft{
+ flex:1;
+ margin-left:30rpx;
+ font-size:26rpx;
+ text-align: right;
+}
+.weui-media-box__title{
+  font-size:28rpx;
+}
+.desc{
+   color: rgba(0,0,0,.5);
+    font-size: 14px;
+    padding-top: 4px;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}

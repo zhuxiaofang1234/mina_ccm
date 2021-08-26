@@ -1,0 +1,38 @@
+<view class="page">
+  <mp-searchbar bindselectresult="selectResult" search="{{search}}"></mp-searchbar>
+  <view class="page__bd" hidden="{{returnList ? false : true}}">
+    <view class="weui-form-preview" wx:for="{{returnList}}" wx:key="item">
+      <view class="weui-form-preview__hd">
+      <view class="weui-form-preview__item">
+        <view class="weui-form-preview__label">表单</view>
+        <view class="weui-form-preview__value">{{item.form_number}}</view>
+      </view>
+      </view>
+      <view class="weui-form-preview__bd">
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">PN</view>
+          <view class="weui-form-preview__value">{{item.apply_pn}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">名称</view>
+          <view class="weui-form-preview__value">{{item.apply_name}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">数量</view>
+          <view class="weui-form-preview__value">{{item.apply_num}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">申请人</view>
+          <view class="weui-form-preview__value">{{item.creator_user}}</view>
+        </view>
+        <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">申请时间</view>
+          <view class="weui-form-preview__value">{{item.applied_at}}</view>
+        </view>
+      </view>
+      <view class="weui-form-preview__ft">
+        <navigator url="/pages/return/return?id={{item.id}}" class="weui-form-preview__btn btn-primary weui-form-preview__btn_primary" hover-class="weui-form-preview__btn_active">配件返回</navigator>
+      </view>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,2 @@
+/* pages/proRecord/index.wxss */
+@import '../../styles/list.wxss';

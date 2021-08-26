@@ -1,0 +1,67 @@
+<view class="page">
+  <wxs src="../../utils/tools.wxs" module="tools" />
+  <view class="weui-search-bar">
+    <view class="weui-search-bar__form">
+      <view class="weui-search-bar__box">
+        <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+        <input type="text" class="weui-search-bar__input" placeholder="请输入医院名称" confirm-type="搜索" bindconfirm="search"
+          value="{{inputValue}}" bindinput="inputTyping" />
+        <view class="weui-icon-clear" wx:if="{{inputValue.length > 0}}" bindtap="clearInput">
+          <icon type="clear" size="18"></icon>
+        </view>
+      </view>
+    </view>
+    <view class="weui-search-bar__cancel-btn" bindtap="getSerachResult">搜索</view>
+  </view>
+  <view wx:if="{{hospitalName.length == 0}}">
+    <vant-empty image="default" description="输入医院名称查询医院信息或者点击下方按钮新增医院">
+      <button type="primary" class="custom-btn normal" hover-class="btn-active" bindtap="toCreateHospital">新增医院</button>
+    </vant-empty>
+  </view>
+  <view class="page__bd" wx:elif="{{hospitalName.length > 0 && records.length!==0}}">
+    <view class="detailsTitle weui-cells__title ">
+      <view >医院基本信息</view>
+      <view class="iconfont icon-Input" data-id="{{records[0].id}}" bindtap="toUpdateHospital"></view>
+    </view>
+    <mp-cells ext-class="my-cells">
+      <mp-cell value="医院名称" footer="{{records[0].hospitalName}}"></mp-cell>
+      <mp-cell value="医院编号" footer="{{records[0].encoded}}"></mp-cell>
+      <mp-cell value="医院地址" footer="{{records[0].address}}"></mp-cell>
+    </mp-cells>
+    <mp-cells wx:if="{{records[0].contactJson && records[0].contactJson.length!==0}}"
+      wx:for="{{records[0].contactJson}}" ext-class="my-cells" title="联系人">
+      <mp-cell value="医院科室" footer="{{item.installedDepartment}}"></mp-cell>
+      <mp-cell value="科室联系人" footer="{{item.hospitalContactPerson}}"></mp-cell>
+      <mp-cell value="联系人电话" footer="{{item.contactNumber}}"></mp-cell>
+      <mp-cell value="联系人邮箱" footer="{{item.contactEmail}}"></mp-cell>
+    </mp-cells>
+    <mp-cells ext-class="my-cells" title="医院详情信息">
+      <mp-cell value="公私立属性">
+        <view slot="footer">
+          <view wx:if="{{records[0].nature==1}}">公立</view>
+          <view wx:elif="{{records[0].nature==2}}">私立</view>
+        </view>
+      </mp-cell>
+      <mp-cell value="医院等级" footer="{{tools.hospitalLevel(records[0].hospitalLevel)}}">
+      </mp-cell>
+      <mp-cell value="开立标签">
+        <view slot="footer">
+          <view class="sn-item" wx:for="{{tools.sonoTagStatus(records[0].sonoTag)}}">
+            <text>{{item}}</text>
+          </view>
+        </view>
+      </mp-cell>
+      <mp-cell value="医院床位" footer="{{records[0].hospitalBedNum || '-'}}"></mp-cell>
+      <mp-cell value="医生数量" footer="{{records[0].doctorsNum || '-'}}"></mp-cell>
+      <mp-cell value="日均检查量" footer="{{records[0].dailyInspectNum || '-'}}"></mp-cell>
+      <mp-cell value="设备定位" footer="{{records[0].inHospitalPosition || '-'}}"></mp-cell>
+      <mp-cell value="使用方式" footer="{{records[0].inHospitalUseWay || '-'}}"></mp-cell>
+      <mp-cell value="竞争对手信息" footer="{{records[0].competitors || '-'}}"></mp-cell>
+    </mp-cells>
+  </view>
+  <view wx:elif="{{hospitalName.length > 0  && records.length==0}}">
+    <vant-empty image="{{imageType}}" description="{{description}}">
+      <button type="primary" class="custom-btn normal" hover-class="btn-active" bindtap="submitForm">新增医院</button>
+    </vant-empty>
+  </view>
+</view>

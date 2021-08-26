@@ -1,0 +1,2 @@
+/* pages/funConfig/index.wxss */
+@import '../../styles/list.wxss';

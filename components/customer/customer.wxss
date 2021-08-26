@@ -1,0 +1,2 @@
+/* components/customer/customer.wxss */
+@import '/styles/common.wxss';

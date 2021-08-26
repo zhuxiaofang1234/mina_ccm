@@ -1,0 +1,40 @@
+<!--pages/return/return.wxml-->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<view class="container">
+  <mp-form id="login-form" rules="{{rules}}" models="{{formData}}">
+
+    <mp-cells title="" footer="">
+      <mp-cell prop="return_pn" title="返回PN" ext-class="">
+        <input bindinput="formInputChange" data-field="return_pn" class="weui-input" placeholder="必填 请输入PN号" />
+      </mp-cell>
+      <mp-cell prop="return_name" title="返回名称" ext-class="">
+        <input bindinput="formInputChange" data-field="return_name" class="weui-input" placeholder="必填 请输入配件名称" />
+      </mp-cell>
+      <mp-cell prop="return_sn" title="返回SN" ext-class="">
+        <input bindinput="formInputChange" data-field="return_sn" class="weui-input" placeholder="必填 请输入配件SN" />
+      </mp-cell>
+      <mp-cell prop="return_courier_number" title="返回运单号" ext-class="">
+        <input bindinput="formInputChange" data-field="return_courier_number" class="weui-input" placeholder="必填 请输入运单号" />
+      </mp-cell>
+      <mp-cell ext-class="weui-cell_select weui-cell_select-after">
+        <view slot="title" class="weui-label">返回类型</view>
+        <picker bindchange="bindReturnTypeChange" value="{{returnTypeIndex}}" range="{{returnType}}">
+          <view class="weui-select">{{returnType[returnTypeIndex]}}</view>
+        </picker>
+      </mp-cell>
+      <mp-cell ext-class="weui-cell_select weui-cell_select-after">
+        <view slot="title" class="weui-label">回收方式</view>
+        <picker bindchange="bindRecycleChange" value="{{recycleTypeIndex}}" range="{{recycleType}}">
+          <view class="weui-select">{{recycleType[recycleTypeIndex]}}</view>
+        </picker>
+      </mp-cell>
+      <mp-cell prop="return_remark" title="备注" ext-class="">
+        <input bindinput="formInputChange" data-field="return_remark" class="weui-input" placeholder="选填" />
+      </mp-cell>
+    </mp-cells>
+  </mp-form>
+
+  <view slot="button">
+    <button class="weui-btn" type="primary" bindtap="submitForm">提交</button>
+  </view>
+</view>  

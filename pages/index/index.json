@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "mp-icon": "../../weui/icon/icon",
+    "mp-halfScreenDialog": "../../weui/half-screen-dialog/half-screen-dialog"
+  },
+  "navigationBarTitleText": "Sonoscape CCM",
+  "enablePullDownRefresh": true,
+  "backgroundTextStyle": "dark"
+}

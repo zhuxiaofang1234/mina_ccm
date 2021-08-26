@@ -1,0 +1,85 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/selectHospital/index",
+    "pages/form/index",
+    "pages/my/index",
+    "pages/return/index",
+    "pages/form-upload/index",
+    "pages/help/index",
+    "pages/feedback/index",
+    "pages/internal-form/index",
+    "pages/form-list/index",
+    "pages/return/return",
+    "pages/form-list/ts/ts",
+    "pages/form/children/msg/msg",
+    "pages/form-list/extra/extra",
+    "pages/form-list/apply/apply",
+    "pages/form-list/tsmark/tsmark",
+    "pages/form-list/visit/visit",
+    "pages/task/index",
+    "pages/register/register",
+    "pages/repair/index",
+    "pages/repair/ultrasonic",
+    "pages/repair/endoscope",
+    "pages/repair/inspect",
+    "pages/install/index",
+    "pages/fault/index",
+    "pages/inspection/index",
+    "pages/repairAcceptance/index",
+    "pages/installProduct/index",
+    "pages/productTrain/index",
+    "pages/maintainProcess/index",
+    "pages/maintainReport/index",
+    "pages/selectDepart/index",
+    "pages/webView/index",
+    "pages/maintain/index",
+    "pages/maintain/ultrasonic",
+    "pages/maintain/endoscope",
+    "pages/maintain/inspect",
+    "pages/hositoryList/index",
+    "pages/queryInfo/index",
+    "pages/funConfig/index",
+    "pages/funConfig/details",
+    "pages/proRecord/index",
+    "pages/createHospital/index",
+    "pages/repairRecord/index",
+    "pages/repairRecord/accessory",
+    "pages/packageChecklist/index",
+    "pages/queryHospital/index",
+    "pages/queryHospital/details"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#009FAB",
+    "navigationBarTitleText": "Sonoscape CCM",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#009fab"
+  },
+  "tabBar": {
+    "color": "#009FAB",
+    "selectedColor": "#07C160",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/home.png",
+        "selectedIconPath": "images/home-selected.png"
+      },
+      {
+        "pagePath": "pages/task/index",
+        "text": "工程师现场",
+        "iconPath": "images/task.png",
+        "selectedIconPath": "images/task_selected.png"
+      },
+      {
+        "pagePath": "pages/my/index",
+        "text": "我的",
+        "iconPath": "images/user.png",
+        "selectedIconPath": "images/user-selected.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

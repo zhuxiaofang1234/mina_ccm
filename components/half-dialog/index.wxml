@@ -1,0 +1,17 @@
+<!--components/half-dialog/index.wxml-->
+<view class="salary-modal">
+  <view class="salary-back {{isShow? 'active' : ''}}"></view>
+  <view class="salary-content {{isShow ? 'active' : ''}}">
+    <view class="loading-page" hidden="{{!loading}}">
+      <mp-loading type="circle"></mp-loading>
+    </view>
+    <view class="salary-modal-title">
+      <view class="salary-list-title">{{title}}</view>
+      <view class="salary-btns">
+        <text bindtap="handleClose">取消</text>
+        <text bindtap="handleSure">确定</text>
+      </view>
+    </view>
+    <slot name="content"></slot>
+  </view>
+</view>

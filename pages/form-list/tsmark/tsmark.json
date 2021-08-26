@@ -1,0 +1,7 @@
+{
+  "usingComponents": {
+    "mp-form": "../../../weui/form/form",
+    "mp-toptips": "../../../weui/toptips/toptips"
+  },
+  "navigationBarTitleText": "评价"
+}

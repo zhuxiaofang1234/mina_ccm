@@ -1,0 +1,7 @@
+/*分割线样式*/
+.divLine{
+  background: #009FAB;
+  width: 100%;
+  height: 5rpx;
+  margin: 10rpx;
+}

@@ -1,0 +1,13 @@
+/* pages/form-list/tsmark/tsmark.wxss */
+.radio {
+  margin-right: 20rpx;
+}
+
+textarea {
+    width: 700rpx;
+    padding: 25rpx 0;
+}
+.textarea-wrp {
+    padding: 0 25rpx;
+    background-color: #fff;
+}

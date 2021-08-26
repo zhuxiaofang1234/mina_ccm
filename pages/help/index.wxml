@@ -1,0 +1,13 @@
+<!--pages/help/index.wxml-->
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">反馈您的问题</view>
+        <view class="page__desc">Bug、建议等提交</view>
+    </view>
+    <view class="page__bd page__bd_spacing">
+
+        <view class="button-sp-area">
+            <button class="weui-btn" open-type="feedback" type="default" plain="true">反馈</button>
+        </view>
+    </view>
+</view>

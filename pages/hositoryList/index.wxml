@@ -1,0 +1,52 @@
+<tab-bar tabs="{{tabs}}" bindclick="getIndex" activeIndex="{{activeIndex}}">
+</tab-bar>
+<view class="weui-tab__panel">
+  <view class="weui-search-bar">
+    <view class="weui-search-bar__form">
+      <view class="weui-search-bar__box">
+        <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+        <input type="text" class="weui-search-bar__input" placeholder="请输入设备SN" confirm-type="搜索" bindconfirm="search"
+          value="{{inputVal}}" bindinput="inputTyping" />
+        <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+          <icon type="clear" size="18"></icon>
+        </view>
+      </view>
+    </view>
+    <view class="weui-search-bar__cancel-btn" bindtap="getSerachResult">搜索</view>
+  </view>
+  <view class="search-content">
+    <mp-cells class="searchbar-result" wx:if="{{recordList.length > 0}}">
+      <mp-cell bindtap="selectResult" data-index="{{index}}" data-id="{{item.id}}" wx:for="{{recordList}}" hover>
+        <view class="location">
+          <text class="sn" wx:if="{{activeIndex==0}}"><text style="margin-right:10rpx">设备SN</text><text class="snNo">{{item.sn}}</text></text>
+          <text class="sn" wx:else><text style="margin-right:10rpx">设备SN</text>{{item.sn}}</text>
+          --
+          <block wx:if="{{activeIndex==0}}">
+            <text wx:if="{{item.deviceType ==1}}">超声</text>
+            <text wx:elif="{{item.deviceType ==2}}">内镜</text>
+            <text wx:elif="{{item.deviceType ==3}}">检验</text>
+          </block>
+          <block wx:else>
+            <text wx:if="{{item.productLine ==1}}">超声</text>
+            <text wx:elif="{{item.productLine ==2}}">内镜</text>
+            <text wx:elif="{{item.productLine ==3}}">检验</text>
+          </block>
+        </view>
+        <view class="location-details"><text
+            style="margin-right:40rpx">{{item.createUser}}</text><text>{{item.createTime}}</text></view>
+      </mp-cell>
+    </mp-cells>
+    <view wx:else>
+      <no-data></no-data>
+    </view>
+  </view>
+  <view class="loading-container" hidden="{{!loadingShow}}">
+    <view class="weui-loadmore" wx:if="{{loadingStatus}}">
+      <view class="weui-loading"></view>
+      <view class="weui-loadmore__tips">正在加载</view>
+    </view>
+    <view class="weui-loadmore weui-loadmore_line" wx:else>
+      <view class="weui-loadmore__tips weui-loadmore__tips_in-line">没有更多数据了</view>
+    </view>
+  </view>
+</view>

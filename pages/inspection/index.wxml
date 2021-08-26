@@ -1,0 +1,60 @@
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<view class="contain padding-40">
+  <view class="background-curve"></view>
+  <view class="card">
+    <view class="card-body">
+      <view class="fault-content">
+        <view class="content-title">1,市地电压,零地电压</view>
+        <view class="photo">
+          <uploader max="1"
+            imgList="{{voltageBeanVoList[0]['beforeProcessPic'] ?  voltageBeanVoList[0]['beforeProcessPic'] : []}}"
+            data-type="voltage" bindUpload="uploadBeforeImg" bindDelete="deleteBeforeImg" binddisableBtn="disableBtn">
+            <view class="uploader-wrap">
+              <view class="iconfont icon-tubiaozhizuo-"></view>
+              <view class="uploder-desc">实地电压</view>
+            </view>
+          </uploader>
+          <uploader max="1" imgList="{{voltageBeanVoList[0]['afterProcessPic'] ? voltageBeanVoList[0]['afterProcessPic']:[]}}"
+            data-type="voltage" bindUpload="uploadAfterImg" bindDelete="deleteAfterImg" binddisableBtn="disableBtn">
+            <view class="uploader-wrap">
+              <view class="iconfont icon-tubiaozhizuo-"></view>
+              <view class="uploder-desc">零地电压</view>
+            </view>
+          </uploader>
+        </view>
+        <view class="textarea-wrap">
+          <view class="label-text">处理说明：</view>
+          <textarea placeholder="请输入内容" placeholder-class="placeholder-text" data-type="voltage" class="textarea"
+            bindinput="getProcessDesc" value="{{voltageBeanVoList[0]['processDesc']}}"/>
+          </view>
+      </view>
+      <view class="fault-content">
+        <view class="content-title">2,测试数据</view>
+        <view class="photo">
+          <uploader max="1" imgList="{{testDataList[0]['beforeProcessPic'] ? testDataList[0]['beforeProcessPic'] :[] }}" data-type="testData" bindUpload="uploadBeforeImg" bindDelete="deleteBeforeImg"
+            binddisableBtn="disableBtn">
+            <view class="uploader-wrap">
+              <view class="iconfont icon-tubiaozhizuo-"></view>
+              <view class="uploder-desc">处理前</view>
+            </view>
+          </uploader>
+          <uploader max="1" imgList="{{testDataList[0]['afterProcessPic'] ? testDataList[0]['afterProcessPic'] :[]}}" data-type="testData" bindUpload="uploadAfterImg" bindDelete="deleteAfterImg"
+            binddisableBtn="disableBtn">
+            <view class="uploader-wrap">
+              <view class="iconfont icon-tubiaozhizuo-"></view>
+              <view class="uploder-desc">处理后</view>
+            </view>
+          </uploader>
+        </view>
+        <view class="textarea-wrap">
+          <view class="label-text">处理说明：</view>
+          <textarea placeholder="请输入内容" placeholder-class="placeholder-text" data-type="testData" class="textarea" bindinput="getProcessDesc" value="{{testDataList[0]['processDesc']}}" />
+          </view>
+      </view>
+    </view>
+  </view>
+  <view class="form-footer">
+    <button type="primary" class="custom-btn small" hover-class="btn-active" bindtap="goback">上一步</button>
+    <button type="primary" class="custom-btn small" hover-class="btn-active" bindtap="nextStep" disabled="{{btnDisabled}}">下一步</button>
+  </view>
+</view>

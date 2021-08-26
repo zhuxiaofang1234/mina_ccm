@@ -1,0 +1,12 @@
+<view class="page">
+    <view class="page__hd">
+        <view class="page__title">设置您的小程序授权</view>
+        <view class="page__desc">授权用户信息、访问相机、地理位置等信息</view>
+    </view>
+    <view class="page__bd page__bd_spacing">
+
+        <view class="button-sp-area">
+            <button class="weui-btn" type="default" loading plain="true">设置</button>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,6 @@
+{
+  "component": true,
+  "usingComponents": {
+    "vant-empty": "/components/empty"
+  }
+}

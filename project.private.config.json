@@ -1,0 +1,179 @@
+{
+  "setting": {},
+  "condition": {
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": -1,
+          "name": "repair",
+          "pathName": "pages/repair/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "fault",
+          "pathName": "pages/fault/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "repairAcceptance",
+          "pathName": "pages/repairAcceptance/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "install",
+          "pathName": "pages/install/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "installProduct",
+          "pathName": "pages/installProduct/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "equipmentMaintain",
+          "pathName": "pages/equipmentMaintain/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "maintainProcess",
+          "pathName": "pages/maintainProcess/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "maintainReport",
+          "pathName": "pages/maintainReport/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "productTrain",
+          "pathName": "pages/productTrain/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "selectHospital",
+          "pathName": "pages/selectHospital/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/return/index",
+          "pathName": "pages/return/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "inspection",
+          "pathName": "pages/inspection/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "selectDepart",
+          "pathName": "pages/selectDepart/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "register",
+          "pathName": "pages/register/register",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/repair/ultrasonic",
+          "pathName": "pages/repair/ultrasonic",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/my/index",
+          "pathName": "pages/my/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "hositoryList",
+          "pathName": "pages/hositoryList/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/proRecord/index",
+          "pathName": "pages/proRecord/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/createHospital/index",
+          "pathName": "pages/createHospital/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/fault/index",
+          "pathName": "pages/fault/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/createHospital/index",
+          "pathName": "pages/createHospital/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/createHospital/index",
+          "pathName": "pages/createHospital/index",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "endoscope",
+          "pathName": "pages/maintain/endoscope",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "pages/maintain/endoscope",
+          "pathName": "pages/maintain/endoscope",
+          "query": "",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

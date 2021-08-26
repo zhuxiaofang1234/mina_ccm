@@ -1,0 +1,10 @@
+{
+  "component": true,
+  "usingComponents": {
+    "mp-cell": "../../weui/cell/cell",
+    "mp-form": "../../../weui/form/form",
+    "mp-toptips": "../../weui/toptips/toptips",
+    "mp-cells": "../../../weui/cells/cells",
+    "mp-searchbar": "../../weui/searchbar/searchbar"
+  }
+}

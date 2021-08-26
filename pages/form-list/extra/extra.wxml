@@ -1,0 +1,211 @@
+<mp-toptips msg="{{error}}" type="error" show="{{error}}">
+</mp-toptips>
+<view>
+<mp-form id="extra-form" rules="{{rules}}" models="{{formData}}">
+  <view class="page-body">
+    <view class="page-section">
+
+    <!-- start -->
+    <view class="weui-cells__title"></view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">故障类别</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker mode="selector" range-key="label" value="{{parentFaultyIndex}}" range="{{parentFaulty}}">
+              <view class="weui-input">{{parentFaulty[parentFaultyIndex].label}}</view>
+            </picker>
+          </view>
+        </view>
+      </view>
+  <!-- end -->
+      <!-- start -->
+    <view class="weui-cells__title"></view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">一级故障</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker mode="selector" range-key="label" value="{{firstFaultyIndex}}" range="{{firstFaulty}}" bindchange="bindFirstFaultyChange">
+              <view class="weui-input">{{firstFaulty[firstFaultyIndex].label}}</view>
+            </picker>
+          </view>
+        </view>
+      </view>
+  <!-- end -->
+      <!-- start -->
+    <view class="weui-cells__title"></view>
+      <view class="weui-cells weui-cells_after-title" wx:if="{{secondFaulty.length > 0}}">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">二级故障</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker mode="selector" range-key="label" value="{{secondFaultyIndex}}" range="{{secondFaulty}}" bindchange="bindSecondFaultyChange">
+              <view class="weui-input">{{secondFaulty[secondFaultyIndex].label}}</view>
+            </picker>
+          </view>
+        </view>
+      </view>
+  <!-- end -->
+    <!-- start -->
+    <view class="weui-cells__title">配件使用情况</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">当前选择</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker mode="selector" range-key="desc" value="{{accIndex}}" range="{{accessory_usage}}" bindchange="bindAccUsageChange">
+              <view class="weui-input">{{accessory_usage[accIndex].desc}}</view>
+            </picker>
+          </view>
+        </view>
+      </view>
+  <!-- end -->
+       <!-- start -->
+    <view class="weui-cells__title">维修结果</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">当前选择</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker mode="selector" range-key="desc" value="{{site_resultIndex}}" range="{{siteResults}}" bindchange="bindFixResultChange">
+              <view class="weui-input">{{siteResults[site_resultIndex].desc}}</view>
+            </picker>
+          </view>
+        </view>
+      </view>
+  <!-- end -->
+<!-- 预约上门日期start -->
+    <view class="weui-cells__title">预约上门日期</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">当前选择</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker mode="date" data-field="site_ordered_at_date" value="{{date}}" start="2018-08-01" end="9999-12-31" bindchange="bindDateChange">
+              <view class="weui-input">{{date}}</view>
+            </picker>
+          </view>
+        </view>
+      </view>
+  <!-- 预约上门日期end -->
+<!-- 预约上门时间start -->
+      <view class="weui-cells__title">预约上门时间</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">当前选择</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker mode="time" data-field="site_ordered_at_time" value="{{time}}" start="00:00" end="23:59" bindchange="bindTimeChange">
+              <view class="weui-input">{{time}}</view>
+            </picker>
+          </view>
+        </view>
+      </view>
+  <!-- 预约时间日期end -->
+  <!-- start -->
+      <view class="weui-cells__title">路途时间</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <input class="weui-input" bindinput="formInputChange" data-field="site_traffic_duration" type="number" placeholder="数字输入框 单位为小时" />
+        </view>
+      </view>
+  <!-- end -->
+  <!-- start -->
+  <view class="weui-cells__title">ECN编号</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <input class="weui-input" bindinput="formInputChange" data-field="site_ecn" maxlength="15" placeholder="ECN编号" />
+        </view>
+  </view>
+  <!-- end -->
+  <!-- start -->
+  <view class="weui-cells__title">现场处理描述</view>
+      <view class="textarea-wrp">
+        <textarea bindinput="formInputChange" data-field="treatment_desc" placeholder="填写出现频率、复现情况、排除过程、处理方案、处理结果" auto-height />
+      </view>
+  <!-- end -->
+  <!-- 工作时长start -->
+      <view class="weui-cells__title">工作时长</view>
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">服务日期</view>
+          </view>
+          <view class="weui-cell__bd"> 
+            <picker mode="date" value="{{service_date}}" data-field="service_date" start="2020-01-01" end="9999-12-31" bindchange="bindServiceDateChange">
+              <view class="weui-input">{{service_date}}</view>
+            </picker>
+          </view>
+        </view>
+      </view>
+      <!-- <view class="weui-cells__title">服务时间</view> -->
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">开始时间</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker mode="time" value="{{service_time}}" data-field="service_time" start="06:00" end="23:59" bindchange="bindServiceTimeChange">
+              <view class="weui-input">{{service_time}}</view>
+            </picker>
+          </view>
+        </view>
+      </view>
+      <!-- <view class="weui-cells__title">结束时间</view> -->
+      <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cell weui-cell_input">
+          <view class="weui-cell__hd">
+            <view class="weui-label">结束时间</view>
+          </view>
+          <view class="weui-cell__bd">
+            <picker mode="time" value="{{end_service_time}}" data-field="end_service_time" start="{{service_time}}" end="23:59" bindchange="bindEndTimeChange">
+              <view class="weui-input">{{end_service_time}}</view>
+            </picker>
+          </view>
+        </view>
+      </view>
+      <mp-cell title="" ext-class="">
+        <mp-icon icon="add" bindtap="addServiceDuration" color="black" size="24"></mp-icon>
+     </mp-cell>
+  <!-- 工作时长end -->
+  <!-- 工作时长预览开始 -->
+   <!-- 左滑删除 -->
+    <view class="weui-form-preview__bd" wx:if="{{formData.site_service_duration.length > 0}}" wx:for="{{formData.site_service_duration}}" wx:for-index="idx" wx:key="idx">
+    <mp-slideview show="{{false}}" buttons="{{slideButtons}}" wx:key="unque" data-id="{{idx}}" bindbuttontap="removeDurationTap">
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">序号</view>
+          <view class="weui-form-preview__value">{{idx + 1}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">日期{{idx + 1}}</view>
+          <view class="weui-form-preview__value">{{item.date}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">开始时间{{idx + 1}}</view>
+          <view class="weui-form-preview__value">{{item.duration[0]}}</view>
+      </view>
+      <view class="weui-form-preview__item">
+          <view class="weui-form-preview__label">结束时间{{idx + 1}}</view>
+          <view class="weui-form-preview__value">{{item.duration[1]}}</view>
+      </view>
+      </mp-slideview>
+    </view>
+  <!-- 工作时长预览结束 -->
+
+
+    <view class="weui-btn-area">
+            <button class="weui-btn" type="primary" bindtap="submitForm">提交</button>
+    </view>
+
+    </view>
+  </view>
+  </mp-form>
+</view>
