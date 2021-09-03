@@ -447,17 +447,14 @@ Page({
       return
     }
     let formFlag;
-    console.log(endoscopeJson)
     endoscopeJson.forEach(function (item) {
-      console.log(item['angularSurveying'].length);
-      if ((!item['seriesId'] || !item['sn'] || !item['headEndShield'].length==0 || item['angularSurveying'].length==0 || item['siromb'].length==0)) {
+      if ((!item['seriesId'] || !item['sn'] || item['headEndShield'].length==0 || item['angularSurveying'].length==0 || item['siromb'].length==0)) {
         formFlag = false
         return 
       } else {
         formFlag = true
       }
     });
-    console.log(formFlag)
     if (!formFlag) {
       this.setData({
         error: '请先完善镜体信息'
