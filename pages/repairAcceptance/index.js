@@ -156,7 +156,7 @@ Page({
     postData.mobilePhone = '+86' + wx.getStorageSync('mobile')
     var curTime = util.formatTime(myDate).substring(10);
     postData.createUser = this.data.createUser;
-    postData.createTime = this.data.date + curTime;
+    postData.serviceTime = this.data.date + curTime;
     console.log(postData)
     api.addServiceInfo(postData).then(res => {
       if (res.code == 0) {

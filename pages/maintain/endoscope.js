@@ -285,8 +285,10 @@ Page({
       this.getchangeData(index,type, imgList);
      }
   },
+
   //添加镜体
   addMirrorBody(){
+    console.log(this.data.mirrorBodyObj);
     //表单验证
     if(!this.data.mirrorBodyObj.seriesId){
       this.setData({
@@ -300,6 +302,25 @@ Page({
       });
       return
     }
+    if (this.data.mirrorBodyObj.angularSurveying.length == 0) {
+      this.setData({
+        error: '请上传角度测量'
+      });
+      return
+    };
+    if (this.data.mirrorBodyObj.headEndShield.length == 0) {
+      this.setData({
+        error: '请上传头端罩'
+      });
+      return
+    };
+    if (this.data.mirrorBodyObj.siromb.length == 0) {
+      this.setData({
+        error: '请上传镜体点检报告'
+      });
+      return
+    };
+
     this.data.endoscopeJson.push(this.data.mirrorBodyObj);
     this.setData({
       endoscopeJson: this.data.endoscopeJson,
@@ -333,7 +354,6 @@ Page({
       content: '确定要删除该镜体信息吗？',
       success (res) {
         if (res.confirm) {
-          console.log('删除')
           that.data.endoscopeJson.splice(index,1)
           that.setData({
             endoscopeJson: that.data.endoscopeJson
@@ -427,16 +447,20 @@ Page({
       return
     }
     let formFlag;
+    console.log(endoscopeJson)
     endoscopeJson.forEach(function (item) {
-      if ((!item['seriesId'] || !item['sn'])) {
+      console.log(item['angularSurveying'].length);
+      if ((!item['seriesId'] || !item['sn'] || !item['headEndShield'].length==0 || item['angularSurveying'].length==0 || item['siromb'].length==0)) {
         formFlag = false
+        return 
       } else {
         formFlag = true
       }
     });
+    console.log(formFlag)
     if (!formFlag) {
       this.setData({
-        error: '镜体型号和镜体SN必填'
+        error: '请先完善镜体信息'
       });
       return
     }
@@ -502,7 +526,7 @@ Page({
     postData.endoscopeJson = maintenanceData.endoscopeJson;
     postData.mobilePhone = '+86' + wx.getStorageSync('mobile');
     postData.createUser = this.data.createUser;
-    postData.createTime = this.data.date + curTime;
+    postData.serviceTime = this.data.date + curTime;
     api.maintenance(postData).then(res => {
       if (res.code == 0) {
         const id = res.data.id;

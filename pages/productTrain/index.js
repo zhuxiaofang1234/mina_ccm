@@ -321,7 +321,7 @@ Page({
     var myDate = new Date();
     var curTime = util.formatTime(myDate).substring(10);
     postData.createUser = this.data.createUser;
-    postData.createTime = this.data.date + curTime;
+    postData.serviceTime = this.data.date + curTime;
     api.stockinstall(postData).then(res => {
       if (res.code == 0) {
         var idArr = [];

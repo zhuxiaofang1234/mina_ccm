@@ -48,8 +48,6 @@ var hospitalLevel = function(status){
     } 
   }
   return level
-
-
 };
 
 
