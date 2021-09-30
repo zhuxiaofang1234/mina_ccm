@@ -1,0 +1,73 @@
+/* pages/maintain/components/endoscope.wxss */
+@import '../../../styles/task.wxss';
+.uploader_preview-image{
+  position: relative;
+  display: block;
+  width: 160rpx;
+  height: 160rpx;
+  overflow: hidden;
+}
+
+.image__img{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.uploader_preview{
+  display: flex;
+  flex-wrap: wrap
+}
+
+.uploader_preview .uploader-item:not(:last-child){
+  margin-right:10rpx;
+  margin-bottom:16rpx;
+}
+
+.uploader-item .upload-title {
+  text-align: center;
+  font-size: 24rpx;
+  color: #323232;
+  margin-top:10rpx;
+}
+
+/**镜体信息**/
+.fault-content {
+  border: 1px dotted #bbb;
+  padding: 20rpx;
+  font-size: 24rpx;
+  margin-bottom: 20rpx;
+  position:relative;
+}
+
+.fault-content .form-item{
+  padding:10rpx
+}
+
+
+.form-item>.label-text{
+  width:260rpx;
+}
+
+.label-text.label-title{
+  padding-left:-10rpx;
+  font-size:28rpx;
+  font-weight: 700;
+  display: inline-block;
+  vertical-align: middle;
+  margin-right:50rpx;
+}
+
+.mirrorItem_content{
+  padding-left:20rpx;
+}
+
+.text-wrap{
+  border:1px dotted #ddd;
+  min-height:160rpx;
+  font-size:24rpx;
+  padding:20rpx
+}
+.textarea-wrap .label-text{
+  margin-top:16rpx;
+  font-weight: bold;
+}

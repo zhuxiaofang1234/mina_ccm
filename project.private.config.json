@@ -172,6 +172,18 @@
           "pathName": "pages/maintain/endoscope",
           "query": "",
           "scene": null
+        },
+        {
+          "name": "details",
+          "pathName": "pages/maintain/details",
+          "query": "",
+          "scene": null
+        },
+        {
+          "name": "signature",
+          "pathName": "pages/signature/index",
+          "query": "",
+          "scene": null
         }
       ]
     }

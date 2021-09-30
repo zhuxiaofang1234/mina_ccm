@@ -5,10 +5,7 @@
     <mp-cell value="主机PN号" footer="{{item.devicePn || '-'}}"></mp-cell>
     <mp-cell value="主机型号" footer="{{item.deviceModel ||'-'}}"></mp-cell>
     <mp-cell value="订单编号" footer="{{item.orderSn || '-'}}"></mp-cell>
-    <!-- <mp-cell value="探头数量" footer="{{item.probeNum || '-'}}"></mp-cell>
-    <mp-cell value="探头SN号" footer="{{item.probeSn || '-'}}"></mp-cell>
-    <mp-cell value="探头PN号" footer="{{item.probePn || '-'}}"></mp-cell>
-    <mp-cell value="探头型号" footer="{{item.probeModel || '-'}}"></mp-cell> -->
+  
     <mp-cell value="探头数量" footer="{{item.probes.length}}"></mp-cell>
     <view class="weui-form-preview">
       <view class="weui-form-preview__bd" wx:if="{{item.probes.length!==0}}" wx:for="{{item.probes}}" wx:for-item="item1">

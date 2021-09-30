@@ -1,0 +1,19 @@
+<view class="weui-panel">
+  <view class="weui-panel__bd">
+    <view class="weui-media-box weui-media-box_text" wx:for="{{maintainData}}" wx:for-index="index0" wx:for-item="item0">
+      <view class="weui-media-box__title weui-media-box__title_in-text">{{index0+1}},{{item0.title}}</view>
+      <view class="uploader_preview">
+        <block wx:for="{{item0.dataArr}}" wx:for-index="idx" wx:for-item="item1">
+          <view class="uploader-item" wx:for="{{item1.imgList}}">
+            <view class="uploader_preview-image" data-list="{{item1.imgList}}" data-index="{{index}}"
+              bindtap="previewImage">
+              <image src="{{item.url}}" class="image__img" mode="cover">
+              </image>
+            </view>
+            <view class="upload-title">{{item1.title}}</view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </view>
+</view>

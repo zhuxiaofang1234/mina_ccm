@@ -24,13 +24,8 @@
     "pages/repair/endoscope",
     "pages/repair/inspect",
     "pages/install/index",
-    "pages/fault/index",
-    "pages/inspection/index",
-    "pages/repairAcceptance/index",
     "pages/installProduct/index",
     "pages/productTrain/index",
-    "pages/maintainProcess/index",
-    "pages/maintainReport/index",
     "pages/selectDepart/index",
     "pages/webView/index",
     "pages/maintain/index",
@@ -47,7 +42,11 @@
     "pages/repairRecord/accessory",
     "pages/packageChecklist/index",
     "pages/queryHospital/index",
-    "pages/queryHospital/details"
+    "pages/queryHospital/details",
+    "pages/install/details",
+    "pages/repair/details",
+    "pages/maintain/details",
+    "pages/signature/index"
   ],
   "window": {
     "backgroundTextStyle": "light",

@@ -1,0 +1,114 @@
+<view class="weui-panel">
+  <view class="weui-panel__bd">
+    <view class="weui-media-box weui-media-box_text">
+      <view class="weui-media-box__title weui-media-box__title_in-text">1,主机和环境检查</view>
+      <view class="uploader_preview">
+        <block wx:for="{{endoscopeArr}}" wx:for-index="idx" wx:for-item="item1">
+          <view class="uploader-item" wx:for="{{item1.imgList}}">
+            <view class="uploader_preview-image" data-list="{{item1.imgList}}" data-index="{{index}}"
+              bindtap="previewImage">
+              <image src="{{item.url}}" class="image__img" mode="cover">
+              </image>
+            </view>
+            <view class="upload-title">{{item1.title}}</view>
+          </view>
+        </block>
+      </view>
+    </view>
+    <view class="weui-media-box weui-media-box_text">
+      <view class="weui-media-box__title weui-media-box__title_in-text">2,镜体</view>
+      <view class="fault-content" wx:for="{{endoscopeJson}}" wx:for-index="index" wx:for-item="mirrorItem">
+        <view class="label-text label-title">镜体{{index+1}}:</view>
+        <view class="label-text label-title">{{mirrorItem.seriesId.name}}</view>
+        <view class="label-text label-title">{{mirrorItem.sn}}</view>
+        <view class="mirrorItem_content">
+          <view class="form-item">
+            <view class="label-text">1.测漏:</view>
+            <view class="from-wrap">
+              <view class="section section_gap">
+                <radio-group class="radio-group" data-index="{{index+1}}" data-type="leakChecking"
+                  bindchange="radioChange">
+                  <radio class="radio" style="transform:scale(0.8)" wx:for-items="{{leakCheckingItems}}" wx:key="name"
+                    value="{{item.value}}" checked="{{item.value==mirrorItem.leakChecking}}">
+                    <text>{{item.name}}</text>
+                  </radio>
+                </radio-group>
+              </view>
+            </view>
+          </view>
+          <view class="form-item">
+            <view class="label-text">2.图像:</view>
+            <view class="from-wrap">
+              <view class="section section_gap">
+                <radio-group class="radio-group" data-index="{{index+1}}" data-type="image" bindchange="radioChange">
+                  <radio class="radio" style="transform:scale(0.8)" wx:for-items="{{imageItems}}" wx:key="name"
+                    value="{{item.value}}" checked="{{item.value==mirrorItem.image}}">
+                    <text>{{item.name}}</text>
+                  </radio>
+                </radio-group>
+              </view>
+            </view>
+          </view>
+          <view class="form-item">
+            <view class="label-text">3.送气送水:</view>
+            <view class="from-wrap">
+              <view class="section section_gap">
+                <radio-group class="radio-group" data-index="{{index+1}}" data-type="airSupplyWater"
+                  bindchange="radioChange">
+                  <radio class="radio" style="transform:scale(0.8)" wx:for-items="{{airSupplyWaterItems}}" wx:key="name"
+                    value="{{item.value}}" checked="{{item.value==mirrorItem.airSupplyWater}}">
+                    <text>{{item.name}}</text>
+                  </radio>
+                </radio-group>
+              </view>
+            </view>
+          </view>
+          <view class="form-item">
+            <view class="label-text">4.吸引功能:</view>
+            <view class="from-wrap">
+              <view class="section section_gap">
+                <radio-group class="radio-group" data-index="{{index+1}}" data-type="attractiveFunction"
+                  bindchange="radioChange">
+                  <radio class="radio" style="transform:scale(0.8)" wx:for-items="{{attractiveFunctionItems}}"
+                    wx:key="name" value="{{item.value}}" checked="{{item.value==mirrorItem.attractiveFunction}}">
+                    <text>{{item.name}}</text>
+                  </radio>
+                </radio-group>
+              </view>
+            </view>
+          </view>
+          <view class="uploader_preview">
+            <view class="uploader-item" wx:for="{{mirrorItem.angularSurveying}}">
+              <view class="uploader_preview-image" data-list="{{mirrorItem.angularSurveying}}" data-index="{{index}}"
+                bindtap="previewImage">
+                <image src="{{item.url}}" class="image__img" mode="cover">
+                </image>
+              </view>
+              <view class="upload-title">角度测量</view>
+            </view>
+            <view class="uploader-item" wx:for="{{mirrorItem.headEndShield}}">
+              <view class="uploader_preview-image" data-list="{{mirrorItem.headEndShield}}" data-index="{{index}}"
+                bindtap="previewImage">
+                <image src="{{item.url}}" class="image__img" mode="cover">
+                </image>
+              </view>
+              <view class="upload-title">头端罩</view>
+            </view>
+            <view class="uploader-item" wx:for="{{mirrorItem.siromb}}">
+              <view class="uploader_preview-image" data-list="{{mirrorItem.siromb}}" data-index="{{index}}"
+                bindtap="previewImage">
+                <image src="{{item.url}}" class="image__img" mode="cover">
+                </image>
+              </view>
+              <view class="upload-title">镜体点检报告</view>
+            </view>
+          </view>
+        </view>
+        <view class="textarea-wrap">
+          <view class="label-text">保养建议：</view>
+          <view class="text-wrap">{{mirrorItem.maintenanceAdvice}}</view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>

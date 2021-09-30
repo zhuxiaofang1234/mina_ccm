@@ -469,8 +469,11 @@ Page({
        date: curDate
      })
     
-    this.setData({
-      showOneButtonDialog: true,
+    // this.setData({
+    //   showOneButtonDialog: true,
+    // })
+    wx.navigateTo({
+      url: '/pages/maintain/details',
     })
   },
 

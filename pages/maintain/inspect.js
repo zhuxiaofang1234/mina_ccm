@@ -147,9 +147,9 @@ Page({
       maintainEffect: false
     })
   },
+
   //设备性能检查
   toPerformance(e) {
-    //验证运行环境检查
     if (this.data.cmdo.length == 0) {
       this.setData({
         error: '请上传科室全览的图片'
@@ -390,8 +390,11 @@ Page({
        date: curDate
      })
     
-    this.setData({
-      showOneButtonDialog: true,
+    // this.setData({
+    //   showOneButtonDialog: true,
+    // })
+    wx.navigateTo({
+      url: '/pages/maintain/details',
     })
   },
 

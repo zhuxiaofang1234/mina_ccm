@@ -34,7 +34,3 @@
     </view>
   </view>
 </view>
-	<!--添加医院悬浮按钮-->
-	<view class="add-wrap" wx:if="{{type=='details'}}">
-		<image class="add-image" src="/images/index_releasebtn@2x.png" bindtap="toCreateHospital"></image>
-	</view>

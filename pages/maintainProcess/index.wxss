@@ -1,4 +1,0 @@
-/* pages/maintainProcess/index.wxss */
-@import '../../styles/task.wxss';
-@import '../../styles/icon.wxss';
-

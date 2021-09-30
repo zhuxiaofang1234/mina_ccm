@@ -81,6 +81,7 @@ textarea.addressArea{
   border:1px dashed #ddd;
   background-color: #fff;
 }
+
 button[plain].addbtn{
   margin-top:20rpx;
   color:#009fab;

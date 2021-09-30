@@ -98,6 +98,7 @@ Component({
                 imgList[curIndex].code = JSON.parse(item.data).data.fileId;
               }
             });
+
             //更新上传状态
             that.setData({
               imgList: imgList
@@ -110,6 +111,7 @@ Component({
         }
       })
     },
+    
     uploadFilePromise(filePath) {
       var host = CONFIG.domain;
       var url = host + '/h/data/miniofile/upload';
