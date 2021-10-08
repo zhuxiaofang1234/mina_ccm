@@ -164,7 +164,6 @@ Page({
   },
   //确定
   tapDialogButton: function (e) {
-    console.log(this.data.productLine)
     var that = this;
     const type = e.detail.index;
     if (type == 0) {
@@ -233,6 +232,7 @@ Page({
     postData.hmkpa = this.getCode(maintenanceData.hmkpa);
     postData.hmtpca = this.getCode(maintenanceData.hmtpca);
     postData.hml5a = this.getCode(maintenanceData.hml5a);
+    postData.hmQR = this.getCode(maintenanceData.hmQR);
     postData.hmoa = this.getCode(maintenanceData.hmoa);
 
     postData.mobilePhone = '+86' + wx.getStorageSync('mobile');
@@ -264,6 +264,7 @@ Page({
     postData.emhsir = this.getCode(maintenanceData.emhsir); //主机点检报告
     postData.emli = this.getCode(maintenanceData.emli); //导光接口
     postData.emd = this.getCode(maintenanceData.emd); //消毒液
+    postData.emQR = this.getCode(maintenanceData.emQR); //二维码粘贴
     postData.emoe = this.getCode(maintenanceData.emoe); ////其它
 
     //镜体
@@ -327,6 +328,7 @@ Page({
     postData.cmpoifpa = this.getCode(maintenanceData.cmpoifpa);
     postData.cmntra = this.getCode(maintenanceData.cmntra);
     postData.cmvia = this.getCode(maintenanceData.cmvia);
+    postData.cmQR = this.getCode(maintenanceData.cmQR); //二维码粘贴
     postData.cmoa = this.getCode(maintenanceData.cmoa);
 
     postData.mobilePhone = '+86' + wx.getStorageSync('mobile');
