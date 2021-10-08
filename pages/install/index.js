@@ -30,7 +30,7 @@ Page({
         value: 3,
       },
       {
-        name: '借用',
+        name: '备用机',
         value: 4
       },
     ],

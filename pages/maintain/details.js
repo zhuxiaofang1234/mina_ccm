@@ -239,6 +239,7 @@ Page({
     postData.createUser = this.data.createUser;
     postData.serviceTime = this.data.date + curTime;
     postData.signature = this.data.src; //签名
+    postData.signatureType = this.data.signatureType; //签名类型
 
     this.submit_data(postData);
 
@@ -267,18 +268,20 @@ Page({
     postData.emQR = this.getCode(maintenanceData.emQR); //二维码粘贴
     postData.emoe = this.getCode(maintenanceData.emoe); ////其它
 
+
     //镜体
     maintenanceData.endoscopeJson.forEach((item) => {
       item.seriesId = item.seriesId.name;
-      item.angularSurveying = that.getCode(item.angularSurveying);
-      item.headEndShield = that.getCode(item.headEndShield);
-      item.siromb = that.getCode(item.siromb);
+      item.angularSurveying = this.getCode(item.angularSurveying);
+      item.headEndShield = this.getCode(item.headEndShield);
+      item.siromb = this.getCode(item.siromb);
     });
     postData.endoscopeJson = maintenanceData.endoscopeJson;
     postData.mobilePhone = '+86' + wx.getStorageSync('mobile');
     postData.createUser = this.data.createUser;
     postData.serviceTime = this.data.date + curTime;
     postData.signature = this.data.src; //签名
+    postData.signatureType = this.data.signatureType; //签名类型
 
     this.submit_data(postData);
   },
@@ -335,9 +338,8 @@ Page({
     postData.createUser = this.data.createUser;
     postData.serviceTime = this.data.date + curTime;
     postData.signature = this.data.src; //签名
-
+    postData.signatureType = this.data.signatureType; //签名类型
     this.submit_data(postData);
-
   },
 
 

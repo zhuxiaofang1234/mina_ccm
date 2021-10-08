@@ -23,16 +23,14 @@
   margin-left:50rpx;
 }
 .section.section_gap .radio-group{
-  margin-left:30rpx;
+  margin-left:10rpx;
   box-sizing: border-box;
 }
 .radio-group .radio{
  font-size: 32rpx;
  width:33%
 }
-/* .installType.radio-group .radio:first-child{
-  width:42%;
-} */
+
 .snCells.weui-cell{
   padding:10rpx 32rpx;
 }
