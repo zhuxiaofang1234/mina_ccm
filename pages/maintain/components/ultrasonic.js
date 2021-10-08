@@ -126,6 +126,10 @@ Component({
               imgList: maintenanceData.hml5a
             },
             {
+              title: '二维码粘贴',
+              imgList: maintenanceData.hmQR
+            },
+            {
               title: '其它',
               imgList: maintenanceData.hmoa
             }
@@ -264,6 +268,10 @@ Component({
           {
             title: '版本信息',
             imgList: maintenanceData.cmvia
+          },
+          {
+            title: '二维码粘贴',
+            imgList: maintenanceData.cmQR
           },
           {
             title: '其它',

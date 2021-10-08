@@ -92,7 +92,6 @@ Page({
           success: res => { //成功的回调
             var data = {};
             data.userStampString = res.data;
-            console.log(res.data);
             // 返回上一页并刷新页面 
             var pages = getCurrentPages();
             var prevPage = pages[pages.length - 2];

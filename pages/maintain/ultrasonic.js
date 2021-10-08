@@ -1,8 +1,5 @@
 // 运行环境检查
 const app = getApp()
-const api = app.globalData.api
-const util = app.globalData.util
-
 Page({
   /**
    * 页面的初始数据
@@ -38,18 +35,12 @@ Page({
     hmtpca:[],//探头线缆
     hml5a:[],//现场5S
     hmoa:[],//其它
+    hmQR:[],//二维码粘贴
     btnDisabled: false,
     environment: true,
     performance: false,
     maintainRecord: false,
     maintainEffect: false,
-    buttons: [{
-      text: '取消'
-    }, {
-      text: '确定'
-    }],
-    showOneButtonDialog: false,
-    createUser: ""
   },
 
   /**
@@ -82,18 +73,6 @@ Page({
 
   },
 
-   //服务人员
-   getCreateUser: function (e) {
-    this.setData({
-      createUser: e.detail.value
-    })
-  },
-  //服务日期
-  bindDateChange: function (e) {
-    this.setData({
-      date: e.detail.value,
-    })
-  },
 
   //上传图片
   uploadImg(e) {
@@ -284,6 +263,7 @@ Page({
       hmkpa: maintenanceData.hmkpa ? maintenanceData.hmkpa : [], 
       hmtpca: maintenanceData.hmtpca ? maintenanceData.hmtpca : [],
       hml5a: maintenanceData.hml5a ? maintenanceData.hml5a : [], 
+      hmQR: maintenanceData.hmQR ? maintenanceData.hmQR : [], 
       hmoa: maintenanceData.hmoa ? maintenanceData.hmoa : [], 
     })
 
@@ -322,128 +302,16 @@ Page({
       });
       return
     }
-     //获取系统当前时间
-     var myDate = new Date();
-     var curTime = util.formatTime(myDate);
-     var curDate = curTime.substring(0, 10);
-     this.setData({
-       date: curDate
-     })
+    if (this.data.hmQR.length == 0) {
+      this.setData({
+        error: '请上传二维码粘贴图片'
+      });
+      return
+    }
     
-    // this.setData({
-    //   showOneButtonDialog: true,
-    // })
+     
     wx.navigateTo({
       url: '/pages/maintain/details',
     })
   },
-
-  //确定
-  tapDialogButton: function (e) {
-    const type = e.detail.index;
-    if (type == 0) {
-      this.setData({
-        showOneButtonDialog: false
-      })
-      return
-    }
-    if (type == 1 && !this.data.createUser) {
-      this.setData({
-        error: '请输入服务人员姓名'
-      });
-      return
-    }
-    this.setData({
-      showOneButtonDialog: false
-    })
-    wx.showLoading({
-      title: '提交中...',
-    })
-    //整理提交数据
-    //获取系统当前时间
-    var myDate = new Date();
-    var curTime = util.formatTime(myDate).substring(10); 
-    var maintenanceData = wx.getStorageSync('maintenanceData');
-    var postData = maintenanceData.firstPageData;
-    /*运行环境检查 */
-    postData.hmdo = this.getCode(maintenanceData.hmdo);
-    postData.hmth = this.getCode(maintenanceData.hmth);
-    postData.hmzg = this.getCode(maintenanceData.hmzg);
-    postData.hmcp = this.getCode(maintenanceData.hmcp);
-    postData.hml5 = this.getCode(maintenanceData.hml5);
-    postData.hmoe = this.getCode(maintenanceData.hmoe);
-   
-
-    /*设备性能检查 */
-    postData.hmhsi = this.getCode(maintenanceData.hmhsi);
-    postData.hmbpw = this.getCode(maintenanceData.hmbpw);
-    postData.hmkt = this.getCode(maintenanceData.hmkt);
-    postData.hmss = this.getCode(maintenanceData.hmss);
-    postData.hmle = this.getCode(maintenanceData.hmle);
-    postData.hmop = this.getCode(maintenanceData.hmop);
-
-    /* 设备保养记录*/
-    postData.hmcts = this.getCode(maintenanceData.hmcts);
-    postData.hmkp = this.getCode(maintenanceData.hmkp);
-    postData.hmt = this.getCode(maintenanceData.hmt);
-    postData.hmtpc = this.getCode(maintenanceData.hmtpc);
-    postData.hmds = this.getCode(maintenanceData.hmds);
-    postData.hmpm = this.getCode(maintenanceData.hmpm);
-
-    /*保养效果确认 */
-    postData.hmea = this.getCode(maintenanceData.hmea);
-    postData.hmkpa = this.getCode(maintenanceData.hmkpa);
-    postData.hmtpca = this.getCode(maintenanceData.hmtpca);
-    postData.hml5a = this.getCode(maintenanceData.hml5a);
-    postData.hmoa = this.getCode(maintenanceData.hmoa);
-    postData.mobilePhone = '+86' + wx.getStorageSync('mobile'); 
-    postData.createUser = this.data.createUser;
-    postData.serviceTime = this.data.date + curTime;
-    api.maintenance(postData).then(res => {
-      if (res.code == 0) {
-        const id = res.data.id;
-        //清除缓存的数据
-      wx.removeStorageSync('maintenanceData');
-        setTimeout(() => {
-          wx.hideLoading();
-          wx.reLaunch({
-            url: '/pages/webView/index?type=maintain&id=' + id
-          })
-        }, 1000)
-      }else if(res.code==1){
-        wx.hideLoading();
-        wx.showModal({
-          title: '提示',
-          content: res.msg,
-          showCancel: false,
-          confirmColor: '#009fab'
-        })
-      }
-    }, err => {
-      wx.hideLoading();
-      wx.showModal({
-        title: '提示',
-        content: '提交失败，请重试',
-        showCancel: false,
-        confirmColor: '#009fab'
-      })
-    })
-  },
-  //获取hashCode
-  getCode: function (arr) {
-    var codeArr = []
-    if (arr instanceof Array) {
-      arr.forEach(item => {
-        codeArr.push(item.code)
-      });
-    }
-    return codeArr
-  },
-
-  goback: function () {
-    wx.navigateBack({
-      delta: 1
-    })
-  },
- 
 })

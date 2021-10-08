@@ -1,7 +1,6 @@
 // 运行环境检查
 const app = getApp()
 const api = app.globalData.api
-const util = app.globalData.util
 import mirrorType from '../../utils/mirrorType.js'
 
 Page({
@@ -21,6 +20,7 @@ Page({
     emli:[],//导光接口
     emd:[],//消毒液
     emoe:[],//其它
+    emQR:[],//二维码粘贴
     options:[],
     /*镜体 */
     endoscopeJson:[],//镜体
@@ -88,13 +88,6 @@ Page({
     btnDisabled: false,
     environment: true,
     mirrorBody:false,
-    buttons: [{
-      text: '取消'
-    }, {
-      text: '确定'
-    }],
-    showOneButtonDialog: false,
-    createUser: "",
   },
 
   /**
@@ -116,6 +109,7 @@ Page({
       emsv:maintenanceData.emsv ? maintenanceData.emsv:[],//软件版本
       emli:maintenanceData.emli ? maintenanceData.emli:[],//导光接口
       emd:maintenanceData.emd ? maintenanceData.emd:[],//消毒液
+      emQR:maintenanceData.emQR ? maintenanceData.emQR:[],//二维码粘贴
       emoe: maintenanceData.emoe ? maintenanceData.emoe : [], //其它
     })
   },
@@ -197,6 +191,13 @@ Page({
       });
       return
     };
+
+    if (this.data.emQR.length == 0) {
+      this.setData({
+        error: '请上传二维码粘贴图片'
+      });
+      return
+    };
   
      //显示镜体数据
      var maintenanceData = wx.getStorageSync('maintenanceData');
@@ -269,6 +270,7 @@ Page({
     btnDisabled: false
   })
   },
+
   //删除镜体
   deleteMirrorImg(e){
     const {
@@ -366,19 +368,6 @@ Page({
     })
   },
 
-  //服务人员
-   getCreateUser: function (e) {
-    this.setData({
-      createUser: e.detail.value
-    })
-  },
-  //服务日期
-  bindDateChange: function (e) {
-    this.setData({
-      date: e.detail.value,
-    })
-  },
-
   //上传图片
   uploadImg(e) {
     this.changeData(e)
@@ -433,7 +422,6 @@ Page({
   },
 
 
-  
 
   //完结
   nextStep(e) {
@@ -461,112 +449,13 @@ Page({
       });
       return
     }
-     //获取系统当前时间
-     var myDate = new Date();
-     var curTime = util.formatTime(myDate);
-     var curDate = curTime.substring(0, 10);
-     this.setData({
-       date: curDate
-     })
     
-    // this.setData({
-    //   showOneButtonDialog: true,
-    // })
     wx.navigateTo({
       url: '/pages/maintain/details',
     })
   },
 
-  //确定
-  tapDialogButton: function (e) {
-    var that = this;
-    const type = e.detail.index;
-    if (type == 0) {
-      this.setData({
-        showOneButtonDialog: false
-      })
-      return
-    }
-    if (type == 1 && !this.data.createUser) {
-      this.setData({
-        error: '请输入服务人员姓名'
-      });
-      return
-    }
-    this.setData({
-      showOneButtonDialog: false
-    })
-    wx.showLoading({
-      title: '提交中...',
-    })
-    //获取系统当前时间
-    var myDate = new Date();
-    var curTime = util.formatTime(myDate).substring(10); 
-    var maintenanceData = wx.getStorageSync('maintenanceData');
-    var postData = maintenanceData.firstPageData;
-    /*运行环境检查 */
-    postData.emea = this.getCode(maintenanceData.emea); //整机外观
-    postData.emth = this.getCode(maintenanceData.emth); //温湿度
-    postData.emcp = this.getCode(maintenanceData.emcp); //市电
-    postData.emzg = this.getCode(maintenanceData.emzg);//零地
-    postData.emfvow = this.getCode(maintenanceData.emfvow); //洗消间全览
-    postData.emlse = this.getCode(maintenanceData.emlse); //镜体储存环境
-    postData.emsv = this.getCode(maintenanceData.emsv); //软件版本
-    postData.emhsir = this.getCode(maintenanceData.emhsir); //主机点检报告
-    postData.emli = this.getCode(maintenanceData.emli); //导光接口
-    postData.emd = this.getCode(maintenanceData.emd); //消毒液
-    postData.emoe = this.getCode(maintenanceData.emoe);////其它
-    //镜体
-   maintenanceData.endoscopeJson.forEach((item)=>{
-        item.seriesId = item.seriesId.name;
-        item.angularSurveying = that.getCode(item.angularSurveying);
-        item.headEndShield = that.getCode(item.headEndShield);
-        item.siromb = that.getCode(item.siromb);
-    });
-    postData.endoscopeJson = maintenanceData.endoscopeJson;
-    postData.mobilePhone = '+86' + wx.getStorageSync('mobile');
-    postData.createUser = this.data.createUser;
-    postData.serviceTime = this.data.date + curTime;
-    api.maintenance(postData).then(res => {
-      if (res.code == 0) {
-        const id = res.data.id;
-        //清除缓存的数据
-      wx.removeStorageSync('maintenanceData');
-        setTimeout(() => {
-          wx.hideLoading();
-          wx.reLaunch({
-            url: '/pages/webView/index?type=maintain&id=' + id
-          })
-        }, 1000)
-      } else if(res.code==1){
-        wx.hideLoading();
-        wx.showModal({
-          title: '提示',
-          content: res.msg,
-          showCancel: false,
-          confirmColor: '#009fab'
-        })
-      }
-    }, err => {
-      wx.hideLoading();
-      wx.showModal({
-        title: '提示',
-        content: '提交失败，请重试',
-        showCancel: false,
-        confirmColor: '#009fab'
-      })
-    })
-  },
-  //获取hashCode
-  getCode: function (arr) {
-    var codeArr = []
-    if (arr instanceof Array) {
-      arr.forEach(item => {
-        codeArr.push(item.code)
-      });
-    }
-    return codeArr
-  },
+ 
   goback: function () {
     wx.navigateBack({
       delta: 1

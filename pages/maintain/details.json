@@ -1,12 +1,13 @@
 {
   "component": true,
   "usingComponents": {
+    "mp-toptips": "../../weui/toptips/toptips",
     "mp-cells": "../../weui/cells/cells",
     "mp-cell": "../../weui/cell/cell",
     "vant-empty": "/components/empty",
     "endoscope":"./components/endoscope",
-    "inspect":"./components/inspect",
-    "ultrasonic":"./components/ultrasonic"
+    "ultrasonic":"./components/ultrasonic",
+    "mp-dialog": "../../weui/dialog/dialog"
   },
   "navigationBarTitleText": "服务确认"
 }

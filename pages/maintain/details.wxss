@@ -30,6 +30,7 @@
   margin-top:10rpx;
 }
 
+/**底部按钮**/
 .footer-wrap{
   margin-top:60rpx;
 }
@@ -42,6 +43,27 @@ button:not([size='mini']).normal{
   width:500rpx;
   background-color: #009fab;
 }
+
+/**底部按钮2**/
+.submit-wrap {
+  display: flex;
+  justify-content: space-between;
+  margin-top:60rpx;
+}
+.submit-wrap button:not([size='mini']){
+  width:240rpx;
+ 
+}
+
+.submit-wrap .submit_btn{
+  background-color: #009fab;
+}
+.submit-wrap .cancel_btn{
+  color: #009fab;
+}
+
+
+/*签名框*/
 
 .signatureWrap{
   padding:30rpx;

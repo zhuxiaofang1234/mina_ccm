@@ -107,6 +107,10 @@ Component({
         imgList:maintenanceData.emd
        },
        {
+        title:'二维码粘贴',
+        imgList:maintenanceData.emQR
+       },
+       {
         title:'其它',
         imgList:maintenanceData.emoe
        },
