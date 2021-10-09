@@ -1,2 +1,67 @@
-<!--pages/install/details.wxml-->
-<text>pages/install/details.wxml</text>
+<!--pages/maintain/details.wxml-->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<view class="page">
+  <view class="page__bd">
+    <view class="detailsTitle weui-cells__title">
+      <view>服务基本信息</view>
+    </view>
+    <mp-cells ext-class="my-cells">
+      <mp-cell value="设备SN">
+        <view slot="footer">
+          <view class="sn-item" wx:for="{{baseData.sn}}">
+            <text>{{item}}</text>
+          </view>
+        </view>
+      </mp-cell>
+      <mp-cell value="产品类型">
+        <view slot="footer">
+            <text wx:if="{{baseData.productLine==1}}">超声</text>
+            <text wx:elif="{{baseData.productLine==2}}">内镜</text>
+            <text wx:elif="{{baseData.productLine==3}}">检验</text>
+        </view>
+      </mp-cell>
+      <mp-cell value="装机类型">
+        <view slot="footer">
+            <text wx:if="{{baseData.deviceStatus==2}}">销售</text>
+            <text wx:elif="{{baseData.deviceStatus==3}}">样机</text>
+            <text wx:elif="{{baseData.deviceStatus==4}}">备用机</text>
+        </view>
+      </mp-cell>
+      <mp-cell value="装机医院" ext-class="addressCell" footer="{{baseData.hospitalName || '-'}}"></mp-cell>
+      <mp-cell value="医院科室" ext-class="addressCell" footer="{{baseData.hospitalDept || '-'}}"></mp-cell>
+      <mp-cell value="科室联系人" ext-class="addressCell" footer="{{baseData.hospitalDeptContactName || '-'}}"></mp-cell>
+      <mp-cell value="联系方式" ext-class="addressCell" footer="{{baseData.hospitalDeptContactPhone || '-'}}"></mp-cell>
+    </mp-cells>
+    <mp-cells ext-class="my-cells" title="服务详情信息"> 
+      <serviceDetails repairData="{{repairData}}"></serviceDetails>
+    </mp-cells>
+    <view class="signatureWrap">
+      <view class="signatureLabel">签字栏</view>
+      <view class="signature">
+         <image style="width: 100%; height:100%;" mode="aspectFit" wx:if="{{src}}" src="{{src}}"></image>
+      </view>  
+    </view>
+    <view class="footer-wrap" wx:if="{{!src}}">
+        <button type="primary" class="normal" hover-class="btn-active" bindtap="serviceConfirm">服务确认</button>
+    </view>
+    <view class="submit-wrap" wx:else>
+        <button type="default" class="cancel_btn"  hover-class="btn-active" bindtap="cancelSign">取消</button>
+        <button type="primary" class="submit_btn" hover-class="btn-active" bindtap="submitForm">提交</button>
+    </view>
+  </view>
+</view>
+
+<!--签名弹框-->
+<mp-dialog title="请输入服务信息" extClass="finishDialog" show="{{showOneButtonDialog}}" bindbuttontap="tapDialogButton"
+  buttons="{{buttons}}">
+  <mp-cells>
+    <mp-cell prop="qq" title="服务人员" ext-class="serviceInfo">
+      <input bindinput="getCreateUser" class="weui-input" placeholder="服务人员" />
+    </mp-cell>
+    <mp-cell prop="date" title="服务日期" ext-class="serviceInfo">
+      <picker data-field="date" mode="date" value="{{date}}" bindchange="bindDateChange">
+        <view class="weui-input">{{date}}</view>
+      </picker>
+    </mp-cell>
+  </mp-cells>
+</mp-dialog>

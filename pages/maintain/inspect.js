@@ -374,5 +374,11 @@ Page({
       url: '/pages/maintain/details',
     })
   },
+  
+  goback: function () {
+    wx.navigateBack({
+      delta: 1
+    })
+  },
 
 })

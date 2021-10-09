@@ -127,9 +127,8 @@ Page({
       });
       return
     }
-    let InstallData = wx.getStorageSync('InstallData');
-    console.log(InstallData)
-
+    wx.getStorageSync('InstallData');
+   
     wx.navigateTo({
       url: '/pages/productTrain/index',
     })

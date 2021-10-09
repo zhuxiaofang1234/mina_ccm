@@ -296,3 +296,14 @@ button.custom-btn.btn-active:before {
   margin-bottom:20rpx;
   border:1px solid #ccc;
 }
+
+.sn-item{
+  position: relative;
+  display:inline-block;
+  padding:4rpx 12rpx 4rpx 12rpx;
+  border:1px solid #009fab;
+  color:#009fab;
+  font-size: 24rpx;
+  margin-right:20rpx;
+  border-radius: 8rpx;
+}

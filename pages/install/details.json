@@ -1,3 +1,11 @@
 {
-  "usingComponents": {}
+  "component": true,
+  "usingComponents": {
+    "mp-toptips": "../../weui/toptips/toptips",
+    "mp-cells": "../../weui/cells/cells",
+    "mp-cell": "../../weui/cell/cell",
+    "vant-empty": "/components/empty",
+    "mp-dialog": "../../weui/dialog/dialog"
+  },
+  "navigationBarTitleText": "装机服务确认"
 }

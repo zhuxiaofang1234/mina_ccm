@@ -16,6 +16,7 @@ Page({
     installTrainReportPic: [], //安装培训报告
     guaranteeCardPic: [], //保修卡
     calibrationReportPic: [], //校准报告
+    installQR:[],//二维码粘贴
     btnDisabled: false,
     functionConfigItems: [{
         name: '是',
@@ -112,6 +113,7 @@ Page({
       installTrainReportPic: InstallData.installTrainReportPic ? InstallData.installTrainReportPic : [], //安装培训报告
       guaranteeCardPic: InstallData.guaranteeCardPic ? InstallData.guaranteeCardPic : [], //保修卡
       calibrationReportPic: InstallData.calibrationReportPic ? InstallData.calibrationReportPic : [], //校准报告  
+      installQR: InstallData.installQR ? InstallData.installQR : [], //二维码粘贴  
       functionConfig,
       customerTraining,
       productMeasure
@@ -218,6 +220,12 @@ Page({
         })
         InstallData.calibrationReportPic = imgList
         break;
+        case 'installQR': //二维码粘贴
+        this.setData({
+          installQR: imgList,
+        })
+        InstallData.installQR = imgList
+        break;
     }
     wx.setStorageSync('InstallData', InstallData)
   },
@@ -253,6 +261,12 @@ Page({
       });
       return
     }
+    if (this.data.installQR.length == 0) {
+      this.setData({
+        error: '请上传二维码粘贴图片'
+      });
+      return
+    }
     //获取系统当前时间
     var myDate = new Date();
     var curTime = util.formatTime(myDate);
@@ -260,8 +274,8 @@ Page({
     this.setData({
       date: curDate
     })
-    this.setData({
-      showOneButtonDialog: true
+    wx.navigateTo({
+      url: '/pages/install/details',
     })
   },
 

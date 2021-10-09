@@ -1,1 +1,3 @@
 /* pages/install/details.wxss */
+@import '../../styles/my-cells.wxss';
+@import '../../styles/preview-details.wxss';

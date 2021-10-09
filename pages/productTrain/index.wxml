@@ -102,6 +102,15 @@
                   </uploader>
                 </view>
               </view>
+              <view class="form-item">
+                <view class="label-text">二维码粘贴:</view>
+                <view class="form-wrap">
+                  <uploader max="1" imgList="{{installQR}}" data-type="installQR" bindUpload="uploadImg"
+                    binddisableBtn="disableBtn" bindDelete="deleteImg">
+                    <view class="iconfont icon-xiangji"></view>
+                  </uploader>
+                </view>
+              </view>
             </view>
           </view>
         </i-step>
