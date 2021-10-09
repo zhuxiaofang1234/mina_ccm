@@ -1,0 +1,22 @@
+/* pages/repair/components/serviceDetails.wxss */
+.faultDescWrap {
+  margin-top: 20rpx;
+}
+
+.faultDescWrap .fault-title {
+  font-size: 28rpx;
+  margin-bottom: 6rpx;
+  font-weight: 600;
+}
+
+.faultDescWrap .faultDesc {
+  width: 100%;
+  min-height: 180rpx;
+  border: 1px dashed #ddd;
+  font-size: 26rpx;
+  padding: 16rpx 18rpx;
+  box-sizing: border-box;
+  line-height: 1.5;
+  text-indent: 32rpx;
+  color:#555
+}

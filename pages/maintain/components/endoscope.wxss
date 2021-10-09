@@ -1,34 +1,5 @@
 /* pages/maintain/components/endoscope.wxss */
 @import '../../../styles/task.wxss';
-.uploader_preview-image{
-  position: relative;
-  display: block;
-  width: 160rpx;
-  height: 160rpx;
-  overflow: hidden;
-}
-
-.image__img{
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-.uploader_preview{
-  display: flex;
-  flex-wrap: wrap
-}
-
-.uploader_preview .uploader-item:not(:last-child){
-  margin-right:10rpx;
-  margin-bottom:16rpx;
-}
-
-.uploader-item .upload-title {
-  text-align: center;
-  font-size: 24rpx;
-  color: #323232;
-  margin-top:10rpx;
-}
 
 /**镜体信息**/
 .fault-content {

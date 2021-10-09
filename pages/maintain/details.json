@@ -9,5 +9,5 @@
     "ultrasonic":"./components/ultrasonic",
     "mp-dialog": "../../weui/dialog/dialog"
   },
-  "navigationBarTitleText": "服务确认"
+  "navigationBarTitleText": "保养服务确认"
 }

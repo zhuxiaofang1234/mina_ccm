@@ -1,0 +1,93 @@
+/* pages/maintain/details.wxss */
+page{
+  background-color: #fff;
+}
+.uploader_preview-image{
+  position: relative;
+  display: block;
+  width: 160rpx;
+  height: 160rpx;
+  overflow: hidden;
+}
+
+.image__img{
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+.uploader_preview{
+  display: flex;
+  flex-wrap: wrap
+
+}
+.uploader_preview .uploader-item:not(:last-child){
+  margin-right:10rpx;
+  margin-bottom:16rpx;
+}
+.uploader_preview .uploader-item .upload-title {
+  width:160rpx;
+  text-align: center;
+  font-size: 24rpx;
+  color: #323232;
+  margin-top:10rpx;
+}
+
+/**底部按钮**/
+.footer-wrap{
+  margin-top:60rpx;
+}
+button[plain].addbtn{
+  margin-top:20rpx;
+  color:#009fab;
+  border:1px dashed
+}
+button:not([size='mini']).normal{
+  width:500rpx;
+  background-color: #009fab;
+}
+
+/**底部按钮2**/
+.submit-wrap {
+  display: flex;
+  justify-content: space-between;
+  margin-top:60rpx;
+}
+.submit-wrap button:not([size='mini']){
+  width:240rpx;
+ 
+}
+
+.submit-wrap .submit_btn{
+  background-color: #009fab;
+}
+.submit-wrap .cancel_btn{
+  color: #009fab;
+}
+
+
+/*签名框*/
+.signatureWrap{
+  padding:30rpx;
+  box-sizing: border-box;
+}
+.signatureWrap .signatureLabel{
+  text-align: center;
+}
+.signatureWrap .signature{
+  width:100%;
+  height:200rpx;
+  border:1px solid #ddd;
+}
+
+
+.weui-cells__title {
+  margin:0;
+  padding:10px 16px;
+  font-size: 14px;
+  background-color: #f2f2f2;
+}
+
+.finishDialog  .weui-dialog__btn_primary{
+  color:#009fab
+}
+

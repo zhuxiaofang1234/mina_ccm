@@ -45,6 +45,13 @@
             <view class="upload-title">现场5s</view>
           </view>
           <view class="uploader-item">
+            <uploader max="1" data-type="hsQR" imgList="{{hsQR}}" bindUpload="uploadImg" bindDelete="deleteImg"
+              binddisableBtn="disableBtn">
+              <view class="iconfont icon-xiangji"></view>
+            </uploader>
+            <view class="upload-title">二维码粘贴</view>
+          </view>
+          <view class="uploader-item">
             <uploader max="4" data-type="hsoe" imgList="{{hsoe}}" bindUpload="uploadImg" bindDelete="deleteImg"
               binddisableBtn="disableBtn">
               <view class="iconfont icon-xiangji"></view>

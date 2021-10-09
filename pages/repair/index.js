@@ -81,8 +81,7 @@ Page({
     showData: function (data) {
         if (!data) {
             return
-        }
-        console.log(data)
+        }  
 
         //设备类型
         var deviceTypeItems = this.data.deviceTypeItems;
@@ -173,7 +172,6 @@ Page({
                 var repairData = wx.getStorageSync('repairData') ? wx.getStorageSync('repairData') : {};
                 this.data.formData.hospitalName = this.data.hospitalName;
                 this.data.formData.hospitalInfo = this.data.hospitalInfo;
-                console.log(this.data.formData)
                 repairData.firstPageData = this.data.formData;
                 wx.setStorageSync('repairData', repairData);
 
@@ -189,7 +187,6 @@ Page({
                     case 3:
                         url = '/pages/repair/inspect'
                 }
-                console.log(url);
                 wx.navigateTo({
                     url: url,
                 })

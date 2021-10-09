@@ -2,27 +2,3 @@
 
 @import '../../styles/task.wxss';
 @import '../../styles/icon.wxss';
-.uploader-content.flex-box {
-  display: flex;
-  flex-direction: row;
-  flex-wrap:wrap;
-  justify-content: space-between;
-  padding:0 80rpx;
-}
-.uploader-item{
-  margin-bottom:40rpx;
-}
-.uploader-item .upload-title{
-  text-align: center;
-  font-size:28rpx;
-  color:#323232;
-  width:180rpx;
-}
-.remarkWrap .textarea{
-  width:540rpx;
-  height:120rpx;
-  margin:0 auto;
-  padding:20rpx;
-  margin-bottom:20rpx;
-  border:1px solid #ccc;
-}

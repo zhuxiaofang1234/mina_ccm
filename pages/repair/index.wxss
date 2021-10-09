@@ -74,12 +74,13 @@
 
 .textarea {
   width: 100%;
-  height: 200rpx;
+  min-height: 200rpx;
   border: 1px solid #ebedf0;
   padding: 10rpx 32rpx;
   box-sizing: border-box;
   margin-top: 20rpx;
   font-size:28rpx;
+  color:#555;
 }
 
 .last-cell .weui-cells:after {

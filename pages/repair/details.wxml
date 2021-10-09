@@ -1,2 +1,59 @@
-<!--pages/repair/details.wxml-->
-<text>pages/repair/details.wxml</text>
+<!--pages/maintain/details.wxml-->
+<mp-toptips msg="{{error}}" type="error" show="{{error}}"></mp-toptips>
+<view class="page">
+  <view class="page__bd">
+    <view class="detailsTitle weui-cells__title">
+      <view>服务基本信息</view>
+    </view>
+    <mp-cells ext-class="my-cells">
+      <mp-cell value="任务单号" footer="{{baseData.taskNo || '-'}}"></mp-cell>
+      <mp-cell value="设备类型">
+        <view slot="footer">
+            <text wx:if="{{baseData.deviceType==1}}">超声</text>
+            <text wx:elif="{{baseData.deviceType==2}}">内镜</text>
+            <text wx:elif="{{baseData.deviceType==3}}">检验</text>
+        </view>
+      </mp-cell>
+      <mp-cell value="设备SN" footer="{{baseData.sn || '-'}}"></mp-cell>
+      <mp-cell value="保修状态">
+        <view slot="footer">
+            <text wx:if="{{baseData.warrantyStatus==1}}">保内</text>
+            <text wx:elif="{{baseData.warrantyStatus==2}}">保外</text>
+        </view>
+      </mp-cell>
+      <mp-cell value="维保医院" ext-class="addressCell" footer="{{baseData.hospitalName || '-'}}"></mp-cell>
+      <mp-cell value="维修备注" ext-class="addressCell" footer="{{baseData.remark || '-'}}"></mp-cell>
+    </mp-cells>
+    <mp-cells ext-class="my-cells" title="服务详情信息"> 
+      <serviceDetails repairData="{{repairData}}"></serviceDetails>
+    </mp-cells>
+    <view class="signatureWrap">
+      <view class="signatureLabel">签字栏</view>
+      <view class="signature">
+         <image style="width: 100%; height:100%;" mode="aspectFit" wx:if="{{src}}" src="{{src}}"></image>
+      </view>  
+    </view>
+    <view class="footer-wrap" wx:if="{{!src}}">
+        <button type="primary" class="normal" hover-class="btn-active" bindtap="serviceConfirm">服务确认</button>
+    </view>
+    <view class="submit-wrap" wx:else>
+        <button type="default" class="cancel_btn"  hover-class="btn-active" bindtap="cancelSign">取消</button>
+        <button type="primary" class="submit_btn" hover-class="btn-active" bindtap="submitForm">提交</button>
+    </view>
+  </view>
+</view>
+
+<!--签名弹框-->
+<mp-dialog title="请输入服务信息" extClass="finishDialog" show="{{showOneButtonDialog}}" bindbuttontap="tapDialogButton"
+  buttons="{{buttons}}">
+  <mp-cells>
+    <mp-cell prop="qq" title="服务人员" ext-class="serviceInfo">
+      <input bindinput="getCreateUser" class="weui-input" placeholder="服务人员" />
+    </mp-cell>
+    <mp-cell prop="date" title="服务日期" ext-class="serviceInfo">
+      <picker data-field="date" mode="date" value="{{date}}" bindchange="bindDateChange">
+        <view class="weui-input">{{date}}</view>
+      </picker>
+    </mp-cell>
+  </mp-cells>
+</mp-dialog>

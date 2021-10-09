@@ -62,9 +62,9 @@
       <view class="info-wrap">
         <view class="clientInfo">
           <view class="clientInfoItem">
-            <text>{{hospitalInfo.hospitalType}}</text>
-            <text>{{hospitalInfo.contact}}</text>
-            <text>{{hospitalInfo.contactTel}}</text>
+            <text>{{hospitalInfo.hospitalType || ''}}</text>
+            <text>{{hospitalInfo.contact || ''}}</text>
+            <text>{{hospitalInfo.contactTel || ''}}</text>
           </view>
           <view class="clientInfoItem">
             <text>{{hospitalInfo.address}}</text>

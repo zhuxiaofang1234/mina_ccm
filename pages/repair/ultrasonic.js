@@ -13,6 +13,7 @@ Page({
     hscp:[],//市电
     hszg:[],//零地
     hsl5:[],//现场5s
+    hsQR:[],//二维码粘贴
     hsoe:[],//维修检查-其他
     /**故障确认 */
     hs512v:[],//5V/12V电压
@@ -33,13 +34,6 @@ Page({
     faultSure: false,
     repairEffect: false,
     faultDesc:"",
-    buttons: [{
-      text: '取消'
-    }, {
-      text: '确定'
-    }],
-    showOneButtonDialog: false,
-    createUser: ""
   },
 
   /**
@@ -54,6 +48,7 @@ Page({
       hscp: repairData.hscp ? repairData.hscp : [], //市电
       hszg: repairData.hszg ? repairData.hszg : [], //零地
       hsl5: repairData.hsl5 ? repairData.hsl5 : [], //现场5s
+      hsQR: repairData.hsQR ? repairData.hsQR : [], //二维码粘贴
       hsoe: repairData.hsoe ? repairData.hsoe : [], //维修检查-其他
     })
   },
@@ -156,6 +151,12 @@ Page({
       });
       return
     }
+    if (this.data.hsQR.length == 0) {
+      this.setData({
+        error: '请上传二维码粘贴图片'
+      });
+      return
+    }
      //从缓存里读取显示信息
      var repairData = wx.getStorageSync('repairData');
      this.setData({
@@ -223,19 +224,6 @@ Page({
     })
   },
 
-  //服务人员
-  getCreateUser: function (e) {
-    this.setData({
-      createUser: e.detail.value
-    })
-  },
-  //服务日期
-  bindDateChange: function (e) {
-    this.setData({
-      date: e.detail.value,
-    })
-  },
-
   //完结
   nextStep(e) {
     if (this.data.hshsi.length == 0) {
@@ -273,110 +261,12 @@ Page({
         error: '请上传探头始波图片'
       });
       return
-    }
-     //获取系统当前时间
-     var myDate = new Date();
-     var curTime = util.formatTime(myDate);
-     var curDate = curTime.substring(0, 10);
-     this.setData({
-       date: curDate
-     })
-     this.setData({
-      showOneButtonDialog: true,
+    }  
+    wx.navigateTo({
+      url: '/pages/repair/details',
     })
   },
-
-  //确定
-  tapDialogButton: function (e) {
-    const type = e.detail.index;
-    if (type == 0) {
-      this.setData({
-        showOneButtonDialog: false
-      })
-      return
-    }
-    if (type == 1 && !this.data.createUser) {
-      this.setData({
-        error: '请输入服务人员姓名'
-      });
-      return
-    }
-    this.setData({
-      showOneButtonDialog: false
-    })
-    wx.showLoading({
-      title: '提交中...',
-    })
-
-    //获取系统当前时间
-    var myDate = new Date();
-    var curTime = util.formatTime(myDate).substring(10);
-    var repairData = wx.getStorageSync('repairData');
-    var postData = repairData.firstPageData;
-    /*维修环境检查 */
-    postData.hsdo = this.getCode(repairData.hsdo);//科室全览
-    postData.hsth = this.getCode(repairData.hsth); //温湿度
-    postData.hscp = this.getCode(repairData.hscp); //市电
-    postData.hszg = this.getCode(repairData.hszg); //零地
-    postData.hsl5 = this.getCode(repairData.hsl5); //现场5s
-    postData.hsoe = this.getCode(repairData.hsoe); //其他
-    /**故障确认 */
-    postData.hs512v = this.getCode(repairData.hs512v); //5V/12V电压
-    postData.hssii = this.getCode(repairData.hssii); //系统信息界面
-    postData.hsfvp = this.getCode(repairData.hsfvp); //故障/视频照片
-    postData.hsfbp = this.getCode(repairData.hsfbp);//故障板图片
-    postData.hstp = this.getCode(repairData.hstp);//拆机图片
-     /*维修效果确认 */
-     postData.hshsi = this.getCode(repairData.hshsi);///硬件自检
-     postData.hskt = this.getCode(repairData.hskt), //键盘测试
-     postData.hsle = this.getCode(repairData.hsle),//存储空间
-     postData.hsss = this.getCode(repairData.hsss), //日志导出
-     postData.hsswdote = this.getCode(repairData.hsswdote),//设备开机工作图
-     postData.hsbpw = this.getCode(repairData.hsbpw),//探头始波
-     postData.faultDesc = this.data.faultDesc;
-    postData.mobilePhone = '+86' + wx.getStorageSync('mobile'); 
-    postData.createUser = this.data.createUser;
-    postData.serviceTime = this.data.date + curTime;
-    api.addServiceInfo(postData).then(res => {
-      if (res.code == 0) {
-        const id = res.data.id;
-        setTimeout(() => {
-          wx.removeStorageSync('repairData');
-          wx.hideLoading();
-          wx.reLaunch({
-            url: '/pages/webView/index?type=repair&id=' + id
-          })
-        }, 800)
-      } else if(res.code==1){
-        wx.hideLoading();
-        wx.showModal({
-          title: '提示',
-          content: res.msg,
-          showCancel: false,
-          confirmColor: '#009fab'
-        })
-      }
-    }, err => {
-      wx.hideLoading();
-      wx.showModal({
-        title: '提示',
-        content: '提交失败，请重试',
-        showCancel: false,
-        confirmColor: '#009fab'
-      })
-    })
-  },
-
-  //获取hashCode
-  getCode: function (arr) {
-    var codeArr = []
-    if (arr instanceof Array) {
-      arr.forEach(item => {
-        codeArr.push(item.code)
-      });
-    }
-    return codeArr
-  },
+  
   goback: function () {
     wx.navigateBack({
       delta: 1

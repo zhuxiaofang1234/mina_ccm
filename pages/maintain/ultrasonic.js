@@ -307,9 +307,7 @@ Page({
         error: '请上传二维码粘贴图片'
       });
       return
-    }
-    
-     
+    }  
     wx.navigateTo({
       url: '/pages/maintain/details',
     })
